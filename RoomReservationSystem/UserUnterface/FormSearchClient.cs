@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace RoomReservationSystem.UserUnterface
 {
-    public partial class MainPageWorker : Form
+    public partial class FormSearchClient : Form
     {
-        public MainPageWorker()
+        public FormSearchClient()
         {
             InitializeComponent();
         }
 
-        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

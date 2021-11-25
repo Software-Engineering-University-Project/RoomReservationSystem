@@ -17,7 +17,7 @@ namespace RoomReservationSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PageSearchRooms());
+            Application.Run(new RoomReservationSystem.UserUnterface.RoomReservationSystem());
         }
     }
 }
