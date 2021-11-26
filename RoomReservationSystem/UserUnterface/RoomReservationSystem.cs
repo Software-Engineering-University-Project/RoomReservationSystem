@@ -129,7 +129,7 @@ namespace RoomReservationSystem.UserUnterface
 
         private void buttonNewClient_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNewClient(), sender);
+            OpenChildForm(new FormNewPerson(), sender);
         }
 
         private void buttonSearchWorkers_Click(object sender, EventArgs e)
@@ -139,7 +139,7 @@ namespace RoomReservationSystem.UserUnterface
 
         private void buttonNewWorker_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNewClient(), sender);
+            OpenChildForm(new FormNewPerson(), sender);
         }
 
         private void buttonNewRoom_Click(object sender, EventArgs e)

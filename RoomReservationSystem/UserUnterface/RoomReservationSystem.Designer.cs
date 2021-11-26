@@ -43,10 +43,10 @@ namespace RoomReservationSystem.UserUnterface
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.buttonMinimize = new System.Windows.Forms.Button();
+            this.buttonClose = new System.Windows.Forms.Button();
             this.labelTitleBar = new System.Windows.Forms.Label();
             this.panelDesktopPane = new System.Windows.Forms.Panel();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.buttonMinimize = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
@@ -68,7 +68,7 @@ namespace RoomReservationSystem.UserUnterface
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(208, 1055);
+            this.panelMenu.Size = new System.Drawing.Size(208, 853);
             this.panelMenu.TabIndex = 0;
             // 
             // buttonNewRoom
@@ -292,44 +292,9 @@ namespace RoomReservationSystem.UserUnterface
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(208, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(1716, 82);
+            this.panelTitleBar.Size = new System.Drawing.Size(1324, 82);
             this.panelTitleBar.TabIndex = 1;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
-            // 
-            // labelTitleBar
-            // 
-            this.labelTitleBar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelTitleBar.AutoSize = true;
-            this.labelTitleBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelTitleBar.ForeColor = System.Drawing.Color.White;
-            this.labelTitleBar.Location = new System.Drawing.Point(745, 27);
-            this.labelTitleBar.Name = "labelTitleBar";
-            this.labelTitleBar.Size = new System.Drawing.Size(95, 31);
-            this.labelTitleBar.TabIndex = 0;
-            this.labelTitleBar.Text = "HOME";
-            this.labelTitleBar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panelDesktopPane
-            // 
-            this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktopPane.Location = new System.Drawing.Point(208, 82);
-            this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(1716, 973);
-            this.panelDesktopPane.TabIndex = 2;
-            // 
-            // buttonClose
-            // 
-            this.buttonClose.FlatAppearance.BorderSize = 0;
-            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(1237, 7);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(70, 69);
-            this.buttonClose.TabIndex = 1;
-            this.buttonClose.Text = "X";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // buttonMinimize
             // 
@@ -345,17 +310,51 @@ namespace RoomReservationSystem.UserUnterface
             this.buttonMinimize.UseVisualStyleBackColor = true;
             this.buttonMinimize.Click += new System.EventHandler(this.buttonMinimize_Click);
             // 
+            // buttonClose
+            // 
+            this.buttonClose.FlatAppearance.BorderSize = 0;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonClose.ForeColor = System.Drawing.Color.White;
+            this.buttonClose.Location = new System.Drawing.Point(1237, 7);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(70, 69);
+            this.buttonClose.TabIndex = 1;
+            this.buttonClose.Text = "X";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
+            // labelTitleBar
+            // 
+            this.labelTitleBar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelTitleBar.AutoSize = true;
+            this.labelTitleBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelTitleBar.ForeColor = System.Drawing.Color.White;
+            this.labelTitleBar.Location = new System.Drawing.Point(549, 27);
+            this.labelTitleBar.Name = "labelTitleBar";
+            this.labelTitleBar.Size = new System.Drawing.Size(95, 31);
+            this.labelTitleBar.TabIndex = 0;
+            this.labelTitleBar.Text = "HOME";
+            this.labelTitleBar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelDesktopPane
+            // 
+            this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDesktopPane.Location = new System.Drawing.Point(208, 82);
+            this.panelDesktopPane.Name = "panelDesktopPane";
+            this.panelDesktopPane.Size = new System.Drawing.Size(1324, 771);
+            this.panelDesktopPane.TabIndex = 2;
+            // 
             // RoomReservationSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.ClientSize = new System.Drawing.Size(1532, 853);
             this.Controls.Add(this.panelDesktopPane);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MinimumSize = new System.Drawing.Size(1918, 1028);
             this.Name = "RoomReservationSystem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RoomReservationSystem";

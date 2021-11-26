@@ -42,7 +42,7 @@ namespace RoomReservationSystem.UserUnterface
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.4206F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.5794F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 630F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 631F));
             this.tableLayoutPanel1.Controls.Add(this.textBoxPassword, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.textBox2, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
@@ -66,7 +66,7 @@ namespace RoomReservationSystem.UserUnterface
             this.textBoxPassword.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxPassword.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBoxPassword.Location = new System.Drawing.Point(537, 340);
+            this.textBoxPassword.Location = new System.Drawing.Point(536, 340);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(229, 23);
             this.textBoxPassword.TabIndex = 0;
@@ -78,7 +78,7 @@ namespace RoomReservationSystem.UserUnterface
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBox2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBox2.Location = new System.Drawing.Point(537, 273);
+            this.textBox2.Location = new System.Drawing.Point(536, 273);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(229, 23);
             this.textBox2.TabIndex = 1;
@@ -89,7 +89,7 @@ namespace RoomReservationSystem.UserUnterface
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(537, 245);
+            this.label1.Location = new System.Drawing.Point(536, 245);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(229, 25);
             this.label1.TabIndex = 2;
@@ -101,7 +101,7 @@ namespace RoomReservationSystem.UserUnterface
             this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label2.Location = new System.Drawing.Point(537, 312);
+            this.label2.Location = new System.Drawing.Point(536, 312);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(229, 25);
             this.label2.TabIndex = 3;

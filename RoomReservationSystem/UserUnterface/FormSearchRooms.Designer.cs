@@ -300,7 +300,7 @@ namespace RoomReservationSystem.UserUnterface
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.97872F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.02128F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Controls.Add(this.label7, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.textBox1, 0, 0);
@@ -319,7 +319,7 @@ namespace RoomReservationSystem.UserUnterface
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Calibri", 18F);
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(128, 0);
+            this.label7.Location = new System.Drawing.Point(127, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(19, 29);
             this.label7.TabIndex = 0;
@@ -335,7 +335,7 @@ namespace RoomReservationSystem.UserUnterface
             this.textBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(119, 25);
+            this.textBox1.Size = new System.Drawing.Size(118, 25);
             this.textBox1.TabIndex = 1;
             // 
             // textBox2
@@ -345,9 +345,9 @@ namespace RoomReservationSystem.UserUnterface
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox2.Font = new System.Drawing.Font("Calibri", 12F);
             this.textBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox2.Location = new System.Drawing.Point(153, 3);
+            this.textBox2.Location = new System.Drawing.Point(152, 3);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(115, 25);
+            this.textBox2.Size = new System.Drawing.Size(116, 25);
             this.textBox2.TabIndex = 2;
             // 
             // label8

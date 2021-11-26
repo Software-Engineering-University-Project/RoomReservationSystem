@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RoomReservationSystem.UserUnterface
 {
-    public partial class FormNewClient : Form
+    public partial class FormNewPerson : Form
     {
-        public FormNewClient()
+        public FormNewPerson()
         {
             InitializeComponent();
         }
