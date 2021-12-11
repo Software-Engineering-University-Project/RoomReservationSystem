@@ -18,9 +18,7 @@ namespace RoomReservationSystem
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RoomReservationSystem.UserInterface.RoomReservationSystem());
+            
 
             string provider = ConfigurationManager.AppSettings["provider"];
 
@@ -55,6 +53,9 @@ namespace RoomReservationSystem
                     }
                 }
             }
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new RoomReservationSystem.UserInterface.RoomReservationSystem());
         }
     }
 }
