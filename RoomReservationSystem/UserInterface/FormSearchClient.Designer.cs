@@ -93,7 +93,7 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.54362F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.45638F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 290F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 349F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
             this.tableLayoutPanel3.Controls.Add(this.comboBoxSearchClient, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.textBoxSearchClient, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.buttonSearchClient, 3, 0);
@@ -113,7 +113,7 @@ namespace RoomReservationSystem.UserInterface
             this.comboBoxSearchClient.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxSearchClient.ForeColor = System.Drawing.Color.Gainsboro;
             this.comboBoxSearchClient.FormattingEnabled = true;
-            this.comboBoxSearchClient.Location = new System.Drawing.Point(153, 17);
+            this.comboBoxSearchClient.Location = new System.Drawing.Point(152, 17);
             this.comboBoxSearchClient.Name = "comboBoxSearchClient";
             this.comboBoxSearchClient.Size = new System.Drawing.Size(239, 32);
             this.comboBoxSearchClient.TabIndex = 0;
@@ -125,7 +125,7 @@ namespace RoomReservationSystem.UserInterface
             this.textBoxSearchClient.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSearchClient.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxSearchClient.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBoxSearchClient.Location = new System.Drawing.Point(478, 21);
+            this.textBoxSearchClient.Location = new System.Drawing.Point(477, 21);
             this.textBoxSearchClient.Name = "textBoxSearchClient";
             this.textBoxSearchClient.Size = new System.Drawing.Size(218, 25);
             this.textBoxSearchClient.TabIndex = 1;
@@ -140,12 +140,13 @@ namespace RoomReservationSystem.UserInterface
             this.buttonSearchClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearchClient.Font = new System.Drawing.Font("Calibri", 14F);
             this.buttonSearchClient.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonSearchClient.Location = new System.Drawing.Point(768, 8);
+            this.buttonSearchClient.Location = new System.Drawing.Point(767, 8);
             this.buttonSearchClient.Name = "buttonSearchClient";
             this.buttonSearchClient.Size = new System.Drawing.Size(232, 50);
             this.buttonSearchClient.TabIndex = 2;
             this.buttonSearchClient.Text = "Search";
             this.buttonSearchClient.UseVisualStyleBackColor = false;
+            this.buttonSearchClient.Click += new System.EventHandler(this.buttonSearchClient_Click);
             // 
             // FormSearchClient
             // 

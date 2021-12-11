@@ -106,6 +106,9 @@
     <EmbeddedResource Include="UserInterface\FormLogIn.resx">
       <DependentUpon>FormLogIn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserInterface\FormMakeReservation.resx">
+      <DependentUpon>FormMakeReservation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserInterface\FormNewPerson.resx">
       <DependentUpon>FormNewPerson.cs</DependentUpon>
     </EmbeddedResource>

@@ -10,22 +10,16 @@ using System.Windows.Forms;
 
 namespace RoomReservationSystem.UserInterface
 {
-    public partial class FormSearchClient : Form
+    public partial class FormProfile : Form
     {
-        public FormSearchClient()
+        public FormProfile()
         {
             InitializeComponent();
         }
 
-        public void InitializeComboBox()
+        private void displayHistory_Click(object sender, EventArgs e)
         {
-           // comboBoxSearchClient.Items.Add()
-        }
 
-        private void buttonSearchClient_Click(object sender, EventArgs e)
-        {
-          //  if comboBoxSearchClient.SelectedIndex ...
-           // textBoxSearchClient
         }
     }
 }
