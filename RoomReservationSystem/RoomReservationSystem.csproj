@@ -66,12 +66,6 @@
     <Compile Include="UserInterface\FormNewPerson.Designer.cs">
       <DependentUpon>FormNewPerson.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserInterface\FormReservations.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserInterface\FormReservations.Designer.cs">
-      <DependentUpon>FormReservations.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserInterface\FormRoom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +83,12 @@
     </Compile>
     <Compile Include="UserInterface\FormSearchWorker.Designer.cs">
       <DependentUpon>FormSearchWorker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\FormTableView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserInterface\FormTableView.Designer.cs">
+      <DependentUpon>FormTableView.cs</DependentUpon>
     </Compile>
     <Compile Include="UserInterface\RoomReservationSystem.cs">
       <SubType>Form</SubType>
@@ -129,6 +129,9 @@
     </Compile>
     <EmbeddedResource Include="UserInterface\FormSearchWorker.resx">
       <DependentUpon>FormSearchWorker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserInterface\FormTableView.resx">
+      <DependentUpon>FormTableView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserInterface\RoomReservationSystem.resx">
       <DependentUpon>RoomReservationSystem.cs</DependentUpon>
