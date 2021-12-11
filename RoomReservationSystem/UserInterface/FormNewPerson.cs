@@ -8,18 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RoomReservationSystem.UserUnterface
+namespace RoomReservationSystem.UserInterface
+
 {
-    public partial class FormSearchRooms : Form
+    public partial class FormNewPerson : Form
     {
-        public FormSearchRooms()
+        public FormNewPerson()
         {
             InitializeComponent();
-        }
-
-        private void FormSearchRooms_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

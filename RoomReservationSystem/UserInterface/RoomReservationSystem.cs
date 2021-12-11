@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RoomReservationSystem.UserUnterface
+namespace RoomReservationSystem.UserInterface
 {
     public partial class RoomReservationSystem : Form
     {
@@ -113,8 +113,7 @@ namespace RoomReservationSystem.UserUnterface
         private void buttonReservations_Click(object sender, EventArgs e)
         {
 
-            Button b = (Button)sender;
-            b.Visible = false;
+            OpenChildForm(new FormRoom(), sender);
         }
 
         private void buttonNewReservation_Click(object sender, EventArgs e)

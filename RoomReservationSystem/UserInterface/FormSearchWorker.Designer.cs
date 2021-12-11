@@ -1,7 +1,7 @@
 ﻿
-namespace RoomReservationSystem.UserUnterface
+namespace RoomReservationSystem.UserInterface
 {
-    partial class FormSearchClient
+    partial class FormSearchWorker
     {
         /// <summary>
         /// Required designer variable.
@@ -33,9 +33,9 @@ namespace RoomReservationSystem.UserUnterface
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.listView1 = new System.Windows.Forms.ListView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.comboBoxSearchClient = new System.Windows.Forms.ComboBox();
-            this.textBoxSearchClient = new System.Windows.Forms.TextBox();
-            this.buttonSearchClient = new System.Windows.Forms.Button();
+            this.comboBoxSearchWorker = new System.Windows.Forms.ComboBox();
+            this.textBoxSearchWorker = new System.Windows.Forms.TextBox();
+            this.buttonSearchWorker = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -55,8 +55,8 @@ namespace RoomReservationSystem.UserUnterface
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 695F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1415, 853);
-            this.tableLayoutPanel1.TabIndex = 2;
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1650, 853);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
@@ -94,9 +94,9 @@ namespace RoomReservationSystem.UserUnterface
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.45638F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 290F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 349F));
-            this.tableLayoutPanel3.Controls.Add(this.comboBoxSearchClient, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.textBoxSearchClient, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.buttonSearchClient, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.comboBoxSearchWorker, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.textBoxSearchWorker, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.buttonSearchWorker, 3, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -105,57 +105,57 @@ namespace RoomReservationSystem.UserUnterface
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1115, 67);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
-            // comboBoxSearchClient
+            // comboBoxSearchWorker
             // 
-            this.comboBoxSearchClient.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.comboBoxSearchClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
-            this.comboBoxSearchClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxSearchClient.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBoxSearchClient.ForeColor = System.Drawing.Color.Gainsboro;
-            this.comboBoxSearchClient.FormattingEnabled = true;
-            this.comboBoxSearchClient.Location = new System.Drawing.Point(153, 17);
-            this.comboBoxSearchClient.Name = "comboBoxSearchClient";
-            this.comboBoxSearchClient.Size = new System.Drawing.Size(239, 32);
-            this.comboBoxSearchClient.TabIndex = 0;
+            this.comboBoxSearchWorker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.comboBoxSearchWorker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
+            this.comboBoxSearchWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxSearchWorker.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBoxSearchWorker.ForeColor = System.Drawing.Color.Gainsboro;
+            this.comboBoxSearchWorker.FormattingEnabled = true;
+            this.comboBoxSearchWorker.Location = new System.Drawing.Point(153, 17);
+            this.comboBoxSearchWorker.Name = "comboBoxSearchWorker";
+            this.comboBoxSearchWorker.Size = new System.Drawing.Size(239, 32);
+            this.comboBoxSearchWorker.TabIndex = 0;
             // 
-            // textBoxSearchClient
+            // textBoxSearchWorker
             // 
-            this.textBoxSearchClient.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxSearchClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
-            this.textBoxSearchClient.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxSearchClient.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxSearchClient.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBoxSearchClient.Location = new System.Drawing.Point(478, 21);
-            this.textBoxSearchClient.Name = "textBoxSearchClient";
-            this.textBoxSearchClient.Size = new System.Drawing.Size(218, 25);
-            this.textBoxSearchClient.TabIndex = 1;
+            this.textBoxSearchWorker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxSearchWorker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
+            this.textBoxSearchWorker.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxSearchWorker.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxSearchWorker.ForeColor = System.Drawing.Color.Gainsboro;
+            this.textBoxSearchWorker.Location = new System.Drawing.Point(478, 21);
+            this.textBoxSearchWorker.Name = "textBoxSearchWorker";
+            this.textBoxSearchWorker.Size = new System.Drawing.Size(218, 25);
+            this.textBoxSearchWorker.TabIndex = 1;
             // 
-            // buttonSearchClient
+            // buttonSearchWorker
             // 
-            this.buttonSearchClient.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.buttonSearchClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
-            this.buttonSearchClient.FlatAppearance.BorderSize = 0;
-            this.buttonSearchClient.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(108)))));
-            this.buttonSearchClient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(108)))));
-            this.buttonSearchClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchClient.Font = new System.Drawing.Font("Calibri", 14F);
-            this.buttonSearchClient.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonSearchClient.Location = new System.Drawing.Point(768, 8);
-            this.buttonSearchClient.Name = "buttonSearchClient";
-            this.buttonSearchClient.Size = new System.Drawing.Size(232, 50);
-            this.buttonSearchClient.TabIndex = 2;
-            this.buttonSearchClient.Text = "Search";
-            this.buttonSearchClient.UseVisualStyleBackColor = false;
+            this.buttonSearchWorker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonSearchWorker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
+            this.buttonSearchWorker.FlatAppearance.BorderSize = 0;
+            this.buttonSearchWorker.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(108)))));
+            this.buttonSearchWorker.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(108)))));
+            this.buttonSearchWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchWorker.Font = new System.Drawing.Font("Calibri", 14F);
+            this.buttonSearchWorker.ForeColor = System.Drawing.Color.Gainsboro;
+            this.buttonSearchWorker.Location = new System.Drawing.Point(768, 8);
+            this.buttonSearchWorker.Name = "buttonSearchWorker";
+            this.buttonSearchWorker.Size = new System.Drawing.Size(232, 50);
+            this.buttonSearchWorker.TabIndex = 2;
+            this.buttonSearchWorker.Text = "Search";
+            this.buttonSearchWorker.UseVisualStyleBackColor = false;
             // 
-            // FormSearchClient
+            // FormSearchWorker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.ClientSize = new System.Drawing.Size(1415, 853);
+            this.ClientSize = new System.Drawing.Size(1650, 853);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "FormSearchClient";
-            this.Text = "SEARCH CLIENTS";
+            this.Name = "FormSearchWorker";
+            this.Text = "SEARCH WORKERS";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -170,8 +170,8 @@ namespace RoomReservationSystem.UserUnterface
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.ComboBox comboBoxSearchClient;
-        private System.Windows.Forms.TextBox textBoxSearchClient;
-        private System.Windows.Forms.Button buttonSearchClient;
+        private System.Windows.Forms.ComboBox comboBoxSearchWorker;
+        private System.Windows.Forms.TextBox textBoxSearchWorker;
+        private System.Windows.Forms.Button buttonSearchWorker;
     }
 }

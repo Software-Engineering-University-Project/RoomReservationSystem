@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RoomReservationSystem.UserUnterface
+namespace RoomReservationSystem.UserInterface
 {
     public partial class FormSearchClient : Form
     {

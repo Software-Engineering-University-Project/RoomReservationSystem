@@ -1,4 +1,4 @@
-﻿using RoomReservationSystem.UserUnterface;
+﻿using RoomReservationSystem.UserInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace RoomReservationSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RoomReservationSystem.UserUnterface.RoomReservationSystem());
+            Application.Run(new RoomReservationSystem.UserInterface.RoomReservationSystem());
         }
     }
 }

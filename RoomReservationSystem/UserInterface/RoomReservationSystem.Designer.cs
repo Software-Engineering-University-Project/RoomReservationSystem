@@ -1,5 +1,5 @@
 ﻿
-namespace RoomReservationSystem.UserUnterface
+namespace RoomReservationSystem.UserInterface
 {
     partial class RoomReservationSystem
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace RoomReservationSystem.UserUnterface
+namespace RoomReservationSystem.UserInterface
 {
     partial class FormSearchRooms
     {
@@ -42,7 +42,7 @@ namespace RoomReservationSystem.UserUnterface
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonApplyFilters = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,6 +60,7 @@ namespace RoomReservationSystem.UserUnterface
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -160,7 +161,7 @@ namespace RoomReservationSystem.UserUnterface
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 310F));
-            this.tableLayoutPanel2.Controls.Add(this.buttonSearch, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.buttonApplyFilters, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(18, 612);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -171,24 +172,24 @@ namespace RoomReservationSystem.UserUnterface
             this.tableLayoutPanel2.Size = new System.Drawing.Size(271, 84);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // buttonSearch
+            // buttonApplyFilters
             // 
-            this.buttonSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
-            this.buttonSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSearch.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonSearch.FlatAppearance.BorderSize = 0;
-            this.buttonSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(108)))));
-            this.buttonSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(108)))));
-            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Font = new System.Drawing.Font("Calibri", 18F);
-            this.buttonSearch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonSearch.Location = new System.Drawing.Point(0, 20);
-            this.buttonSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(268, 44);
-            this.buttonSearch.TabIndex = 0;
-            this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonApplyFilters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
+            this.buttonApplyFilters.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonApplyFilters.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonApplyFilters.FlatAppearance.BorderSize = 0;
+            this.buttonApplyFilters.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(108)))));
+            this.buttonApplyFilters.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(108)))));
+            this.buttonApplyFilters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonApplyFilters.Font = new System.Drawing.Font("Calibri", 18F);
+            this.buttonApplyFilters.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonApplyFilters.Location = new System.Drawing.Point(0, 20);
+            this.buttonApplyFilters.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonApplyFilters.Name = "buttonApplyFilters";
+            this.buttonApplyFilters.Size = new System.Drawing.Size(268, 44);
+            this.buttonApplyFilters.TabIndex = 0;
+            this.buttonApplyFilters.Text = "Search";
+            this.buttonApplyFilters.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -300,7 +301,7 @@ namespace RoomReservationSystem.UserUnterface
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.97872F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.02128F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Controls.Add(this.label7, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.textBox1, 0, 0);
@@ -319,9 +320,9 @@ namespace RoomReservationSystem.UserUnterface
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Calibri", 18F);
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(127, 0);
+            this.label7.Location = new System.Drawing.Point(121, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(19, 29);
+            this.label7.Size = new System.Drawing.Size(18, 29);
             this.label7.TabIndex = 0;
             this.label7.Text = "-";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -335,7 +336,7 @@ namespace RoomReservationSystem.UserUnterface
             this.textBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(118, 25);
+            this.textBox1.Size = new System.Drawing.Size(112, 25);
             this.textBox1.TabIndex = 1;
             // 
             // textBox2
@@ -345,9 +346,9 @@ namespace RoomReservationSystem.UserUnterface
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox2.Font = new System.Drawing.Font("Calibri", 12F);
             this.textBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox2.Location = new System.Drawing.Point(152, 3);
+            this.textBox2.Location = new System.Drawing.Point(145, 3);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(116, 25);
+            this.textBox2.Size = new System.Drawing.Size(123, 25);
             this.textBox2.TabIndex = 2;
             // 
             // label8
@@ -453,7 +454,7 @@ namespace RoomReservationSystem.UserUnterface
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.Button buttonApplyFilters;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label3;
@@ -471,5 +472,6 @@ namespace RoomReservationSystem.UserUnterface
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.ListView listView1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
