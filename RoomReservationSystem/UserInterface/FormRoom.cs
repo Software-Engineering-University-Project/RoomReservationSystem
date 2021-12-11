@@ -20,7 +20,7 @@ namespace RoomReservationSystem.UserInterface
         public FormRoom()
         {
             InitializeComponent();
-            EnableGuestPermissions();
+            //EnableGuestPermissions();
         }
 
         public void EnableGuestPermissions()

@@ -9,18 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RoomReservationSystem.UserInterface
-
 {
-    public partial class FormNewPerson : Form
+    public partial class FormMakeReservation : Form
     {
-        public FormNewPerson()
+        public FormMakeReservation()
         {
             InitializeComponent();
-        }
-
-        private void confirmButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

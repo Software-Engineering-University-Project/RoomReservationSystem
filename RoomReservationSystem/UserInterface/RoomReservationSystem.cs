@@ -27,7 +27,29 @@ namespace RoomReservationSystem.UserInterface
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
 
+        public void EnableGuestPermissions()
+        {
+            buttonReservations.Visible = false;
+            buttonNewClient.Visible = false;
+            buttonNewReservation.Visible = false;
+            buttonNewRoom.Visible = false;
+            buttonNewWorker.Visible = false;
+            buttonSearchClients.Visible = false;
+            buttonSearchWorkers.Visible = false;
+        }
+        public void EnableClientPermissions()
+        {
+          //  SetComponentsVisibility(true, false, false, false, false, false);
+        }
+        public void EnableWorkerPermissions()
+        {
+         //   SetComponentsVisibility(true, true, true, false, false, false);
+        }
 
+        public void EnableAdminPermissions()
+        {
+            //SetComponentsVisibility(true, true, true, true, true, true);
+        }
 
         private Color SelectThemeColor()
         {
@@ -113,7 +135,7 @@ namespace RoomReservationSystem.UserInterface
         private void buttonReservations_Click(object sender, EventArgs e)
         {
 
-            OpenChildForm(new FormRoom(), sender);
+          //  OpenChildForm(new FormRoom(), sender);
         }
 
         private void buttonNewReservation_Click(object sender, EventArgs e)
