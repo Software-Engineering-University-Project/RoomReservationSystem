@@ -40,21 +40,21 @@ namespace RoomReservationSystem.UserInterface
             "cccccccc"}, -1, System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(123))))), new System.Drawing.Font("Calibri", 14F));
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTo = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonApplyFilters = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateFrom = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxGuestsNum = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxTypeOfBeds = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.priceFrom = new System.Windows.Forms.TextBox();
+            this.priceTo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
@@ -98,16 +98,16 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 277F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 59F));
-            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker2, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.dateTo, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 21);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.dateFrom, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label3, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label4, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.comboBoxGuestsNum, 1, 10);
             this.tableLayoutPanel1.Controls.Add(this.label5, 1, 12);
             this.tableLayoutPanel1.Controls.Add(this.label6, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox2, 1, 13);
+            this.tableLayoutPanel1.Controls.Add(this.comboBoxTypeOfBeds, 1, 13);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 1, 16);
             this.tableLayoutPanel1.Controls.Add(this.label8, 1, 15);
             this.tableLayoutPanel1.Controls.Add(this.label9, 1, 18);
@@ -142,20 +142,20 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel1.Size = new System.Drawing.Size(307, 702);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // dateTimePicker2
+            // dateTo
             // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Calibri", 12F);
-            this.dateTimePicker2.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(33)))), ((int)(((byte)(62)))));
-            this.dateTimePicker2.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(33)))), ((int)(((byte)(62)))));
-            this.dateTimePicker2.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(69)))), ((int)(((byte)(96)))));
-            this.dateTimePicker2.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(33)))), ((int)(((byte)(62)))));
-            this.dateTimePicker2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker2.Font = new System.Drawing.Font("Calibri", 12F);
-            this.dateTimePicker2.Location = new System.Drawing.Point(18, 141);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(271, 32);
-            this.dateTimePicker2.TabIndex = 3;
-            this.dateTimePicker2.Value = new System.DateTime(2021, 11, 18, 0, 0, 0, 0);
+            this.dateTo.CalendarFont = new System.Drawing.Font("Calibri", 12F);
+            this.dateTo.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(33)))), ((int)(((byte)(62)))));
+            this.dateTo.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(33)))), ((int)(((byte)(62)))));
+            this.dateTo.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(69)))), ((int)(((byte)(96)))));
+            this.dateTo.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(33)))), ((int)(((byte)(62)))));
+            this.dateTo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTo.Font = new System.Drawing.Font("Calibri", 12F);
+            this.dateTo.Location = new System.Drawing.Point(18, 141);
+            this.dateTo.Name = "dateTo";
+            this.dateTo.Size = new System.Drawing.Size(271, 32);
+            this.dateTo.TabIndex = 3;
+            this.dateTo.Value = new System.DateTime(2021, 11, 18, 0, 0, 0, 0);
             // 
             // tableLayoutPanel2
             // 
@@ -190,6 +190,7 @@ namespace RoomReservationSystem.UserInterface
             this.buttonApplyFilters.TabIndex = 0;
             this.buttonApplyFilters.Text = "Search";
             this.buttonApplyFilters.UseVisualStyleBackColor = false;
+            this.buttonApplyFilters.Click += new System.EventHandler(this.buttonApplyFilters_Click);
             // 
             // label1
             // 
@@ -203,20 +204,20 @@ namespace RoomReservationSystem.UserInterface
             this.label1.TabIndex = 1;
             this.label1.Text = "Search";
             // 
-            // dateTimePicker1
+            // dateFrom
             // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Calibri", 12F);
-            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(33)))), ((int)(((byte)(62)))));
-            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(33)))), ((int)(((byte)(62)))));
-            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(69)))), ((int)(((byte)(96)))));
-            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(33)))), ((int)(((byte)(62)))));
-            this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Calibri", 12F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(18, 78);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(271, 32);
-            this.dateTimePicker1.TabIndex = 2;
-            this.dateTimePicker1.Value = new System.DateTime(2021, 11, 18, 0, 0, 0, 0);
+            this.dateFrom.CalendarFont = new System.Drawing.Font("Calibri", 12F);
+            this.dateFrom.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(33)))), ((int)(((byte)(62)))));
+            this.dateFrom.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(33)))), ((int)(((byte)(62)))));
+            this.dateFrom.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(69)))), ((int)(((byte)(96)))));
+            this.dateFrom.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(33)))), ((int)(((byte)(62)))));
+            this.dateFrom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateFrom.Font = new System.Drawing.Font("Calibri", 12F);
+            this.dateFrom.Location = new System.Drawing.Point(18, 78);
+            this.dateFrom.Name = "dateFrom";
+            this.dateFrom.Size = new System.Drawing.Size(271, 32);
+            this.dateFrom.TabIndex = 2;
+            this.dateFrom.Value = new System.DateTime(2021, 11, 18, 0, 0, 0, 0);
             // 
             // label3
             // 
@@ -242,19 +243,19 @@ namespace RoomReservationSystem.UserInterface
             this.label4.Text = "To";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // comboBox1
+            // comboBoxGuestsNum
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Calibri", 12F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(18, 204);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(271, 32);
-            this.comboBox1.TabIndex = 6;
+            this.comboBoxGuestsNum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
+            this.comboBoxGuestsNum.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBoxGuestsNum.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxGuestsNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxGuestsNum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxGuestsNum.Font = new System.Drawing.Font("Calibri", 12F);
+            this.comboBoxGuestsNum.FormattingEnabled = true;
+            this.comboBoxGuestsNum.Location = new System.Drawing.Point(18, 204);
+            this.comboBoxGuestsNum.Name = "comboBoxGuestsNum";
+            this.comboBoxGuestsNum.Size = new System.Drawing.Size(271, 32);
+            this.comboBoxGuestsNum.TabIndex = 6;
             // 
             // label5
             // 
@@ -283,18 +284,18 @@ namespace RoomReservationSystem.UserInterface
             this.label6.Text = "Guests";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // comboBox2
+            // comboBoxTypeOfBeds
             // 
-            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
-            this.comboBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.Font = new System.Drawing.Font("Calibri", 12F);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(18, 269);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(271, 32);
-            this.comboBox2.TabIndex = 9;
+            this.comboBoxTypeOfBeds.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
+            this.comboBoxTypeOfBeds.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBoxTypeOfBeds.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxTypeOfBeds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxTypeOfBeds.Font = new System.Drawing.Font("Calibri", 12F);
+            this.comboBoxTypeOfBeds.FormattingEnabled = true;
+            this.comboBoxTypeOfBeds.Location = new System.Drawing.Point(18, 269);
+            this.comboBoxTypeOfBeds.Name = "comboBoxTypeOfBeds";
+            this.comboBoxTypeOfBeds.Size = new System.Drawing.Size(271, 32);
+            this.comboBoxTypeOfBeds.TabIndex = 9;
             // 
             // tableLayoutPanel6
             // 
@@ -304,8 +305,8 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Controls.Add(this.label7, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.textBox1, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.textBox2, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.priceFrom, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.priceTo, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(18, 332);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -327,29 +328,29 @@ namespace RoomReservationSystem.UserInterface
             this.label7.Text = "-";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // textBox1
+            // priceFrom
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Font = new System.Drawing.Font("Calibri", 12F);
-            this.textBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(112, 25);
-            this.textBox1.TabIndex = 1;
+            this.priceFrom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
+            this.priceFrom.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.priceFrom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.priceFrom.Font = new System.Drawing.Font("Calibri", 12F);
+            this.priceFrom.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.priceFrom.Location = new System.Drawing.Point(3, 3);
+            this.priceFrom.Name = "priceFrom";
+            this.priceFrom.Size = new System.Drawing.Size(112, 25);
+            this.priceFrom.TabIndex = 1;
             // 
-            // textBox2
+            // priceTo
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Font = new System.Drawing.Font("Calibri", 12F);
-            this.textBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox2.Location = new System.Drawing.Point(145, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(123, 25);
-            this.textBox2.TabIndex = 2;
+            this.priceTo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
+            this.priceTo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.priceTo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.priceTo.Font = new System.Drawing.Font("Calibri", 12F);
+            this.priceTo.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.priceTo.Location = new System.Drawing.Point(145, 3);
+            this.priceTo.Name = "priceTo";
+            this.priceTo.Size = new System.Drawing.Size(123, 25);
+            this.priceTo.TabIndex = 2;
             // 
             // label8
             // 
@@ -452,21 +453,21 @@ namespace RoomReservationSystem.UserInterface
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTo;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button buttonApplyFilters;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateFrom;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxGuestsNum;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxTypeOfBeds;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox priceFrom;
+        private System.Windows.Forms.TextBox priceTo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckedListBox checkedListBox1;

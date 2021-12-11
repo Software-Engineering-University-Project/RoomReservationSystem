@@ -21,5 +21,10 @@ namespace RoomReservationSystem.UserInterface
         {
 
         }
+
+        private void buttonApplyFilters_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
