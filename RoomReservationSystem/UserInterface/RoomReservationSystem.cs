@@ -21,34 +21,45 @@ namespace RoomReservationSystem.UserInterface
         {
             InitializeComponent();
             random = new Random();
-          //  btnCloseChildForm.Visible = false;
+            //  btnCloseChildForm.Visible = false;
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
 
+
+        private void SetButtonsVisibility(bool logProfile = true, bool reservations = false, bool newReservation = false, bool newClient = false, bool newRoom = false,
+            bool newWorker = false, bool searchClients = false, bool searchWorkers = false)
+        {
+            buttonLogInProfile.Visible = logProfile;
+            buttonReservations.Visible = reservations;
+            buttonNewReservation.Visible = newReservation;
+            buttonNewClient.Visible = newClient;
+            buttonNewRoom.Visible = newRoom;
+            buttonNewWorker.Visible = newWorker;
+            buttonSearchClients.Visible = searchClients;
+            buttonSearchWorkers.Visible = searchWorkers;
+        }
+
         public void EnableGuestPermissions()
         {
-            buttonReservations.Visible = false;
-            buttonNewClient.Visible = false;
-            buttonNewReservation.Visible = false;
-            buttonNewRoom.Visible = false;
-            buttonNewWorker.Visible = false;
-            buttonSearchClients.Visible = false;
-            buttonSearchWorkers.Visible = false;
+            buttonLogInProfile.Text = "Log in";
+            SetButtonsVisibility();
         }
         public void EnableClientPermissions()
         {
-          //  SetComponentsVisibility(true, false, false, false, false, false);
+            buttonLogInProfile.Text = "Profile";
+            SetButtonsVisibility();
         }
         public void EnableWorkerPermissions()
         {
-         //   SetComponentsVisibility(true, true, true, false, false, false);
+            buttonLogInProfile.Text = "Profile";
+            SetButtonsVisibility(true, true, true, false, false, true, false);
         }
 
         public void EnableAdminPermissions()
         {
-            //SetComponentsVisibility(true, true, true, true, true, true);
+            SetButtonsVisibility(false, true, true, true, true, true, true, true);
         }
 
         private Color SelectThemeColor()
@@ -80,9 +91,6 @@ namespace RoomReservationSystem.UserInterface
                     panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
                     ThemeColor.PrimaryColor = color;
                     ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
-                    //     btnCloseChildForm.Visible = true;
-
-                    
                 }
             }
         }
@@ -135,12 +143,12 @@ namespace RoomReservationSystem.UserInterface
         private void buttonReservations_Click(object sender, EventArgs e)
         {
 
-          //  OpenChildForm(new FormRoom(), sender);
+              OpenChildForm(new FormTableView(), sender);
         }
 
         private void buttonNewReservation_Click(object sender, EventArgs e)
         {
-            
+            OpenChildForm(new FormMakeReservation(), sender);
         }
 
         private void buttonSearchClients_Click(object sender, EventArgs e)
@@ -189,6 +197,6 @@ namespace RoomReservationSystem.UserInterface
         {
             Application.Exit();
         }
-    
+
     }
 }
