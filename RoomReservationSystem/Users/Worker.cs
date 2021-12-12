@@ -1,7 +1,7 @@
 ﻿using System;
-using Client;
 
-namespace Worker{ 
+namespace Users
+{ 
 	public class Worker: Client
 	{
 		public Worker()

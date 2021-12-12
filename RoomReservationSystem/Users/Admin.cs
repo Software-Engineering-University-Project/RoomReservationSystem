@@ -1,7 +1,7 @@
 ﻿using System;
-using Worker;
 
-namespace Admin
+
+namespace Users
 {
 	public class Admin: Worker
 	{

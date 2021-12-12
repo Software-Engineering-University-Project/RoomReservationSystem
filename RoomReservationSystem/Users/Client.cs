@@ -1,9 +1,7 @@
 ﻿using System;
-using User;
-using Address;
-using Logon;
 
-namespace Client
+
+namespace Users
 {
 	public class Client : User
 	{

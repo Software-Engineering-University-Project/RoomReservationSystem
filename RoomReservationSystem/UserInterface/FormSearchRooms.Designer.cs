@@ -302,7 +302,7 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.97872F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.02128F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Controls.Add(this.label7, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.priceFrom, 0, 0);
@@ -321,7 +321,7 @@ namespace RoomReservationSystem.UserInterface
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Calibri", 18F);
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(121, 0);
+            this.label7.Location = new System.Drawing.Point(119, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(18, 29);
             this.label7.TabIndex = 0;
@@ -337,7 +337,7 @@ namespace RoomReservationSystem.UserInterface
             this.priceFrom.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.priceFrom.Location = new System.Drawing.Point(3, 3);
             this.priceFrom.Name = "priceFrom";
-            this.priceFrom.Size = new System.Drawing.Size(112, 25);
+            this.priceFrom.Size = new System.Drawing.Size(110, 25);
             this.priceFrom.TabIndex = 1;
             // 
             // priceTo
@@ -347,9 +347,9 @@ namespace RoomReservationSystem.UserInterface
             this.priceTo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.priceTo.Font = new System.Drawing.Font("Calibri", 12F);
             this.priceTo.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.priceTo.Location = new System.Drawing.Point(145, 3);
+            this.priceTo.Location = new System.Drawing.Point(143, 3);
             this.priceTo.Name = "priceTo";
-            this.priceTo.Size = new System.Drawing.Size(123, 25);
+            this.priceTo.Size = new System.Drawing.Size(125, 25);
             this.priceTo.TabIndex = 2;
             // 
             // label8

@@ -1,7 +1,7 @@
 ﻿using System;
-using Encoder;
 
-namespace Logon
+
+namespace Users
 {
 	public class Logon: Encoder
 
