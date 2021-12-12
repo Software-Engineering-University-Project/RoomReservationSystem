@@ -4,6 +4,7 @@ using Encoder;
 namespace Logon
 {
 	public class Logon: Encoder
+
 	{
 		public string phoneNumber { set; get; }
 		public string email { set; get; }
