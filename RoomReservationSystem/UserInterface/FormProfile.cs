@@ -17,7 +17,27 @@ namespace RoomReservationSystem.UserInterface
             InitializeComponent();
         }
 
-        private void displayHistory_Click(object sender, EventArgs e)
+        public FormProfile(String name, String phoneNum, String email, String dateOfBirth, String streetAndHouseNum, String city, String country, String postCode)
+        {
+            InitializeComponent();
+
+            this.nameLabel.Text = name;
+            this.phoneNumLabel.Text = phoneNum;
+            this.emailLabel.Text = email;
+            this.dateOfBirthLabel.Text = dateOfBirth;
+            this.addressLabel.Text = streetAndHouseNum;
+            this.cityLabel.Text = city;
+            this.countryLabel.Text = country;
+            this.postCodeLabel.Text = postCode;
+        }
+
+        
+        private void displayHistoryButton_Click(object sender, EventArgs e)
+        {
+            ViewManager.GetInstance().DisplayChildForm(new FormTableView(TableType.UserReservationsHistory));
+        }
+
+        private void editProfileButton_Click(object sender, EventArgs e)
         {
 
         }

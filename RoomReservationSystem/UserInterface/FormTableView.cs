@@ -15,7 +15,36 @@ namespace RoomReservationSystem.UserInterface
         public FormTableView()
         {
             InitializeComponent();
-            
+
+        }
+
+        public FormTableView(TableType type)
+        {
+            InitializeComponent();
+
+            switch (type)
+            {
+                case (TableType.UserReservationsHistory):
+                    {
+
+                        InitializeTableWithClientReservationsHistory();
+                    }
+                    break;
+                case (TableType.RoomHistory):
+                    {
+
+                        InitializeTableWithRoomHistory();
+                    }
+                    break;
+                case (TableType.AllReservationsHistory):
+                    {
+                        InitializeTableWithAllReservations();
+                    }
+                    break;
+            }
+
+
+
         }
 
         private void SetTableColumnsAndRows(int rows, int columns)
@@ -27,9 +56,9 @@ namespace RoomReservationSystem.UserInterface
         public void InitializeTableWithAllReservations()
         {
             // do zrobienia: kolumny: from, to, room id, person id
-           // SetTableColumnsAndRows(, );
+            // SetTableColumnsAndRows(, );
 
-           // table.Controls.Add() <- dodatnie kontrolki do odpowiedniego wiersza i kolumny, u nas to labele
+            // table.Controls.Add() <- dodatnie kontrolki do odpowiedniego wiersza i kolumny, u nas to labele
         }
 
         public void InitializeTableWithClientReservationsHistory()

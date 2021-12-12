@@ -16,10 +16,11 @@ namespace RoomReservationSystem.UserInterface
         private Button currentButton;
         private Random random;
         private int tempIndex;
-        private Form activeForm;
+        private ViewManager viewManager = ViewManager.GetInstance();
         public RoomReservationSystem()
         {
             InitializeComponent();
+            ViewManager.SetDesktopPanel(this.panelDesktopPane);
             random = new Random();
             //  btnCloseChildForm.Visible = false;
             this.Text = string.Empty;
@@ -114,61 +115,53 @@ namespace RoomReservationSystem.UserInterface
             }
         }
 
-        private void OpenChildForm(Form childForm, object btnSender)
+        private void OpenChildForm(Form childForm, object btnSender, String header)
         {
-            if (activeForm != null)
-                activeForm.Close();
+            viewManager.DisplayChildForm(childForm, this.panelDesktopPane);   
             ActivateButton(btnSender);
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            this.panelDesktopPane.Controls.Add(childForm);
-            this.panelDesktopPane.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();
-            labelTitleBar.Text = childForm.Text;
+            labelTitleBar.Text = header;
         }
 
         private void buttonLogInProfile_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormLogIn(), sender);
+            //OpenChildForm(new FormLogIn(), sender, "LOG IN");
+            OpenChildForm(new FormProfile(), sender, "PROFILE");
         }
 
         private void buttonSearchRooms_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSearchRooms(), sender);
+            OpenChildForm(new FormSearchRooms(), sender, "SEARCH ROOMS");
         }
 
         private void buttonReservations_Click(object sender, EventArgs e)
         {
 
-              OpenChildForm(new FormTableView(), sender);
+              OpenChildForm(new FormTableView(), sender, "RESERVATIONS");
         }
 
         private void buttonNewReservation_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormMakeReservation(), sender);
+            OpenChildForm(new FormMakeReservation(), sender, "NEW RESERVATION");
         }
 
         private void buttonSearchClients_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSearchClient(), sender);
+            OpenChildForm(new FormSearchClient(), sender, "SEARCH CLIENTS");
         }
 
         private void buttonNewClient_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNewPerson(), sender);
+            OpenChildForm(new FormNewPerson(), sender, "NEW CLIENT");
         }
 
         private void buttonSearchWorkers_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSearchWorker(), sender);
+            OpenChildForm(new FormSearchWorker(), sender, "SEARCH WORKERS");
         }
 
         private void buttonNewWorker_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNewPerson(), sender);
+            OpenChildForm(new FormNewPerson(), sender, "NEW WORKER");
         }
 
         private void buttonNewRoom_Click(object sender, EventArgs e)
