@@ -39,7 +39,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void editProfileButton_Click(object sender, EventArgs e)
         {
-
+            ViewManager.GetInstance().DisplayChildForm(new FormNewPerson(FormMode.Edit));
         }
     }
 }

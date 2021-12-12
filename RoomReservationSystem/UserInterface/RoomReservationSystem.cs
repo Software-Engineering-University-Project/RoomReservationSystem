@@ -151,7 +151,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonNewClient_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNewPerson(), sender, "NEW CLIENT");
+            OpenChildForm(new FormNewPerson(FormMode.NewElement), sender, "NEW CLIENT");
         }
 
         private void buttonSearchWorkers_Click(object sender, EventArgs e)
@@ -161,7 +161,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonNewWorker_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNewPerson(), sender, "NEW WORKER");
+            OpenChildForm(new FormNewPerson(FormMode.NewElement), sender, "NEW WORKER");
         }
 
         private void buttonNewRoom_Click(object sender, EventArgs e)

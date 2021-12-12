@@ -87,6 +87,7 @@
     <Compile Include="UserInterface\FormMakeReservation.Designer.cs">
       <DependentUpon>FormMakeReservation.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserInterface\FormMode.cs" />
     <Compile Include="UserInterface\FormNewPerson.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -63,7 +63,6 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.editProfileButton, 3, 9);
             this.tableLayoutPanel1.Controls.Add(this.label3, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label4, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label5, 1, 7);
@@ -79,6 +78,7 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel1.Controls.Add(this.phoneNumLabel, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.dateOfBirthLabel, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.displayHistoryButton, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.editProfileButton, 3, 9);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -123,13 +123,13 @@ namespace RoomReservationSystem.UserInterface
             // 
             // editProfileButton
             // 
-            this.editProfileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.editProfileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.editProfileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.editProfileButton.FlatAppearance.BorderSize = 0;
             this.editProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.editProfileButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.editProfileButton.ForeColor = System.Drawing.Color.Gainsboro;
-            this.editProfileButton.Location = new System.Drawing.Point(783, 554);
+            this.editProfileButton.Location = new System.Drawing.Point(708, 554);
             this.editProfileButton.Name = "editProfileButton";
             this.editProfileButton.Size = new System.Drawing.Size(331, 100);
             this.editProfileButton.TabIndex = 10;
