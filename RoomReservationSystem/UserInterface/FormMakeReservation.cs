@@ -18,14 +18,27 @@ namespace RoomReservationSystem.UserInterface
         }
 
 
-        private void GetUserData()
+        private void MakeReservation()
         {
-         // dateFrom
-         // dateTo
-         // userId
-         //roomId
+            //brak walidacji
+            DateTime reservationFrom = dateFrom.Value;
+            DateTime reservationTO = dateTo.Value;
+            String userID = this.userId.Text;
+            String roomID = this.roomId.Text;
+
+            //wywołanie metody do tworzenia nowej rezerwacji
+
+        //    if dodane
+          //      ClearForm();
         }
 
+        private void ClearForm()
+        {
+            this.dateFrom.Value = DateTime.Now;
+            this.dateTo.Value = DateTime.Now;
+            this.userId.Text = string.Empty;
+            this.roomId.Text = string.Empty;
+        }
         public void EnableClientPermissions()
         {
             userId.Visible = false;
@@ -46,7 +59,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void makeReservationButton_Click(object sender, EventArgs e)
         {
-
+            MakeReservation();
         }
 
         private void userId_TextChanged(object sender, EventArgs e)
