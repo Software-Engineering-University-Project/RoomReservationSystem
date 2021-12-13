@@ -17,10 +17,38 @@ namespace RoomReservationSystem.UserInterface
     {
         [DllImport("user32.dll")]
         static extern bool HideCaret(IntPtr hWnd);
-        public FormRoom()
+        public FormRoom(Room room)
         {
             InitializeComponent();
             //EnableGuestPermissions();
+
+            this.roomNameLabel.Text = room.id.ToString();
+
+            this.standard.Text = room.roomStandard.ToString();
+
+            foreach( var meal in room.mealsProvided)
+            {
+                this.meals.Text += meal.ToString() + ",";
+            }
+            this.meals.Text = this.meals.Text.Substring(0, room.mealsProvided.Count - 2);
+
+            this.priceLabel.Text = room.price.ToString();
+
+            this.maxNumGuests.Text = room.maxGuestNumber.ToString();
+
+            this.squareMeters.Text = room.squareMeterage.ToString();
+
+            foreach(var bed in room.beds)
+            {
+                this.typeOfBed.Text += bed.ToString() + ",";
+            }
+            this.typeOfBed.Text = this.typeOfBed.Text.Substring(0, room.beds.Count - 2);
+
+            foreach (var facility in room.facilitiesProvided)
+            {
+                this.facilities.Items.Add(facility.ToString());
+            }
+
         }
 
         public void EnableGuestPermissions()
@@ -47,53 +75,18 @@ namespace RoomReservationSystem.UserInterface
             reservateButton.Enabled = reservate;
             addCommentButton.Visible = comment;
             addCommentButton.Enabled = comment;
+            commentText.Visible = comment;
             isOutOfService.Visible = outOfService;
             isOutOfService.Enabled = outOfService;
             deleteRoomButton.Visible = delete;
             deleteRoomButton.Enabled = delete;
-            editTextButton.Visible = edit;
-            editTextButton.Enabled = edit;
+            editRoomButton.Visible = edit;
+            editRoomButton.Enabled = edit;
 
-            SetEditableValues(editableValues);
-        }
-        private void SetEditableValues(bool isEditable)
-        {
-            typeOfBed.ReadOnly = !isEditable;
-            maxNumGuests.ReadOnly = !isEditable;
-            squareMeters.ReadOnly = !isEditable;
+
         }
 
-        private void SetRoomName()
-        {
-           // roomNameLabel.Text
-        }
-        private void SetImage()
-        {
-          //  roomImage
-        }
-        private void SetTypeOfBedValue()
-        {
-            // typeOfBed.Text
-        }
-
-        private void SetNumOfGuests()
-        {
-            // maxNumGuests.Text
-        }
-
-        private void SetSquareMeters()
-        {
-           // squareMeters.Text
-        }
-
-        private void SetPrice(float price)
-        {
-            priceLabel.Text = price.ToString();
-        }
-        private void editTextButton_Click(object sender, EventArgs e)
-        {
-            //wartości z squareMeter.Text, maxNumGuests.Text itd zostają wpisane do modelu
-        }
+     
 
         private void deleteRoomButton_Click(object sender, EventArgs e)
         {
@@ -110,24 +103,15 @@ namespace RoomReservationSystem.UserInterface
 
         }
 
-        private void commentText_TextChanged(object sender, EventArgs e)
+
+        private void FormRoom_Load(object sender, EventArgs e)
         {
-            HideCaret(commentText.Handle);
+
         }
 
-        private void maxNumGuests_TextChanged(object sender, EventArgs e)
+        private void editRoomButton_Click(object sender, EventArgs e)
         {
-            HideCaret(maxNumGuests.Handle);
-        }
-
-        private void typeOfBed_TextChanged(object sender, EventArgs e)
-        {
-            HideCaret(typeOfBed.Handle);
-        }
-
-        private void squareMeters_TextChanged(object sender, EventArgs e)
-        {
-            HideCaret(squareMeters.Handle);
+            ViewManager.GetInstance().DisplayChildForm(new FormNewRoom(FormMode.Edit));
         }
     }
 }

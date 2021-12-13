@@ -26,6 +26,8 @@ namespace RoomReservationSystem.UserInterface
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+
+            //do zrobienia: zmiana nazwy buttona logInProfile, na razie brakuje informacji o obecnym użytkowniku
         }
 
 
@@ -123,9 +125,11 @@ namespace RoomReservationSystem.UserInterface
         }
 
         private void buttonLogInProfile_Click(object sender, EventArgs e)
-        {
+        {//if ...
             //OpenChildForm(new FormLogIn(), sender, "LOG IN");
+            //brak informacji o typie użytkownika
             OpenChildForm(new FormProfile(), sender, "PROFILE");
+            
         }
 
         private void buttonSearchRooms_Click(object sender, EventArgs e)
@@ -166,7 +170,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonNewRoom_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new FormNewRoom(FormMode.NewElement), sender, "NEW ROOM");
         }
 
         private void RoomReservationSystem_Load(object sender, EventArgs e)
