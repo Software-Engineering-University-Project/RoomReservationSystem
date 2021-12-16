@@ -84,9 +84,32 @@ namespace Manager
             }
         }
 
-        public override void delete()
+        public override void delete(int userId)
         {
-            
+            string provider = ConfigurationManager.AppSettings["provider"];
+            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+            DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                if (connection != null)
+                {
+                    
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+                    DbCommand command = factory.CreateCommand();
+                    if (command != null)
+                    {
+
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.Connection = connection;
+                        command.CommandText = "Insert_PersonalData_Procedure";
+
+                        command.Parameters.Add(new SqlParameter("@Id", userId));
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
         }
 
         public void getCurrUser(int id)
