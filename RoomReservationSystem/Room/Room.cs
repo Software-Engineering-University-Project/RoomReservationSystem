@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RoomReservationSystem
 {
-    class Room
+    public class Room
     {
         public int id { set; get; }
         public string roomNumber { set; get; }

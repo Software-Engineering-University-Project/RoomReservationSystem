@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Address
+namespace RoomReservationSystem
 {
 	public class Address
 	{

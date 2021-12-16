@@ -1,7 +1,7 @@
 ﻿using System;
-using Client;
 
-namespace Worker{ 
+namespace RoomReservationSystem
+{ 
 	public class Worker: Client
 	{
 		public Worker()
