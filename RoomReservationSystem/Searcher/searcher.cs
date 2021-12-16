@@ -146,7 +146,48 @@ namespace RoomReservationSystem
 
         public static List<Room> SearchRoom(string parameter, string searchValue)
         {
-            return null;
+            List<Room> people = new List<Room>();
+            string provider = ConfigurationManager.AppSettings["provider"];
+            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+            DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                if (connection != null)
+                {
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+                    DbCommand command = factory.CreateCommand();
+                    if (command != null)
+                    {
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.Connection = connection;
+                        command.CommandText = "SearchRooms";
+                        switch (parameter)
+                        {
+                            case "MinRoomPrice":
+                                command.Parameters.Add(new SqlParameter("@MinRoomPrice", searchValue));
+                                break;
+
+                            case "MaxRoomPrice":
+                                command.Parameters.Add(new SqlParameter("@MaxRoomPrice", searchValue));
+                                break;
+
+                            case "RoomStandard":
+                                command.Parameters.Add(new SqlParameter("@RoomStandard", searchValue));
+                                break;
+                        }
+
+                        using (DbDataReader dataReader = command.ExecuteReader())
+                        {
+                            while (dataReader.Read())
+                            {
+                                people.Add(new Room());
+                            }
+                        }
+                    }
+                }
+            }
+            return people;
         }
    }
 }
