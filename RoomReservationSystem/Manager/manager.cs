@@ -6,6 +6,6 @@ namespace Manager
 
         public abstract void delete();
 
-        public abstract T get();
+        
     }
 }

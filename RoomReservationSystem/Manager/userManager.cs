@@ -86,12 +86,155 @@ namespace Manager
 
         public override void delete()
         {
-            throw new NotImplementedException();
+            
         }
 
-        public override Client get()
+        public void getCurrUser(int id)
         {
-            throw new NotImplementedException();
+            string provider = ConfigurationManager.AppSettings["provider"];
+            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+            DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                if (connection != null)
+                {
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+                    DbCommand command = factory.CreateCommand();
+                    if (command != null)
+                    {
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.Connection = connection;
+                        command.CommandText = "Search_PersonRoles_ByPersonId";
+
+                        command.Parameters.Add(new SqlParameter("@id", managedUser.id));
+
+                        command.ExecuteNonQuery();
+
+                        using (DbDataReader dataReader = command.ExecuteReader())
+                        {
+                            dataReader.Read();
+                            char role = (char)dataReader["PersonRole"];
+                            switch (role)
+                            {
+                                case 'C':
+                                    currUser = new Client();
+                                    break;
+                                case 'W':
+                                    currUser = new Worker();
+                                    break;
+                                case 'A':
+                                    currUser = new Admin();
+                                    break;
+                                default:
+                                    currUser = new Client();
+                                    break;
+                            }
+                        }
+
+                        DbCommand getDetailsCommand = factory.CreateCommand();
+                        if (getDetailsCommand != null)
+                        {
+                            getDetailsCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                            getDetailsCommand.Connection = connection;
+                            getDetailsCommand.CommandText = "Search_PersonanData_ById";
+
+                            getDetailsCommand.Parameters.Add(new SqlParameter("@id", managedUser.id));
+
+                            getDetailsCommand.ExecuteNonQuery();
+
+                            using (DbDataReader dataReader = getDetailsCommand.ExecuteReader())
+                            {
+                                dataReader.Read();
+                                currUser.name = (String)dataReader["FirstName"];
+                                currUser.surname = (String)dataReader["LastName"];
+                                currUser.id = (int)dataReader["PersonId"];
+                                currUser.BirthDate = (DateTime)dataReader["BirthDate"];
+                                currUser.address.country = (String)dataReader["Country"];
+                                currUser.address.city = (String)dataReader["City"];
+                                currUser.address.postCode = (String)dataReader["PostCode"];
+                                currUser.address.street = (String)dataReader["Street"];
+                                currUser.address.apartmentNumber = (String)dataReader["ApartmentNumber"];
+                                currUser.logon.phoneNumber = (String)dataReader["PhoneNumber"];
+                                currUser.logon.email = (String)dataReader["EmailAddress"];
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+        public void getManagedUser(int id)
+        {
+            string provider = ConfigurationManager.AppSettings["provider"];
+            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+            DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                if (connection != null)
+                {
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+                    DbCommand command = factory.CreateCommand();
+                    if (command != null)
+                    {
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.Connection = connection;
+                        command.CommandText = "Search_PersonRoles_ByPersonId";
+
+                        command.Parameters.Add(new SqlParameter("@id", managedUser.id));
+
+                        command.ExecuteNonQuery();
+
+                        using(DbDataReader dataReader = command.ExecuteReader())
+                        {
+                            dataReader.Read();
+                            char role = (char)dataReader["PersonRole"];
+                            switch (role)
+                            {
+                                case 'C': managedUser = new Client();
+                                    break;
+                                case 'W': managedUser = new Worker();
+                                    break;
+                                case 'A': managedUser = new Admin();
+                                    break;
+                                default: managedUser = new Client();
+                                    break;
+                            }
+                        }
+
+                        DbCommand getDetailsCommand = factory.CreateCommand();
+                        if (getDetailsCommand != null)
+                        {
+                            getDetailsCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                            getDetailsCommand.Connection = connection;
+                            getDetailsCommand.CommandText = "Search_PersonanData_ById";
+
+                            getDetailsCommand.Parameters.Add(new SqlParameter("@id", managedUser.id));
+
+                            getDetailsCommand.ExecuteNonQuery();
+
+                            using (DbDataReader dataReader = getDetailsCommand.ExecuteReader())
+                            {
+                                dataReader.Read();
+                                managedUser.name = (String)dataReader["FirstName"];
+                                managedUser.surname = (String)dataReader["LastName"];
+                                managedUser.id = (int)dataReader["PersonId"];
+                                managedUser.BirthDate = (DateTime)dataReader["BirthDate"];
+                                managedUser.address.country = (String)dataReader["Country"];
+                                managedUser.address.city = (String)dataReader["City"];
+                                managedUser.address.postCode = (String)dataReader["PostCode"];
+                                managedUser.address.street = (String)dataReader["Street"];
+                                managedUser.address.apartmentNumber = (String)dataReader["ApartmentNumber"];
+                                managedUser.logon.phoneNumber = (String)dataReader["PhoneNumber"];
+                                managedUser.logon.email = (String)dataReader["EmailAddress"];
+                            }
+
+                        }
+                    }
+                }
+            }
         }
 
         public void update(String firstName, String secondName, DateTime dateOfBirth, String phoneNum,

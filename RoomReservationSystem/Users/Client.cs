@@ -15,7 +15,8 @@ namespace Users
 
 		public Client()
 		{
-			
+			address = new Address();
+			logon = new Logon();
 		}
 	}
 }
