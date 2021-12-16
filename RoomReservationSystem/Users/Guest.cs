@@ -1,9 +1,7 @@
 ﻿using System;
 
 
-
-
-namespace Users
+namespace RoomReservationSystem
 {
 	public class Guest : User
 	{

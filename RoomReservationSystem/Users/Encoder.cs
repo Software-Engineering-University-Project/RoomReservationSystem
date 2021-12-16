@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Users
+namespace RoomReservationSystem
 {
     interface Encoder
     {

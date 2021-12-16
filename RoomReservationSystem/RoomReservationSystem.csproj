@@ -49,6 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -71,9 +72,7 @@
     <Compile Include="Room\RoomFacilities.cs" />
     <Compile Include="Room\RoomReservationSystem.cs" />
     <Compile Include="Room\RoomState.cs" />
-    <Compile Include="Searcher\roomSearcher.cs" />
     <Compile Include="Searcher\searcher.cs" />
-    <Compile Include="Searcher\userSearcher.cs" />
     <Compile Include="UserInterface\FormLogIn.cs">
       <SubType>Form</SubType>
     </Compile>
