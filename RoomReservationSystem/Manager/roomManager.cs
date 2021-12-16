@@ -7,15 +7,14 @@ namespace Manager
 	{
 		public RoomManager() { }
 
-        public override void delete()
+
+
+        public override void delete(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public override Room get()
-        {
-            throw new NotImplementedException();
-        }
+ 
 
     }
 }

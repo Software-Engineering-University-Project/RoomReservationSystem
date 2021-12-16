@@ -18,7 +18,7 @@ namespace Manager
         }
 
         public void add(String firstName, String secondName, DateTime dateOfBirth, String phoneNum,
-            String postCode, String city, String eMail, String street, String houseNum, String flatNum, String country, Boolean worker)
+            String postCode, String city, String eMail, String street, String houseNum, String flatNum, String country, Boolean worker, String passWord)
         {
             string provider = ConfigurationManager.AppSettings["provider"];
             string connectionString = ConfigurationManager.AppSettings["connectionString"];
@@ -77,6 +77,20 @@ namespace Manager
                                 isWorkerCommand.Parameters.Add(new SqlParameter("@PersonRole", "C"));
                             }
                             isWorkerCommand.ExecuteNonQuery();
+                        }
+                        Logon log = new Logon();
+                        log.passWord = passWord;
+
+                        DbCommand addPasswordCommand = factory.CreateCommand();
+                        if (addPasswordCommand != null)
+                        {
+                            addPasswordCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                            addPasswordCommand.Connection = connection;
+                            addPasswordCommand.CommandText = "Insert_Logon";
+                            addPasswordCommand.Parameters.Add(new SqlParameter("@PersonID", id));
+                            addPasswordCommand.Parameters.Add(new SqlParameter("@Password", log.encodePassword()));
+
+                            addPasswordCommand.ExecuteNonQuery();
                         }
 
                     }
@@ -261,7 +275,7 @@ namespace Manager
         }
 
         public void update(String firstName, String secondName, DateTime dateOfBirth, String phoneNum,
-            String postCode, String city, String eMail, String street, String houseNum, String flatNum, String country)
+            String postCode, String city, String eMail, String street, String houseNum, String flatNum, String country,String passWord)
         {
             string provider = ConfigurationManager.AppSettings["provider"];
             string connectionString = ConfigurationManager.AppSettings["connectionString"];
@@ -294,6 +308,24 @@ namespace Manager
 
                         command.ExecuteNonQuery();
 
+                        if (!passWord.Equals(""))
+                        {
+
+                            managedUser.logon.passWord = passWord;
+
+                            DbCommand addPasswordCommand = factory.CreateCommand();
+                            if (addPasswordCommand != null)
+                            {
+                                addPasswordCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                                addPasswordCommand.Connection = connection;
+                                addPasswordCommand.CommandText = "Update_Logon";
+                                addPasswordCommand.Parameters.Add(new SqlParameter("@PersonID", managedUser.id));
+                                addPasswordCommand.Parameters.Add(new SqlParameter("@Password", managedUser.logon.encodePassword()));
+
+                                addPasswordCommand.ExecuteNonQuery();
+                            }
+                        }
+
                         managedUser.name = firstName;
                         managedUser.surname = secondName;
                         managedUser.BirthDate = dateOfBirth;
@@ -309,5 +341,45 @@ namespace Manager
                 }
             }
         }
+
+        public void login(String Password, String mailOrPhone)
+        {
+            Logon decryptedPassword = new Logon();
+            decryptedPassword.passWord = Password;
+            string provider = ConfigurationManager.AppSettings["provider"];
+            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+            DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                if (connection != null)
+                {
+                    int id=0;
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+                    DbCommand command = factory.CreateCommand();
+                    if (command != null)
+                    {
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.Connection = connection;
+                        command.CommandText = "Search_Logon";
+
+                        command.Parameters.Add(new SqlParameter("@LoginDetail", mailOrPhone));
+                        
+                        command.Parameters.Add(new SqlParameter("@Password", decryptedPassword.encodePassword()));
+                        command.ExecuteNonQuery();
+                        using (DbDataReader dataReader = command.ExecuteReader())
+                        {
+                            dataReader.Read();
+                            id = (int)dataReader["PersonID"];
+                        }
+                        if (id != 0)
+                        {
+                            getCurrUser(id);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

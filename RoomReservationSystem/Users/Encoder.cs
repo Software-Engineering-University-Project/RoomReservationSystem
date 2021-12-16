@@ -2,8 +2,10 @@
 
 namespace Users
 {
+    
     interface Encoder
-    {
+    {        
+        String encodePassword();
 
     }
 }
