@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace RoomReservationSystem.UserInterface
         private Random random;
         private int tempIndex;
         private ViewManager viewManager = ViewManager.GetInstance();
+        private UserManager userManager;
         public RoomReservationSystem()
         {
             InitializeComponent();
@@ -28,8 +30,10 @@ namespace RoomReservationSystem.UserInterface
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
             //do zrobienia: zmiana nazwy buttona logInProfile, na razie brakuje informacji o obecnym użytkowniku
+            userManager = new UserManager();
         }
 
+        
 
         private void SetButtonsVisibility(bool logProfile = true, bool reservations = false, bool newReservation = false, bool newClient = false, bool newRoom = false,
             bool newWorker = false, bool searchClients = false, bool searchWorkers = false)
@@ -155,7 +159,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonNewClient_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNewPerson(FormMode.NewElement), sender, "NEW CLIENT");
+            OpenChildForm(new FormNewPerson(FormMode.NewElement, false, userManager), sender, "NEW CLIENT");
         }
 
         private void buttonSearchWorkers_Click(object sender, EventArgs e)
@@ -165,7 +169,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonNewWorker_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNewPerson(FormMode.NewElement), sender, "NEW WORKER");
+            OpenChildForm(new FormNewPerson(FormMode.NewElement, true, userManager), sender, "NEW WORKER");
         }
 
         private void buttonNewRoom_Click(object sender, EventArgs e)

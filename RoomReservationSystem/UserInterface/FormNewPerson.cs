@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Manager;
+using RoomReservationSystem.Users;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,12 +16,16 @@ namespace RoomReservationSystem.UserInterface
     public partial class FormNewPerson : Form
     {
         private FormMode _mode;
-        public FormNewPerson(FormMode mode)
+        private UserManager _userManager;
+        private Boolean _isWorker;
+        public FormNewPerson(FormMode mode, Boolean isWorker, UserManager userManager)
         {
             InitializeComponent();
+            country.DataSource = Enum.GetValues(typeof(Country));
             _mode = mode;
+            _userManager = userManager;
+            _isWorker = isWorker;
         }
-
 
         //metoda do wywołania, jeśli chcemy edytować dane za pomocą formularza
         public void InitializeTextFields(String firstName, String secondName, DateTime dateOfBirth, String phoneNum,
@@ -44,11 +50,16 @@ namespace RoomReservationSystem.UserInterface
             if (_mode == FormMode.Edit) //nadpisanie danych
             {
                 // potrzebny dostęp do danych zalogowanego użytkownika
+                
             } 
             else if (_mode == FormMode.NewElement) // zapisanie nowego elementu
             {
                 // potrzebny dostęp do informacji, jaki rodzaj użytkownika zapisujemy
+                _userManager.add(this.firstName.Text, this.secondName.Text, this.dateOfBirth.Value, this.phoneNum.Text, this.postCode.Text, this.city.Text, this.eMail.Text, this.street.Text, this.houseNum.Text, this.flatNum.Text, this.country.Text, _isWorker);
             }
+
         }
+
+
     }
 }

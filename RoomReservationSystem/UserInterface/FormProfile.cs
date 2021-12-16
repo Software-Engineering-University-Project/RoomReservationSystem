@@ -31,7 +31,7 @@ namespace RoomReservationSystem.UserInterface
             this.postCodeLabel.Text = postCode;
         }
 
-        
+
         private void displayHistoryButton_Click(object sender, EventArgs e)
         {
             ViewManager.GetInstance().DisplayChildForm(new FormTableView(TableType.UserReservationsHistory));
@@ -39,7 +39,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void editProfileButton_Click(object sender, EventArgs e)
         {
-            ViewManager.GetInstance().DisplayChildForm(new FormNewPerson(FormMode.Edit));
+            ViewManager.GetInstance().DisplayChildForm(new FormNewPerson(FormMode.Edit, false, new Manager.UserManager()));
         }
     }
 }

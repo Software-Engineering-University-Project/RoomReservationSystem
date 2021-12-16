@@ -1,4 +1,5 @@
 ﻿
+
 namespace RoomReservationSystem.UserInterface
 {
     partial class FormNewPerson
@@ -471,5 +472,7 @@ namespace RoomReservationSystem.UserInterface
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
+
+        
     }
 }
