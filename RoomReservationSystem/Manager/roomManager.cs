@@ -10,9 +10,11 @@ namespace RoomReservationSyster
 {
 	public class RoomManager : Manager.Manager
 	{
+		private Room _currentRoom;
+
 		public RoomManager()
 		{
-
+			_currentRoom = new Room();
 		}
 
 		public void Delete(int id)
@@ -147,18 +149,7 @@ namespace RoomReservationSyster
 						}
 					}
 					DbCommand addMeals = factory.CreateCommand();
-					if (addMeals != null)
-					{
-						foreach (var meal in meals)
-						{
-							addMeals.CommandType = System.Data.CommandType.StoredProcedure;
-							addMeals.Connection = connection;
-							addMeals.CommandText = "Insert_RoomMealConnection";
-							addMeals.Parameters.Add(new SqlParameter("@RoomId", roomId));
-							addMeals.Parameters.Add(new SqlParameter("@MealId", (int) meal));
-							addMeals.ExecuteNonQuery();
-						}
-					}
+					
 				}
 			}
 		}
