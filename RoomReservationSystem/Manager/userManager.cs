@@ -26,9 +26,10 @@ namespace Manager
                     DbCommand command = factory.CreateCommand();
                     if (command != null)
                     {
-                       
                         command.Connection = connection;
-                        command.CommandText = "Insert_PersonalData_function";
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.CommandText = "Insert_PersonalData_Procedure";
+                        
                         command.Parameters.Add(new SqlParameter("@FirstName", firstName));
                         command.Parameters.Add(new SqlParameter("@LastName", secondName));
                         command.Parameters.Add(new SqlParameter("@PhoneNumber", phoneNum));
@@ -40,14 +41,19 @@ namespace Manager
                         command.Parameters.Add(new SqlParameter("@PostCode", postCode));
                         command.Parameters.Add(new SqlParameter("@Country", country));
                         command.Parameters.Add(new SqlParameter("@City", city));
-                        
-                        int id = (int)command.ExecuteScalar();
+
+                        command.Parameters.Add(new SqlParameter("@ReturnValue", SqlDbType.Int));
+                        command.Parameters["@ReturnValue"].Direction = ParameterDirection.Output;
+                        command.ExecuteNonQuery();
+
+                        var id = (int)command.Parameters["@ReturnValue"].Value;
+
                         DbCommand isWorkerCommand = factory.CreateCommand();
                         if(isWorkerCommand != null)
                         {
                             isWorkerCommand.CommandType = System.Data.CommandType.StoredProcedure;
                             isWorkerCommand.Connection = connection;
-                            isWorkerCommand.CommandText = "Insert_PersonalRoles";
+                            isWorkerCommand.CommandText = "Insert_PersonRoles";
                             isWorkerCommand.Parameters.Add(new SqlParameter("@PersonID", id));
                             if (worker)
                             {
