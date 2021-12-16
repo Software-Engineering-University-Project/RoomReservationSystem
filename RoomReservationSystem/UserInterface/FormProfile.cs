@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,25 +13,29 @@ namespace RoomReservationSystem.UserInterface
 {
     public partial class FormProfile : Form
     {
-        public FormProfile()
+        private UserManager _userManager;
+
+        public FormProfile(UserManager userManger)
         {
             InitializeComponent();
+            _userManager = userManger;
+            if(_userManager.managedUser != null)
+            {
+                initializeLabels();
+            }
         }
 
-        public FormProfile(String name, String phoneNum, String email, String dateOfBirth, String streetAndHouseNum, String city, String country, String postCode)
+        public void initializeLabels()
         {
-            InitializeComponent();
-
-            this.nameLabel.Text = name;
-            this.phoneNumLabel.Text = phoneNum;
-            this.emailLabel.Text = email;
-            this.dateOfBirthLabel.Text = dateOfBirth;
-            this.addressLabel.Text = streetAndHouseNum;
-            this.cityLabel.Text = city;
-            this.countryLabel.Text = country;
-            this.postCodeLabel.Text = postCode;
+            this.nameLabel.Text = _userManager.managedUser.name;
+            this.phoneNumLabel.Text = _userManager.managedUser.surname;
+            this.emailLabel.Text = _userManager.managedUser.logon.email;
+            this.dateOfBirthLabel.Text = _userManager.managedUser.BirthDate.ToString();
+            this.addressLabel.Text = _userManager.managedUser.address.street +" "+ _userManager.managedUser.address.propertyNumber + "/"+ _userManager.managedUser.address.apartmentNumber;
+            this.cityLabel.Text = _userManager.managedUser.address.city;
+            this.countryLabel.Text = _userManager.managedUser.address.country;
+            this.postCodeLabel.Text = _userManager.managedUser.address.postCode;
         }
-
 
         private void displayHistoryButton_Click(object sender, EventArgs e)
         {
@@ -39,7 +44,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void editProfileButton_Click(object sender, EventArgs e)
         {
-            ViewManager.GetInstance().DisplayChildForm(new FormNewPerson(FormMode.Edit, false, new Manager.UserManager()));
+            ViewManager.GetInstance().DisplayChildForm(new FormNewPerson(FormMode.Edit, false, _userManager));
         }
     }
 }

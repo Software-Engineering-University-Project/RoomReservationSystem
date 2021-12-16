@@ -28,20 +28,19 @@ namespace RoomReservationSystem.UserInterface
         }
 
         //metoda do wywołania, jeśli chcemy edytować dane za pomocą formularza
-        public void InitializeTextFields(String firstName, String secondName, DateTime dateOfBirth, String phoneNum,
-            String postCode, String city, String eMail, String street, String houseNum, String flatNum, String country)
+        public void InitializeTextFields()
         {
-            this.firstName.Text = firstName;
-            this.secondName.Text = secondName;
-            this.dateOfBirth.Value = dateOfBirth;
-            this.phoneNum.Text = phoneNum;
-            this.postCode.Text = postCode;
-            this.city.Text = city;
-            this.eMail.Text = eMail;
-            this.street.Text = street;
-            this.houseNum.Text = houseNum;
-            this.flatNum.Text = flatNum;
-            this.country.Text = country;
+            this.firstName.Text = _userManager.managedUser.name;
+            this.secondName.Text = _userManager.managedUser.surname;
+            this.dateOfBirth.Value = _userManager.managedUser.BirthDate;
+            this.phoneNum.Text = _userManager.managedUser.logon.phoneNumber;
+            this.postCode.Text = _userManager.managedUser.address.postCode;
+            this.city.Text = _userManager.managedUser.address.city;
+            this.eMail.Text = _userManager.managedUser.logon.email;
+            this.street.Text = _userManager.managedUser.address.street;
+            this.houseNum.Text = _userManager.managedUser.address.propertyNumber;
+            this.flatNum.Text = _userManager.managedUser.address.apartmentNumber;
+            this.country.Text = _userManager.managedUser.address.country;
         }
 
         private void confirmButton_Click(object sender, EventArgs e)
@@ -50,7 +49,10 @@ namespace RoomReservationSystem.UserInterface
             if (_mode == FormMode.Edit) //nadpisanie danych
             {
                 // potrzebny dostęp do danych zalogowanego użytkownika
-                
+                if (!_userManager.managedUser.Equals(null))
+                {
+                    _userManager.update(this.firstName.Text, this.secondName.Text, this.dateOfBirth.Value, this.phoneNum.Text, this.postCode.Text, this.city.Text, this.eMail.Text, this.street.Text, this.houseNum.Text, this.flatNum.Text, this.country.Text);
+                }
             } 
             else if (_mode == FormMode.NewElement) // zapisanie nowego elementu
             {

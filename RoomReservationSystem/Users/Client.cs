@@ -11,6 +11,8 @@ namespace Users
 		public Address address { set; get; }
 		public Logon logon { set; get; }
 
+		public DateTime BirthDate { set; get; }
+
 		public Client()
 		{
 			

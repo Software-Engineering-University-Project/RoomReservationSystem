@@ -132,7 +132,7 @@ namespace RoomReservationSystem.UserInterface
         {//if ...
             //OpenChildForm(new FormLogIn(), sender, "LOG IN");
             //brak informacji o typie użytkownika
-            OpenChildForm(new FormProfile(), sender, "PROFILE");
+            OpenChildForm(new FormProfile(userManager), sender, "PROFILE");
             
         }
 
