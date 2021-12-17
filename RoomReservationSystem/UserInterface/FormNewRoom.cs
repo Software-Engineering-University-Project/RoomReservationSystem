@@ -29,9 +29,10 @@ namespace RoomReservationSystem.UserInterface
             _roomManager = new RoomManager();
         }
         private RoomManager _roomManager;
-
+        
         private void confirmButton_Click(object sender, EventArgs e)
         {
+            
             List<BedType> beds = new List<BedType>();
             foreach (var item in typesOfBedList.Items)
             {
@@ -50,8 +51,16 @@ namespace RoomReservationSystem.UserInterface
                 facilitiesEnumList.Add((RoomFacilities)Enum.Parse(typeof(RoomFacilities), item.ToString(), true));
             }
 
-            _roomManager.Insert(roomName.Text, Convert.ToDouble(price.Text), Convert.ToDouble(squareMeters.Text),
-                Convert.ToInt32(maxNumGuests.Text), beds, meals, facilitiesEnumList, RoomStandard.High);
+            if (_mode == FormMode.NewElement)
+            {
+                _roomManager.Insert(roomName.Text, Convert.ToDouble(price.Text), Convert.ToDouble(squareMeters.Text),
+                    Convert.ToInt32(maxNumGuests.Text), beds, meals, facilitiesEnumList,
+                    standardComboBox.GetItemText(this.standardComboBox.SelectedItem));
+            }
+            else
+            {
+                //@update
+            }
         }
 
         private void FillMealsComboBox()

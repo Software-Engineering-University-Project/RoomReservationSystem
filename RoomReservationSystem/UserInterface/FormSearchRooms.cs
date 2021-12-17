@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RoomReservationSyster;
 
 namespace RoomReservationSystem.UserInterface
 {
@@ -21,6 +23,11 @@ namespace RoomReservationSystem.UserInterface
             roomsList.Clear();
         }
 
+        private RoomManager _roomManager;
+        public FormSearchRooms(RoomManager roomManager)
+        {
+            _roomManager = roomManager;
+        }
 
         private void buttonApplyFilters_Click(object sender, EventArgs e)
         {
@@ -59,7 +66,7 @@ namespace RoomReservationSystem.UserInterface
                 priceMin, priceMax, guests);
             foreach (Room r in rooms)
             {
-                roomsList.Items.Add(r.roomNumber);
+                roomsList.Items.Add(r.id.ToString());
             }
         }
 
@@ -90,12 +97,8 @@ namespace RoomReservationSystem.UserInterface
 
         private void roomsList_DoubleClick(object sender, EventArgs e)
         {
-            //wyświetlenie widoku pokoju
-            //wyszukiwanie pokoju z listy
-            //wyświetlanie pokoju
-            //ViewManager.GetInstance().DisplayChildForm(new FormRoom(room));
+            Room room = Searcher.SearchRoomById(Convert.ToInt32(roomsList.FocusedItem.Text));
+            ViewManager.GetInstance().DisplayChildForm(new FormRoom(room));
         }
-
- 
     }
 }
