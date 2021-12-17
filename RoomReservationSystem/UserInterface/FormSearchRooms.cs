@@ -18,6 +18,7 @@ namespace RoomReservationSystem.UserInterface
             FillFacilitiesList();
             FillGuestComboBox();
             FillTypesOfBedList();
+            roomsList.Clear();
         }
 
 
@@ -30,7 +31,7 @@ namespace RoomReservationSystem.UserInterface
             DateTime dateFrom = this.dateFrom.Value;
             DateTime dateTo = this.dateTo.Value;
 
-            int guests = comboBoxGuestsNum.SelectedIndex +1;
+            int guests = comboBoxGuestsNum.SelectedIndex;
 
             List<BedType> bedList = new List<BedType>();
             List<RoomFacilities> facilities = new List<RoomFacilities>();
@@ -39,17 +40,27 @@ namespace RoomReservationSystem.UserInterface
 
             foreach (var bed in checkedBeds)
             {
-                bedList.Add((BedType)bed);
+                bedList.Add((BedType) bed);
             }
 
             var checkedFacilities = facilitiesList.CheckedIndices;
 
-            foreach (var fac in  checkedFacilities)
+            foreach (var fac in checkedFacilities)
             {
-                facilities.Add((RoomFacilities)fac);
+                facilities.Add((RoomFacilities) fac);
             }
 
-            //wywołanie metody do wyszukiwania z parametrami
+            List<RoomFacilities> selectedFacilities = new List<RoomFacilities>();
+            foreach (var checkedFacility in checkedFacilities)
+            {
+                selectedFacilities.Add((RoomFacilities)checkedFacility);
+            }
+            List<Room> rooms = Searcher.SearchRooms(dateFrom, dateTo, selectedFacilities,
+                priceMin, priceMax, guests);
+            foreach (Room r in rooms)
+            {
+                roomsList.Items.Add(r.roomNumber);
+            }
         }
 
         private void FillFacilitiesList()

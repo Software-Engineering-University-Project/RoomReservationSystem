@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 
 namespace RoomReservationSystem
 {
-   public static class Searcher
-   {
+    public static class Searcher
+    {
         public static List<Client> SearchClient(string parameter, string searchValue)
         {
             List<Client> people = new List<Client>();
@@ -63,14 +64,15 @@ namespace RoomReservationSystem
                             while (dataReader.Read())
                             {
                                 Client client = new Client();
-                                client.name = (string)dataReader["FirstName"];
-                                client.surname = (string)dataReader["LastName"];
+                                client.name = (string) dataReader["FirstName"];
+                                client.surname = (string) dataReader["LastName"];
                                 people.Add(client);
                             }
                         }
                     }
                 }
             }
+
             return people;
         }
 
@@ -128,25 +130,97 @@ namespace RoomReservationSystem
                                 break;
 
                         }
+
                         using (DbDataReader dataReader = command.ExecuteReader())
                         {
                             while (dataReader.Read())
                             {
                                 Worker worker = new Worker();
-                                worker.name = (string)dataReader["FirstName"];
-                                worker.surname = (string)dataReader["LastName"];
+                                worker.name = (string) dataReader["FirstName"];
+                                worker.surname = (string) dataReader["LastName"];
                                 people.Add(worker);
                             }
                         }
                     }
                 }
             }
+
             return people;
         }
 
-        public static List<Room> SearchRoom(string parameter, string searchValue)
+        public static List<Room> SearchRooms(DateTime beginDate, DateTime endDate, List<RoomFacilities> facilitiesList,
+            double minPrice, double maxPrice, int maxGuestNumber)
         {
-            return null;
+            List<Room> rooms = new List<Room>();
+            string provider = ConfigurationManager.AppSettings["provider"];
+
+            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+
+            DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
+
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                if (connection != null)
+                {
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+
+                    DbCommand command = factory.CreateCommand();
+                    if (command != null)
+                    {
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.Connection = connection;
+                        command.CommandText = "SearchRoom";
+                        command.Parameters.Add(new SqlParameter("@MinRoomPrice", minPrice));
+                        command.Parameters.Add(new SqlParameter("@MaxRoomPrice", maxPrice));
+                        command.Parameters.Add(new SqlParameter("@BeginDate", beginDate));
+                        command.Parameters.Add(new SqlParameter("@EndDate", endDate));
+                        command.Parameters.Add(new SqlParameter("@MaxGuestNumber", maxGuestNumber));
+                        using (DbDataReader dataReader = command.ExecuteReader())
+                        {
+                            while (dataReader.Read())
+                            {
+                                Room room = new Room();
+                                room.price = (double) dataReader["RoomPrice"];
+                                room.id = Int32.Parse(dataReader["RoomID"].ToString());
+                                room.squareMeterage = (double) dataReader["RoomSquareMetrage"];
+                                room.roomStandard = (RoomStandard) Enum.Parse(typeof(RoomStandard),
+                                dataReader["RoomStandard"].ToString(), true);
+                                room.roomState = (RoomState) Enum.Parse(typeof(RoomState),
+                                dataReader["RoomStatus"].ToString(), true);
+                                room.roomNumber = dataReader["RoomNumber"].ToString();
+                                room.maxGuestNumber = Int32.Parse(dataReader["RoomMaxGuestNumber"].ToString());
+                                rooms.Add(room);
+                            }
+                        }
+                    }
+
+                    List<int> removedIds = new List<int>();
+                    foreach (Room r in rooms)
+                    {
+                        foreach (var facility in facilitiesList)
+                        {
+                            DbCommand facilitiesCommand = factory.CreateCommand();
+                            if (facilitiesCommand != null)
+                            {
+                                facilitiesCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                                facilitiesCommand.Connection = connection;
+                                facilitiesCommand.CommandText = "CheckFacility";
+                                facilitiesCommand.Parameters.Add(new SqlParameter("@FacilityId", (int) facility+1));
+                                facilitiesCommand.Parameters.Add(new SqlParameter("@RoomId", r.id));
+                                int count = (int) facilitiesCommand.ExecuteScalar();
+                                if (count == 0)
+                                {
+                                    removedIds.Add(r.id);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    rooms.RemoveAll(r => removedIds.Contains(r.id));
+                }
+            }
+            return rooms;
         }
-   }
+    }
 }

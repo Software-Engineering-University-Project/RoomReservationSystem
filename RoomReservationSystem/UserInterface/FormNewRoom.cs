@@ -44,14 +44,14 @@ namespace RoomReservationSystem.UserInterface
                 meals.Add((Meals)Enum.Parse(typeof(Meals), item.ToString(), true));
             }
 
-            List<RoomFacilities> facilitiesList = new List<RoomFacilities>();
-            foreach (var item in mealsList.Items)
+            List<RoomFacilities> facilitiesEnumList = new List<RoomFacilities>();
+            foreach (var item in facilitiesList.Items)
             {
-                facilitiesList.Add((RoomFacilities)Enum.Parse(typeof(RoomFacilities), item.ToString(), true));
+                facilitiesEnumList.Add((RoomFacilities)Enum.Parse(typeof(RoomFacilities), item.ToString(), true));
             }
 
             _roomManager.Insert(roomName.Text, Convert.ToDouble(price.Text), Convert.ToDouble(squareMeters.Text),
-                Convert.ToInt32(maxNumGuests.Text), beds, meals, facilitiesList, RoomStandard.High);
+                Convert.ToInt32(maxNumGuests.Text), beds, meals, facilitiesEnumList, RoomStandard.High);
         }
 
         private void FillMealsComboBox()
