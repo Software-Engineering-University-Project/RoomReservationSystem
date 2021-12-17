@@ -5,6 +5,6 @@ namespace RoomReservationSystem
         Low,
         Medium,
         High,
-        Premium//idk wymysli sie jakies standrardy
+        Premium
     }
 }

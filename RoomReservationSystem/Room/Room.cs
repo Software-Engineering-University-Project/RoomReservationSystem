@@ -14,5 +14,6 @@ namespace RoomReservationSystem
         public List<Meals> mealsProvided { set; get; }
         public List<RoomFacilities> facilitiesProvided { set; get; }
         public RoomStandard roomStandard { set; get; }
+        public RoomState roomState { set; get; }
     }
 }

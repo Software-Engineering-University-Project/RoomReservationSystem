@@ -88,7 +88,7 @@ namespace Manager
                             addPasswordCommand.Connection = connection;
                             addPasswordCommand.CommandText = "Insert_Logon";
                             addPasswordCommand.Parameters.Add(new SqlParameter("@PersonID", id));
-                            addPasswordCommand.Parameters.Add(new SqlParameter("@Password", log.encodePassword()));
+                            addPasswordCommand.Parameters.Add(new SqlParameter("@LogonPassword", log.encodePassword()));
 
                             addPasswordCommand.ExecuteNonQuery();
                         }

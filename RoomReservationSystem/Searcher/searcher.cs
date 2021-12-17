@@ -1,6 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
+using Users;
 
-namespace Searcher
+namespace RoomReservationSystem
 {
     public static class Searcher
     {
@@ -59,9 +65,8 @@ namespace Searcher
                             while (dataReader.Read())
                             {
                                 Client client = new Client();
-                                client.id = (int)dataReader["PersonID"];
-                                client.name = (string)dataReader["FirstName"];
-                                client.surname = (string)dataReader["LastName"];
+                                client.name = (string) dataReader["FirstName"];
+                                client.surname = (string) dataReader["LastName"];
                                 people.Add(client);
                             }
                         }
@@ -144,7 +149,7 @@ namespace Searcher
             return people;
         }
 
-    public static List<Room> SearchRooms(DateTime beginDate, DateTime endDate, List<RoomFacilities> facilitiesList,
+public static List<Room> SearchRooms(DateTime beginDate, DateTime endDate, List<RoomFacilities> facilitiesList,
             double minPrice, double maxPrice, int maxGuestNumber)
         {
             List<Room> rooms = new List<Room>();

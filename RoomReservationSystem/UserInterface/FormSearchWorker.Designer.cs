@@ -1,5 +1,4 @@
-﻿
-namespace RoomReservationSystem.UserInterface
+﻿namespace RoomReservationSystem.UserInterface
 {
     partial class FormSearchWorker
     {
@@ -31,7 +30,7 @@ namespace RoomReservationSystem.UserInterface
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewWorkers = new System.Windows.Forms.ListView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBoxSearchWorker = new System.Windows.Forms.ComboBox();
             this.textBoxSearchWorker = new System.Windows.Forms.TextBox();
@@ -44,47 +43,51 @@ namespace RoomReservationSystem.UserInterface
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1127F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 344F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 845F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 258F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 695F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1650, 853);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 565F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 76F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1238, 693);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.listView1, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.listViewWorkers, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(106, 21);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(79, 17);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 156F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1121, 689);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 127F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(841, 561);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // listView1
+            // listViewWorkers
             // 
-            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(3, 98);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1115, 588);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listViewWorkers.AccessibleName = "listViewWorkers";
+            this.listViewWorkers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.listViewWorkers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewWorkers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewWorkers.HideSelection = false;
+            this.listViewWorkers.Location = new System.Drawing.Point(2, 79);
+            this.listViewWorkers.Margin = new System.Windows.Forms.Padding(2);
+            this.listViewWorkers.Name = "listViewWorkers";
+            this.listViewWorkers.Size = new System.Drawing.Size(837, 480);
+            this.listViewWorkers.TabIndex = 0;
+            this.listViewWorkers.UseCompatibleStateImageBehavior = false;
             // 
             // tableLayoutPanel3
             // 
@@ -92,17 +95,18 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel3.ColumnCount = 4;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.54362F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.45638F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 290F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 349F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 218F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 263F));
             this.tableLayoutPanel3.Controls.Add(this.comboBoxSearchWorker, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.textBoxSearchWorker, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.buttonSearchWorker, 3, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1115, 67);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(837, 55);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // comboBoxSearchWorker
@@ -113,9 +117,10 @@ namespace RoomReservationSystem.UserInterface
             this.comboBoxSearchWorker.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxSearchWorker.ForeColor = System.Drawing.Color.Gainsboro;
             this.comboBoxSearchWorker.FormattingEnabled = true;
-            this.comboBoxSearchWorker.Location = new System.Drawing.Point(153, 17);
+            this.comboBoxSearchWorker.Location = new System.Drawing.Point(114, 14);
+            this.comboBoxSearchWorker.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSearchWorker.Name = "comboBoxSearchWorker";
-            this.comboBoxSearchWorker.Size = new System.Drawing.Size(239, 32);
+            this.comboBoxSearchWorker.Size = new System.Drawing.Size(180, 27);
             this.comboBoxSearchWorker.TabIndex = 0;
             // 
             // textBoxSearchWorker
@@ -125,9 +130,10 @@ namespace RoomReservationSystem.UserInterface
             this.textBoxSearchWorker.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSearchWorker.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxSearchWorker.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBoxSearchWorker.Location = new System.Drawing.Point(478, 21);
+            this.textBoxSearchWorker.Location = new System.Drawing.Point(357, 17);
+            this.textBoxSearchWorker.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSearchWorker.Name = "textBoxSearchWorker";
-            this.textBoxSearchWorker.Size = new System.Drawing.Size(218, 25);
+            this.textBoxSearchWorker.Size = new System.Drawing.Size(164, 20);
             this.textBoxSearchWorker.TabIndex = 1;
             // 
             // buttonSearchWorker
@@ -140,20 +146,23 @@ namespace RoomReservationSystem.UserInterface
             this.buttonSearchWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearchWorker.Font = new System.Drawing.Font("Calibri", 14F);
             this.buttonSearchWorker.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonSearchWorker.Location = new System.Drawing.Point(768, 8);
+            this.buttonSearchWorker.Location = new System.Drawing.Point(575, 7);
+            this.buttonSearchWorker.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSearchWorker.Name = "buttonSearchWorker";
-            this.buttonSearchWorker.Size = new System.Drawing.Size(232, 50);
+            this.buttonSearchWorker.Size = new System.Drawing.Size(174, 41);
             this.buttonSearchWorker.TabIndex = 2;
             this.buttonSearchWorker.Text = "Search";
             this.buttonSearchWorker.UseVisualStyleBackColor = false;
+            this.buttonSearchWorker.Click += new System.EventHandler(this.buttonSearchWorker_Click);
             // 
             // FormSearchWorker
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.ClientSize = new System.Drawing.Size(1650, 853);
+            this.ClientSize = new System.Drawing.Size(1238, 693);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormSearchWorker";
             this.Text = "SEARCH WORKERS";
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -168,7 +177,7 @@ namespace RoomReservationSystem.UserInterface
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewWorkers;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.ComboBox comboBoxSearchWorker;
         private System.Windows.Forms.TextBox textBoxSearchWorker;

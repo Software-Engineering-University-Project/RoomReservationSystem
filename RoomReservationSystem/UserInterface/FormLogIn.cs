@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Manager;
+using Users;
 
 namespace RoomReservationSystem.UserInterface
 {
@@ -18,6 +20,8 @@ namespace RoomReservationSystem.UserInterface
             password.UseSystemPasswordChar = true;
             password.PasswordChar = '*';
         }
+
+        private UserManager _userManager;
 
         //to delete
         private void FormLogIn_Load(object sender, EventArgs e)

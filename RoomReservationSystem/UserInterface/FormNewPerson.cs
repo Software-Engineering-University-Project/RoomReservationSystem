@@ -51,13 +51,13 @@ namespace RoomReservationSystem.UserInterface
                 // potrzebny dostęp do danych zalogowanego użytkownika
                 if (!_userManager.managedUser.Equals(null))
                 {
-                    _userManager.update(this.firstName.Text, this.secondName.Text, this.dateOfBirth.Value, this.phoneNum.Text, this.postCode.Text, this.city.Text, this.eMail.Text, this.street.Text, this.houseNum.Text, this.flatNum.Text, this.country.Text, this.passWord.text);
+                    _userManager.update(this.firstName.Text, this.secondName.Text, this.dateOfBirth.Value, this.phoneNum.Text, this.postCode.Text, this.city.Text, this.eMail.Text, this.street.Text, this.houseNum.Text, this.flatNum.Text, this.country.Text, "haslo");
                 }
             } 
             else if (_mode == FormMode.NewElement) // zapisanie nowego elementu
             {
                 // potrzebny dostęp do informacji, jaki rodzaj użytkownika zapisujemy
-                _userManager.add(this.firstName.Text, this.secondName.Text, this.dateOfBirth.Value, this.phoneNum.Text, this.postCode.Text, this.city.Text, this.eMail.Text, this.street.Text, this.houseNum.Text, this.flatNum.Text, this.country.Text, _isWorker, this.passWord.text);
+                _userManager.add(this.firstName.Text, this.secondName.Text, this.dateOfBirth.Value, this.phoneNum.Text, this.postCode.Text, this.city.Text, this.eMail.Text, this.street.Text, this.houseNum.Text, this.flatNum.Text, this.country.Text, _isWorker, "haslo");
             }
 
         }
