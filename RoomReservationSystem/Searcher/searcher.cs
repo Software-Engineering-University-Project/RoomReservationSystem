@@ -148,7 +148,7 @@ namespace RoomReservationSystem
             return people;
         }
 
-        public static List<Room> SearchRooms(DateTime beginDate, DateTime endDate, List<RoomFacilities> facilitiesList,
+public static List<Room> SearchRooms(DateTime beginDate, DateTime endDate, List<RoomFacilities> facilitiesList,
             double minPrice, double maxPrice, int maxGuestNumber)
         {
             List<Room> rooms = new List<Room>();
