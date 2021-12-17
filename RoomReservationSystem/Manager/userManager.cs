@@ -1,11 +1,9 @@
-using System;
+﻿using System;
 using Users;
 using System.Configuration;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Data;
-using System.Collections.Generic;
-using RoomReservationSystem;
 
 namespace Manager
 {

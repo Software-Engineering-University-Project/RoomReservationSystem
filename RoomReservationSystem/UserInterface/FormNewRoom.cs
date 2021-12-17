@@ -4,14 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using Manager;
-using RoomReservationSystem;
-using RoomReservationSyster;
 
 namespace RoomReservationSystem.UserInterface
 {
@@ -26,37 +21,12 @@ namespace RoomReservationSystem.UserInterface
             FillFacilitiesComboBox();
             FillTypesOfBedComboBox();
             FillStandardComboBox();
-            _roomManager = new RoomManager();
         }
-        private RoomManager _roomManager;
-        
+
+
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            
-            List<BedType> beds = new List<BedType>();
-            foreach (var item in typesOfBedList.Items)
-            {
-                beds.Add((BedType)Enum.Parse(typeof(BedType), item.ToString(), true));
-            }
-
-            List<Meals> meals = new List<Meals>();
-            foreach (var item in mealsList.Items)
-            {
-                meals.Add((Meals)Enum.Parse(typeof(Meals), item.ToString(), true));
-            }
-
-            List<RoomFacilities> facilitiesEnumList = new List<RoomFacilities>();
-            foreach (var item in facilitiesList.Items)
-            {
-                facilitiesEnumList.Add((RoomFacilities)Enum.Parse(typeof(RoomFacilities), item.ToString(), true));
-            }
-
-            if (_mode == FormMode.NewElement)
-            {
-                _roomManager.Insert(roomName.Text, Convert.ToDouble(price.Text), Convert.ToDouble(squareMeters.Text),
-                    Convert.ToInt32(maxNumGuests.Text), beds, meals, facilitiesEnumList,
-                    standardComboBox.GetItemText(this.standardComboBox.SelectedItem));
-            }
+            //brak konstruktora room
         }
 
         private void FillMealsComboBox()

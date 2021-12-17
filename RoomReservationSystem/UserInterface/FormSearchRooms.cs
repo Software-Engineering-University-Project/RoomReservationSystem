@@ -4,11 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RoomReservationSyster;
 
 namespace RoomReservationSystem.UserInterface
 {
@@ -20,14 +18,8 @@ namespace RoomReservationSystem.UserInterface
             FillFacilitiesList();
             FillGuestComboBox();
             FillTypesOfBedList();
-            roomsList.Clear();
         }
 
-        private RoomManager _roomManager;
-        public FormSearchRooms(RoomManager roomManager)
-        {
-            _roomManager = roomManager;
-        }
 
         private void buttonApplyFilters_Click(object sender, EventArgs e)
         {
@@ -38,7 +30,7 @@ namespace RoomReservationSystem.UserInterface
             DateTime dateFrom = this.dateFrom.Value;
             DateTime dateTo = this.dateTo.Value;
 
-            int guests = comboBoxGuestsNum.SelectedIndex;
+            int guests = comboBoxGuestsNum.SelectedIndex +1;
 
             List<BedType> bedList = new List<BedType>();
             List<RoomFacilities> facilities = new List<RoomFacilities>();
@@ -47,27 +39,17 @@ namespace RoomReservationSystem.UserInterface
 
             foreach (var bed in checkedBeds)
             {
-                bedList.Add((BedType) bed);
+                bedList.Add((BedType)bed);
             }
 
             var checkedFacilities = facilitiesList.CheckedIndices;
 
-            foreach (var fac in checkedFacilities)
+            foreach (var fac in  checkedFacilities)
             {
-                facilities.Add((RoomFacilities) fac);
+                facilities.Add((RoomFacilities)fac);
             }
 
-            List<RoomFacilities> selectedFacilities = new List<RoomFacilities>();
-            foreach (var checkedFacility in checkedFacilities)
-            {
-                selectedFacilities.Add((RoomFacilities)checkedFacility);
-            }
-            List<Room> rooms = Searcher.SearchRooms(dateFrom, dateTo, selectedFacilities,
-                priceMin, priceMax, guests);
-            foreach (Room r in rooms)
-            {
-                roomsList.Items.Add(r.id.ToString());
-            }
+            //wywołanie metody do wyszukiwania z parametrami
         }
 
         private void FillFacilitiesList()
@@ -97,8 +79,12 @@ namespace RoomReservationSystem.UserInterface
 
         private void roomsList_DoubleClick(object sender, EventArgs e)
         {
-            Room room = Searcher.SearchRoomById(Convert.ToInt32(roomsList.FocusedItem.Text));
-            ViewManager.GetInstance().DisplayChildForm(new FormRoom(room));
+            //wyświetlenie widoku pokoju
+            //wyszukiwanie pokoju z listy
+            //wyświetlanie pokoju
+            //ViewManager.GetInstance().DisplayChildForm(new FormRoom(room));
         }
+
+ 
     }
 }

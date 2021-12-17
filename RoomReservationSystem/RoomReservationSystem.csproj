@@ -90,7 +90,9 @@
     <Compile Include="Room\RoomFacilities.cs" />
     <Compile Include="Room\RoomReservationSystem.cs" />
     <Compile Include="Room\RoomState.cs" />
+    <Compile Include="Searcher\roomSearcher.cs" />
     <Compile Include="Searcher\searcher.cs" />
+    <Compile Include="Searcher\userSearcher.cs" />
     <Compile Include="UserInterface\FormLogIn.cs">
       <SubType>Form</SubType>
     </Compile>
