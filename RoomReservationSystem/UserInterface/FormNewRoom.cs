@@ -57,10 +57,6 @@ namespace RoomReservationSystem.UserInterface
                     Convert.ToInt32(maxNumGuests.Text), beds, meals, facilitiesEnumList,
                     standardComboBox.GetItemText(this.standardComboBox.SelectedItem));
             }
-            else
-            {
-                //@update
-            }
         }
 
         private void FillMealsComboBox()
