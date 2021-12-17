@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using RoomReservationSyster;
 
 namespace RoomReservationSystem
 {
@@ -14,5 +15,14 @@ namespace RoomReservationSystem
         public List<Meals> mealsProvided { set; get; }
         public List<RoomFacilities> facilitiesProvided { set; get; }
         public RoomStandard roomStandard { set; get; }
+        public RoomState roomState { set; get; }
+
+        public Room()
+        {
+            beds = new List<BedType>();
+            mealsProvided = new List<Meals>();
+            facilitiesProvided = new List<RoomFacilities>();
+        }
+        
     }
 }

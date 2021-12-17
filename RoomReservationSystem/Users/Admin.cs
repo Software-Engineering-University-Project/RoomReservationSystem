@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Users
+namespace RoomReservationSystem
 {
 	public class Admin: Worker
 	{
