@@ -36,12 +36,13 @@ namespace RoomReservationSystem.UserInterface
             listViewWorkers.Items.Clear();
             listViewWorkers.Columns.Clear();
             listViewWorkers.View = View.Details;
+            listViewWorkers.Columns.Add("ID");
             listViewWorkers.Columns.Add("Name");
             listViewWorkers.Columns.Add("Surname");
 
             foreach (var person in people)
             {
-                listViewWorkers.Items.Add(new ListViewItem(new string[] { person.name, person.surname }));
+                listViewWorkers.Items.Add(new ListViewItem(new string[] { person.id.ToString(), person.name, person.surname }));
             }
         }
     }

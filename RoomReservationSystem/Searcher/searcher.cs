@@ -64,8 +64,9 @@ namespace RoomReservationSystem
                             while (dataReader.Read())
                             {
                                 Client client = new Client();
-                                client.name = (string) dataReader["FirstName"];
-                                client.surname = (string) dataReader["LastName"];
+                                client.id = (int)dataReader["PersonID"];
+                                client.name = (string)dataReader["FirstName"];
+                                client.surname = (string)dataReader["LastName"];
                                 people.Add(client);
                             }
                         }
