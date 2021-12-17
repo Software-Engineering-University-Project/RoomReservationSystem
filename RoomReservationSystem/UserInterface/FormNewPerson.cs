@@ -25,6 +25,10 @@ namespace RoomReservationSystem.UserInterface
             _mode = mode;
             _userManager = userManager;
             _isWorker = isWorker;
+            if(_userManager.managedUser != null && mode.Equals(FormMode.Edit))
+            {
+                InitializeTextFields();
+            }
         }
 
         //metoda do wywołania, jeśli chcemy edytować dane za pomocą formularza

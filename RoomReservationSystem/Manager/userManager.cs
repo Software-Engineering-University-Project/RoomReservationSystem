@@ -116,7 +116,7 @@ namespace Manager
 
                         command.CommandType = System.Data.CommandType.StoredProcedure;
                         command.Connection = connection;
-                        command.CommandText = "Insert_PersonalData_Procedure";
+                        command.CommandText = "Delete_PersonalData_ById";
 
                         command.Parameters.Add(new SqlParameter("@Id", userId));
 
@@ -142,9 +142,9 @@ namespace Manager
                     {
                         command.CommandType = System.Data.CommandType.StoredProcedure;
                         command.Connection = connection;
-                        command.CommandText = "Search_PersonRoles_ByPersonId";
+                        command.CommandText = "Search_PersonalRoles_ByPersonId";
 
-                        command.Parameters.Add(new SqlParameter("@id", managedUser.id));
+                        command.Parameters.Add(new SqlParameter("@id", id));
 
                         command.ExecuteNonQuery();
 
@@ -174,7 +174,7 @@ namespace Manager
                         {
                             getDetailsCommand.CommandType = System.Data.CommandType.StoredProcedure;
                             getDetailsCommand.Connection = connection;
-                            getDetailsCommand.CommandText = "Search_PersonanData_ById";
+                            getDetailsCommand.CommandText = "Search_PersonalData_ById";
 
                             getDetailsCommand.Parameters.Add(new SqlParameter("@id", managedUser.id));
 
@@ -191,7 +191,8 @@ namespace Manager
                                 currUser.address.city = (String)dataReader["City"];
                                 currUser.address.postCode = (String)dataReader["PostCode"];
                                 currUser.address.street = (String)dataReader["Street"];
-                                currUser.address.apartmentNumber = (String)dataReader["ApartmentNumber"];
+                                currUser.address.apartmentNumber = (String)dataReader["ApartamentNumber"];
+                                currUser.address.propertyNumber = (String)dataReader["PropertyNumber"];
                                 currUser.logon.phoneNumber = (String)dataReader["PhoneNumber"];
                                 currUser.logon.email = (String)dataReader["EmailAddress"];
                             }
@@ -218,16 +219,16 @@ namespace Manager
                     {
                         command.CommandType = System.Data.CommandType.StoredProcedure;
                         command.Connection = connection;
-                        command.CommandText = "Search_PersonRoles_ByPersonId";
+                        command.CommandText = "Search_PersonalRoles_ByPersonId";
 
-                        command.Parameters.Add(new SqlParameter("@id", managedUser.id));
+                        command.Parameters.Add(new SqlParameter("@id", id));
 
                         command.ExecuteNonQuery();
 
                         using(DbDataReader dataReader = command.ExecuteReader())
                         {
                             dataReader.Read();
-                            char role = (char)dataReader["PersonRole"];
+                            var role = dataReader["PersonRole"];
                             switch (role)
                             {
                                 case 'C': managedUser = new Client();
@@ -246,9 +247,9 @@ namespace Manager
                         {
                             getDetailsCommand.CommandType = System.Data.CommandType.StoredProcedure;
                             getDetailsCommand.Connection = connection;
-                            getDetailsCommand.CommandText = "Search_PersonanData_ById";
+                            getDetailsCommand.CommandText = "Search_PersonalData_ById";
 
-                            getDetailsCommand.Parameters.Add(new SqlParameter("@id", managedUser.id));
+                            getDetailsCommand.Parameters.Add(new SqlParameter("@id", id));
 
                             getDetailsCommand.ExecuteNonQuery();
 
@@ -263,7 +264,8 @@ namespace Manager
                                 managedUser.address.city = (String)dataReader["City"];
                                 managedUser.address.postCode = (String)dataReader["PostCode"];
                                 managedUser.address.street = (String)dataReader["Street"];
-                                managedUser.address.apartmentNumber = (String)dataReader["ApartmentNumber"];
+                                managedUser.address.apartmentNumber = (String)dataReader["ApartamentNumber"];
+                                managedUser.address.propertyNumber = (String)dataReader["PropertyNumber"];
                                 managedUser.logon.phoneNumber = (String)dataReader["PhoneNumber"];
                                 managedUser.logon.email = (String)dataReader["EmailAddress"];
                             }
@@ -296,7 +298,7 @@ namespace Manager
                         command.Parameters.Add(new SqlParameter("@LastName", secondName));
                         command.Parameters.Add(new SqlParameter("@PhoneNumber", phoneNum));
                         command.Parameters.Add(new SqlParameter("@BirthDate", dateOfBirth));
-                        command.Parameters.Add(new SqlParameter("@EmailAddress", eMail));
+                        command.Parameters.Add(new SqlParameter("@Email", eMail));
                         command.Parameters.Add(new SqlParameter("@Street", street));
                         command.Parameters.Add(new SqlParameter("@PropertyNumber", houseNum));
                         command.Parameters.Add(new SqlParameter("@ApartamentNumber", flatNum));
@@ -320,7 +322,7 @@ namespace Manager
                                 addPasswordCommand.Connection = connection;
                                 addPasswordCommand.CommandText = "Update_Logon";
                                 addPasswordCommand.Parameters.Add(new SqlParameter("@PersonID", managedUser.id));
-                                addPasswordCommand.Parameters.Add(new SqlParameter("@Password", managedUser.logon.encodePassword()));
+                                addPasswordCommand.Parameters.Add(new SqlParameter("@LogonPassword", managedUser.logon.encodePassword()));
 
                                 addPasswordCommand.ExecuteNonQuery();
                             }
@@ -365,7 +367,7 @@ namespace Manager
 
                         command.Parameters.Add(new SqlParameter("@LoginDetail", mailOrPhone));
                         
-                        command.Parameters.Add(new SqlParameter("@Password", decryptedPassword.encodePassword()));
+                        command.Parameters.Add(new SqlParameter("@LogonPassword", decryptedPassword.encodePassword()));
                         command.ExecuteNonQuery();
                         using (DbDataReader dataReader = command.ExecuteReader())
                         {

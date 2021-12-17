@@ -19,6 +19,7 @@ namespace RoomReservationSystem.UserInterface
         {
             InitializeComponent();
             _userManager = userManger;
+            _userManager.getManagedUser(3);
             if(_userManager.managedUser != null)
             {
                 initializeLabels();
