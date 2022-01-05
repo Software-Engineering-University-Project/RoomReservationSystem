@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,15 @@ namespace RoomReservationSystem.UserInterface
 {
     public partial class FormMakeReservation : Form
     {
+        private UserManager _userManager;
+        private RoomManager _roomManager;
+        private ReservationManager _reservationManager;
         public FormMakeReservation()
         {
             InitializeComponent();
+            _userManager = new UserManager();
+            _roomManager = new RoomManager();
+            _reservationManager = new ReservationManager();
         }
 
 
