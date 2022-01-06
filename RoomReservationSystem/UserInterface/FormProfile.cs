@@ -28,8 +28,8 @@ namespace RoomReservationSystem.UserInterface
 
         public void initializeLabels()
         {
-            this.nameLabel.Text = _userManager.managedUser.name;
-            this.phoneNumLabel.Text = _userManager.managedUser.surname;
+            this.nameLabel.Text = _userManager.managedUser.name + " "+ _userManager.managedUser.surname;
+            this.phoneNumLabel.Text = _userManager.managedUser.logon.phoneNumber;
             this.emailLabel.Text = _userManager.managedUser.logon.email;
             this.dateOfBirthLabel.Text = _userManager.managedUser.BirthDate.ToString();
             this.addressLabel.Text = _userManager.managedUser.address.street +" "+ _userManager.managedUser.address.propertyNumber + "/"+ _userManager.managedUser.address.apartmentNumber;
