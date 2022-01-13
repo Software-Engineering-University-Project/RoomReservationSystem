@@ -12,9 +12,32 @@ namespace Manager
 {
     class ReservationManager : Manager
     {
-        public void delete()
+        public void delete(int reservationId)
         {
+            string provider = ConfigurationManager.AppSettings["provider"];
+            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+            DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                if (connection != null)
+                {
 
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+                    DbCommand command = factory.CreateCommand();
+                    if (command != null)
+                    {
+
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.Connection = connection;
+                        command.CommandText = "Delete_Reservation_ById";
+
+                        command.Parameters.Add(new SqlParameter("@Id", reservationId));
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
         }
 
         public void add(float pricePerNight, int userId, int roomId, DateTime checkInDate, DateTime checkOutDate)
