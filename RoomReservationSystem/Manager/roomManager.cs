@@ -11,6 +11,7 @@ namespace RoomReservationSyster
 {
 	public class RoomManager 
 	{
+		public Room CurrentRoom { set; get; }
 		public void Delete(int id)
 		{
 			string provider = ConfigurationManager.AppSettings["provider"];
@@ -322,6 +323,11 @@ namespace RoomReservationSyster
 					}
 				}
 			}
+		}
+
+		public void GetUserById(int id)
+		{
+			CurrentRoom = Searcher.SearchRoomById(id);
 		}
 	}
 }

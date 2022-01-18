@@ -18,17 +18,22 @@ namespace RoomReservationSystem.UserInterface
     public partial class FormNewRoom : Form
     {
         private FormMode _mode;
-        public FormNewRoom(FormMode mode)
+        
+        private RoomManager _roomManager;
+        public FormNewRoom(RoomManager roomManager, FormMode mode)
         {
             InitializeComponent();
             _mode = mode;
+            _roomManager = roomManager;
             FillMealsComboBox();
             FillFacilitiesComboBox();
             FillTypesOfBedComboBox();
             FillStandardComboBox();
-            _roomManager = new RoomManager();
+            if (mode == FormMode.Edit)
+            {
+                FillWithRoomInformation(roomManager.CurrentRoom);
+            }
         }
-        private RoomManager _roomManager;
         
         private void confirmButton_Click(object sender, EventArgs e)
         {
@@ -56,6 +61,10 @@ namespace RoomReservationSystem.UserInterface
                 _roomManager.Insert(roomName.Text, Convert.ToDouble(price.Text), Convert.ToDouble(squareMeters.Text),
                     Convert.ToInt32(maxNumGuests.Text), beds, meals, facilitiesEnumList,
                     standardComboBox.GetItemText(this.standardComboBox.SelectedItem));
+            }
+            else
+            {
+                
             }
         }
 
@@ -120,6 +129,30 @@ namespace RoomReservationSystem.UserInterface
         private void typesOfBedList_SelectedIndexChanged(object sender, EventArgs e)
         {
             typesOfBedList.Items.Remove(typesOfBedList.SelectedItem);
+        }
+
+        private void FillWithRoomInformation(Room room)
+        {
+            this.price.Text = room.price.ToString();
+            this.squareMeters.Text = room.squareMeterage.ToString();
+            this.maxNumGuests.Text = room.maxGuestNumber.ToString();
+            this.roomName.Text = room.roomNumber;
+            this.standardComboBox.SelectedIndex = (int)room.roomStandard;
+            
+            foreach(var bed in room.beds)
+            {
+                this.typesOfBedList.Items.Add(bed.ToString());
+            }
+
+            foreach (var meal in room.mealsProvided)
+            {
+                this.mealsList.Items.Add(meal.ToString());
+            }
+
+            foreach (var facility in room.facilitiesProvided)
+            {
+                this.facilitiesList.Items.Add(facility.ToString());
+            }
         }
     }
 }
