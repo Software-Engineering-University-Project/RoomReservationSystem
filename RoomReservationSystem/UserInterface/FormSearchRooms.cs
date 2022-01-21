@@ -36,7 +36,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonApplyFilters_Click(object sender, EventArgs e)
         {
-            //brak walidacji
+            roomsList.Items.Clear();
             double priceMin = Int32.Parse(priceFrom.Text);
             double priceMax = Int32.Parse(priceTo.Text);
 
@@ -68,7 +68,7 @@ namespace RoomReservationSystem.UserInterface
                 selectedFacilities.Add((RoomFacilities)checkedFacility);
             }
             List<Room> rooms = Searcher.SearchRooms(dateFrom, dateTo, selectedFacilities,
-                priceMin, priceMax, guests);
+                priceMin, priceMax, guests, false);
             foreach (Room r in rooms)
             {
                 roomsList.Items.Add(r.id.ToString());

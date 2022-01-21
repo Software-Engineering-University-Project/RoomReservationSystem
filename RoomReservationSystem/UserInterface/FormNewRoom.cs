@@ -60,11 +60,14 @@ namespace RoomReservationSystem.UserInterface
             {
                 _roomManager.Insert(roomName.Text, Convert.ToDouble(price.Text), Convert.ToDouble(squareMeters.Text),
                     Convert.ToInt32(maxNumGuests.Text), beds, meals, facilitiesEnumList,
-                    standardComboBox.GetItemText(this.standardComboBox.SelectedItem));
+                    standardComboBox.GetItemText(this.standardComboBox.SelectedItem), this.comment.Text);
             }
             else
             {
-                
+                _roomManager.Update(roomName.Text, Convert.ToDouble(price.Text), Convert.ToDouble(squareMeters.Text),
+                    Convert.ToInt32(maxNumGuests.Text),
+                    standardComboBox.GetItemText(this.standardComboBox.SelectedItem), this.comment.Text, beds, meals,
+                    facilitiesEnumList);
             }
         }
 
