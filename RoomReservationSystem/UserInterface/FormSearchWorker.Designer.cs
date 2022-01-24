@@ -35,6 +35,7 @@
             this.comboBoxSearchWorker = new System.Windows.Forms.ComboBox();
             this.textBoxSearchWorker = new System.Windows.Forms.TextBox();
             this.buttonSearchWorker = new System.Windows.Forms.Button();
+            this.buttonDeleteWorker = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -81,6 +82,8 @@
             this.listViewWorkers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.listViewWorkers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listViewWorkers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewWorkers.ForeColor = System.Drawing.SystemColors.Menu;
+            this.listViewWorkers.FullRowSelect = true;
             this.listViewWorkers.HideSelection = false;
             this.listViewWorkers.Location = new System.Drawing.Point(2, 79);
             this.listViewWorkers.Margin = new System.Windows.Forms.Padding(2);
@@ -93,10 +96,11 @@
             // 
             this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(108)))));
             this.tableLayoutPanel3.ColumnCount = 4;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.54362F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.45638F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 218F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 263F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.46421F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.53579F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 157F));
+            this.tableLayoutPanel3.Controls.Add(this.buttonDeleteWorker, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.comboBoxSearchWorker, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.textBoxSearchWorker, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.buttonSearchWorker, 3, 0);
@@ -117,7 +121,7 @@
             this.comboBoxSearchWorker.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxSearchWorker.ForeColor = System.Drawing.Color.Gainsboro;
             this.comboBoxSearchWorker.FormattingEnabled = true;
-            this.comboBoxSearchWorker.Location = new System.Drawing.Point(114, 14);
+            this.comboBoxSearchWorker.Location = new System.Drawing.Point(283, 14);
             this.comboBoxSearchWorker.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSearchWorker.Name = "comboBoxSearchWorker";
             this.comboBoxSearchWorker.Size = new System.Drawing.Size(180, 27);
@@ -130,7 +134,7 @@
             this.textBoxSearchWorker.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSearchWorker.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxSearchWorker.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBoxSearchWorker.Location = new System.Drawing.Point(357, 17);
+            this.textBoxSearchWorker.Location = new System.Drawing.Point(491, 17);
             this.textBoxSearchWorker.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSearchWorker.Name = "textBoxSearchWorker";
             this.textBoxSearchWorker.Size = new System.Drawing.Size(164, 20);
@@ -146,14 +150,33 @@
             this.buttonSearchWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearchWorker.Font = new System.Drawing.Font("Calibri", 14F);
             this.buttonSearchWorker.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonSearchWorker.Location = new System.Drawing.Point(575, 7);
+            this.buttonSearchWorker.Location = new System.Drawing.Point(681, 12);
             this.buttonSearchWorker.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSearchWorker.Name = "buttonSearchWorker";
-            this.buttonSearchWorker.Size = new System.Drawing.Size(174, 41);
+            this.buttonSearchWorker.Size = new System.Drawing.Size(134, 31);
             this.buttonSearchWorker.TabIndex = 2;
             this.buttonSearchWorker.Text = "Search";
             this.buttonSearchWorker.UseVisualStyleBackColor = false;
             this.buttonSearchWorker.Click += new System.EventHandler(this.buttonSearchWorker_Click);
+            // 
+            // buttonDeleteWorker
+            // 
+            this.buttonDeleteWorker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonDeleteWorker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
+            this.buttonDeleteWorker.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteWorker.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(108)))));
+            this.buttonDeleteWorker.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(108)))));
+            this.buttonDeleteWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteWorker.Font = new System.Drawing.Font("Calibri", 14F);
+            this.buttonDeleteWorker.ForeColor = System.Drawing.Color.Gainsboro;
+            this.buttonDeleteWorker.Location = new System.Drawing.Point(2, 12);
+            this.buttonDeleteWorker.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDeleteWorker.Name = "buttonDeleteWorker";
+            this.buttonDeleteWorker.Size = new System.Drawing.Size(134, 31);
+            this.buttonDeleteWorker.TabIndex = 3;
+            this.buttonDeleteWorker.Text = "DeleteWorker";
+            this.buttonDeleteWorker.UseVisualStyleBackColor = false;
+            this.buttonDeleteWorker.Click += new System.EventHandler(this.buttonDeleteWorker_Click);
             // 
             // FormSearchWorker
             // 
@@ -182,5 +205,6 @@
         private System.Windows.Forms.ComboBox comboBoxSearchWorker;
         private System.Windows.Forms.TextBox textBoxSearchWorker;
         private System.Windows.Forms.Button buttonSearchWorker;
+        private System.Windows.Forms.Button buttonDeleteWorker;
     }
 }

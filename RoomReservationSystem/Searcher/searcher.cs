@@ -68,6 +68,15 @@ namespace RoomReservationSystem
                                 client.name = (string) dataReader["FirstName"];
                                 client.surname = (string) dataReader["LastName"];
                                 client.id = (int) dataReader["PersonID"];
+                                client.address.country = (string)dataReader["Country"];
+                                client.address.city = (string)dataReader["City"];
+                                client.address.apartmentNumber = (string)dataReader["ApartamentNumber"];
+                                client.address.postCode = (string)dataReader["PostCode"];
+                                client.address.propertyNumber = (string)dataReader["PropertyNumber"];
+                                client.address.street = (string)dataReader["Street"];
+                                client.logon.email = (string)dataReader["EmailAddress"];
+                                client.logon.phoneNumber = (string)dataReader["PhoneNumber"];
+                               
                                 people.Add(client);
                             }
                         }
@@ -149,8 +158,35 @@ namespace RoomReservationSystem
 
             return people;
         }
+        public static void DeleteUser(int id)
+        {
+            string provider = ConfigurationManager.AppSettings["provider"];
 
-public static List<Room> SearchRooms(DateTime beginDate, DateTime endDate, List<RoomFacilities> facilitiesList,
+            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+
+            DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
+
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                if (connection != null)
+                {
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+
+                    DbCommand command = factory.CreateCommand();
+                    if (command != null)
+                    {
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.Connection = connection;
+                        command.CommandText = "DeleteUser";
+                        command.Parameters.Add(new SqlParameter("@id", id));
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+
+        public static List<Room> SearchRooms(DateTime beginDate, DateTime endDate, List<RoomFacilities> facilitiesList,
             double minPrice, double maxPrice, int maxGuestNumber)
         {
             List<Room> rooms = new List<Room>();
