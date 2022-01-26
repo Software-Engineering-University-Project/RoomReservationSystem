@@ -47,6 +47,8 @@ namespace RoomReservationSystem.UserInterface
             this.buttonClose = new System.Windows.Forms.Button();
             this.labelTitleBar = new System.Windows.Forms.Label();
             this.panelDesktopPane = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.logOutButton = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
@@ -55,6 +57,8 @@ namespace RoomReservationSystem.UserInterface
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panelMenu.Controls.Add(this.panel1);
+            this.panelMenu.Controls.Add(this.logOutButton);
             this.panelMenu.Controls.Add(this.buttonNewRoom);
             this.panelMenu.Controls.Add(this.buttonNewWorker);
             this.panelMenu.Controls.Add(this.buttonSearchWorkers);
@@ -68,7 +72,7 @@ namespace RoomReservationSystem.UserInterface
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(208, 853);
+            this.panelMenu.Size = new System.Drawing.Size(208, 846);
             this.panelMenu.TabIndex = 0;
             // 
             // buttonNewRoom
@@ -342,15 +346,42 @@ namespace RoomReservationSystem.UserInterface
             this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopPane.Location = new System.Drawing.Point(208, 82);
             this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(1324, 771);
+            this.panelDesktopPane.Size = new System.Drawing.Size(1324, 764);
             this.panelDesktopPane.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 832);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(208, 14);
+            this.panel1.TabIndex = 10;
+            // 
+            // logOutButton
+            // 
+            this.logOutButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.logOutButton.FlatAppearance.BorderSize = 0;
+            this.logOutButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.logOutButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.logOutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.logOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logOutButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.logOutButton.ForeColor = System.Drawing.Color.Gainsboro;
+            this.logOutButton.Location = new System.Drawing.Point(0, 757);
+            this.logOutButton.Name = "logOutButton";
+            this.logOutButton.Size = new System.Drawing.Size(208, 75);
+            this.logOutButton.TabIndex = 11;
+            this.logOutButton.Text = "Log out";
+            this.logOutButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.logOutButton.UseVisualStyleBackColor = true;
+            this.logOutButton.Click += new System.EventHandler(this.logOutButton_Click);
             // 
             // RoomReservationSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.ClientSize = new System.Drawing.Size(1532, 853);
+            this.ClientSize = new System.Drawing.Size(1532, 846);
             this.Controls.Add(this.panelDesktopPane);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
@@ -388,5 +419,7 @@ namespace RoomReservationSystem.UserInterface
         private System.Windows.Forms.Panel panelDesktopPane;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonMinimize;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button logOutButton;
     }
 }

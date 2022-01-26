@@ -35,38 +35,39 @@ namespace RoomReservationSystem.UserInterface
 
         
 
-        private void SetButtonsVisibility(bool logProfile = true, bool reservations = false, bool newReservation = false, bool newClient = false, bool newRoom = false,
+        private void SetButtonsVisibility(bool logProfile = true, bool logOut = false, bool reservations = false, bool newReservation = false, bool newClient = false, bool newRoom = false,
             bool newWorker = false, bool searchClients = false, bool searchWorkers = false)
         {
-            buttonLogInProfile.Visible = logProfile;
-            buttonReservations.Visible = reservations;
-            buttonNewReservation.Visible = newReservation;
-            buttonNewClient.Visible = newClient;
-            buttonNewRoom.Visible = newRoom;
-            buttonNewWorker.Visible = newWorker;
-            buttonSearchClients.Visible = searchClients;
-            buttonSearchWorkers.Visible = searchWorkers;
+            this.buttonLogInProfile.Visible = logProfile;
+            this.logOutButton.Visible = logOut;
+            this.buttonReservations.Visible = reservations;
+            this.buttonNewReservation.Visible = newReservation;
+            this.buttonNewClient.Visible = newClient;
+            this.buttonNewRoom.Visible = newRoom;
+            this.buttonNewWorker.Visible = newWorker;
+            this.buttonSearchClients.Visible = searchClients;
+            this.buttonSearchWorkers.Visible = searchWorkers;
         }
 
         public void EnableGuestPermissions()
         {
-            buttonLogInProfile.Text = "Log in";
+            this.buttonLogInProfile.Text = "Log in";
             SetButtonsVisibility();
         }
         public void EnableClientPermissions()
         {
-            buttonLogInProfile.Text = "Profile";
-            SetButtonsVisibility();
+            this.buttonLogInProfile.Text = "Profile";
+            SetButtonsVisibility(true, true);
         }
         public void EnableWorkerPermissions()
         {
-            buttonLogInProfile.Text = "Profile";
-            SetButtonsVisibility(true, true, true, false, false, true, false);
+            this.buttonLogInProfile.Text = "Profile";
+            SetButtonsVisibility(true, true, true, true, false, false, true, false);
         }
 
         public void EnableAdminPermissions()
         {
-            SetButtonsVisibility(false, true, true, true, true, true, true, true);
+            SetButtonsVisibility(false, true, true, true, true, true, true, true, true);
         }
 
         private Color SelectThemeColor()
@@ -133,7 +134,7 @@ namespace RoomReservationSystem.UserInterface
             //OpenChildForm(new FormLogIn(), sender, "LOG IN");
             //brak informacji o typie użytkownika
             OpenChildForm(new FormProfile(userManager), sender, "PROFILE");
-            
+
         }
 
         private void buttonSearchRooms_Click(object sender, EventArgs e)
@@ -199,5 +200,9 @@ namespace RoomReservationSystem.UserInterface
             Application.Exit();
         }
 
+        private void logOutButton_Click(object sender, EventArgs e)
+        {
+            // TODO: logging out
+        }
     }
 }
