@@ -12,6 +12,7 @@ using RoomReservationSyster;
 
 namespace RoomReservationSystem.UserInterface
 {
+    // this.considerDateCheckBox.Checked <= pobieranie boola z checkboxa
     public partial class FormSearchRooms : Form
     {
         public FormSearchRooms()
