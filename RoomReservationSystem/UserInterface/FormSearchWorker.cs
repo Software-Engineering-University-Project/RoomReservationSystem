@@ -63,8 +63,9 @@ namespace RoomReservationSystem.UserInterface
             {
                 if (listViewWorkers.Items[i].Selected)
                 {
-                    int id = Int32.Parse(listViewWorkers.Items[i].SubItems[0].Text);
+                    int id = int.Parse(listViewWorkers.Items[i].SubItems[0].Text);
                     Searcher.DeleteUser(id);
+                    MessageBox.Show(id.ToString());
                     listViewWorkers.Items[i].Remove();
                     i--;
                 }

@@ -147,8 +147,17 @@ namespace RoomReservationSystem
                             while (dataReader.Read())
                             {
                                 Worker worker = new Worker();
-                                worker.name = (string) dataReader["FirstName"];
-                                worker.surname = (string) dataReader["LastName"];
+                                worker.name = (string)dataReader["FirstName"];
+                                worker.surname = (string)dataReader["LastName"];
+                                worker.id = (int)dataReader["PersonID"];
+                                worker.address.country = (string)dataReader["Country"];
+                                worker.address.city = (string)dataReader["City"];
+                                worker.address.apartmentNumber = (string)dataReader["ApartamentNumber"];
+                                worker.address.postCode = (string)dataReader["PostCode"];
+                                worker.address.propertyNumber = (string)dataReader["PropertyNumber"];
+                                worker.address.street = (string)dataReader["Street"];
+                                worker.logon.email = (string)dataReader["EmailAddress"];
+                                worker.logon.phoneNumber = (string)dataReader["PhoneNumber"];
                                 people.Add(worker);
                             }
                         }
