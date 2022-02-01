@@ -96,7 +96,10 @@ namespace RoomReservationSystem.UserInterface
         
         private void deleteRoomButton_Click(object sender, EventArgs e)
         {
-            _roomManager.Delete(_room.id);
+            bool shouldDelete = ConfirmationPopup.ShowDialog("Do you confirm room deletion?");
+
+            if (shouldDelete)
+                _roomManager.Delete(_room.id);
         }
 
         private void addCommentButton_Click(object sender, EventArgs e)

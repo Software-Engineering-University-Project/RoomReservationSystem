@@ -20,7 +20,7 @@ namespace RoomReservationSystem.UserInterface
             InitializeComponent();
             _userManager = userManger;
             _userManager.getManagedUser(3);
-            if(_userManager.managedUser != null)
+            if (_userManager.managedUser != null)
             {
                 initializeLabels();
             }
@@ -47,11 +47,11 @@ namespace RoomReservationSystem.UserInterface
 
         public void initializeLabels()
         {
-            this.nameLabel.Text = _userManager.managedUser.name + " "+ _userManager.managedUser.surname;
+            this.nameLabel.Text = _userManager.managedUser.name + " " + _userManager.managedUser.surname;
             this.phoneNumLabel.Text = _userManager.managedUser.logon.phoneNumber;
             this.emailLabel.Text = _userManager.managedUser.logon.email;
             this.dateOfBirthLabel.Text = _userManager.managedUser.BirthDate.ToString();
-            this.addressLabel.Text = _userManager.managedUser.address.street +" "+ _userManager.managedUser.address.propertyNumber + "/"+ _userManager.managedUser.address.apartmentNumber;
+            this.addressLabel.Text = _userManager.managedUser.address.street + " " + _userManager.managedUser.address.propertyNumber + "/" + _userManager.managedUser.address.apartmentNumber;
             this.cityLabel.Text = _userManager.managedUser.address.city;
             this.countryLabel.Text = _userManager.managedUser.address.country;
             this.postCodeLabel.Text = _userManager.managedUser.address.postCode;
@@ -69,7 +69,13 @@ namespace RoomReservationSystem.UserInterface
 
         private void deleteProfileButton_Click(object sender, EventArgs e)
         {
-            //TODO: deleting a profile
+
+            bool shouldDelete = ConfirmationPopup.ShowDialog("Do you confirm profile deletion?");
+
+            if (shouldDelete)
+            {
+                //TODO: deleting a profile
+            }
         }
     }
 }

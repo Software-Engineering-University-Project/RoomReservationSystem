@@ -29,14 +29,14 @@ namespace RoomReservationSystem.UserInterface
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "aaaaaaaaaaaaaaaaa"}, -1, System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(123))))), new System.Drawing.Font("Calibri", 14F));
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "bbbbbb", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(123))))), new System.Drawing.Font("Calibri", 14F)),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "??????", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), new System.Drawing.Font("Calibri", 24F))}, -1);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "dddddddddddd"}, -1, System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(123))))), new System.Drawing.Font("Calibri", 14F));
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "cccccccc"}, -1, System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(123))))), new System.Drawing.Font("Calibri", 14F));
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -58,10 +58,10 @@ namespace RoomReservationSystem.UserInterface
             this.label9 = new System.Windows.Forms.Label();
             this.facilitiesList = new System.Windows.Forms.CheckedListBox();
             this.typesOfBedList = new System.Windows.Forms.CheckedListBox();
+            this.considerDateCheckBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.roomsList = new System.Windows.Forms.ListView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.considerDateCheckBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -293,7 +293,7 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.37037F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.62963F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 136F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Controls.Add(this.label7, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.priceFrom, 0, 0);
@@ -314,7 +314,7 @@ namespace RoomReservationSystem.UserInterface
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label7.Location = new System.Drawing.Point(124, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(7, 26);
+            this.label7.Size = new System.Drawing.Size(6, 26);
             this.label7.TabIndex = 0;
             this.label7.Text = "s";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -338,9 +338,9 @@ namespace RoomReservationSystem.UserInterface
             this.priceTo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.priceTo.Font = new System.Drawing.Font("Calibri", 12F);
             this.priceTo.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.priceTo.Location = new System.Drawing.Point(137, 3);
+            this.priceTo.Location = new System.Drawing.Point(136, 3);
             this.priceTo.Name = "priceTo";
-            this.priceTo.Size = new System.Drawing.Size(130, 25);
+            this.priceTo.Size = new System.Drawing.Size(131, 25);
             this.priceTo.TabIndex = 2;
             // 
             // label8
@@ -395,6 +395,17 @@ namespace RoomReservationSystem.UserInterface
             this.typesOfBedList.Size = new System.Drawing.Size(270, 88);
             this.typesOfBedList.TabIndex = 14;
             // 
+            // considerDateCheckBox
+            // 
+            this.considerDateCheckBox.AutoSize = true;
+            this.considerDateCheckBox.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.considerDateCheckBox.Location = new System.Drawing.Point(19, 190);
+            this.considerDateCheckBox.Name = "considerDateCheckBox";
+            this.considerDateCheckBox.Size = new System.Drawing.Size(138, 27);
+            this.considerDateCheckBox.TabIndex = 15;
+            this.considerDateCheckBox.Text = "Consider date";
+            this.considerDateCheckBox.UseVisualStyleBackColor = true;
+            // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 3;
@@ -420,10 +431,10 @@ namespace RoomReservationSystem.UserInterface
             this.roomsList.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.roomsList.HideSelection = false;
             this.roomsList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4});
             this.roomsList.Location = new System.Drawing.Point(22, 3);
             this.roomsList.Name = "roomsList";
             this.roomsList.Size = new System.Drawing.Size(872, 704);
@@ -432,17 +443,6 @@ namespace RoomReservationSystem.UserInterface
             this.roomsList.UseCompatibleStateImageBehavior = false;
             this.roomsList.View = System.Windows.Forms.View.Tile;
             this.roomsList.DoubleClick += new System.EventHandler(this.roomsList_DoubleClick);
-            // 
-            // considerDateCheckBox
-            // 
-            this.considerDateCheckBox.AutoSize = true;
-            this.considerDateCheckBox.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.considerDateCheckBox.Location = new System.Drawing.Point(19, 190);
-            this.considerDateCheckBox.Name = "considerDateCheckBox";
-            this.considerDateCheckBox.Size = new System.Drawing.Size(138, 27);
-            this.considerDateCheckBox.TabIndex = 15;
-            this.considerDateCheckBox.Text = "Consider date";
-            this.considerDateCheckBox.UseVisualStyleBackColor = true;
             // 
             // FormSearchRooms
             // 

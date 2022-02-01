@@ -59,16 +59,19 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonDeleteWorker_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < listViewWorkers.Items.Count; i++)
-            {
-                if (listViewWorkers.Items[i].Selected)
+            bool shouldDelete = ConfirmationPopup.ShowDialog("Do you confirm workers deletion?");
+
+            if (shouldDelete)
+                for (int i = 0; i < listViewWorkers.Items.Count; i++)
                 {
-                    int id = Int32.Parse(listViewWorkers.Items[i].SubItems[0].Text);
-                    Searcher.DeleteUser(id);
-                    listViewWorkers.Items[i].Remove();
-                    i--;
+                    if (listViewWorkers.Items[i].Selected)
+                    {
+                        int id = Int32.Parse(listViewWorkers.Items[i].SubItems[0].Text);
+                        Searcher.DeleteUser(id);
+                        listViewWorkers.Items[i].Remove();
+                        i--;
+                    }
                 }
-            }
         }
     }
 }
