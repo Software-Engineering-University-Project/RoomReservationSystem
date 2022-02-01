@@ -31,6 +31,7 @@ namespace RoomReservationSystem.UserInterface
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.reservationsHistoryButton = new System.Windows.Forms.Button();
             this.priceLabel = new System.Windows.Forms.Label();
             this.editRoomButton = new System.Windows.Forms.Button();
             this.deleteRoomButton = new System.Windows.Forms.Button();
@@ -55,7 +56,6 @@ namespace RoomReservationSystem.UserInterface
             this.reservateButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.reservationsHistoryButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -115,6 +115,22 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(282, 627);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // reservationsHistoryButton
+            // 
+            this.reservationsHistoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
+            this.reservationsHistoryButton.FlatAppearance.BorderSize = 0;
+            this.reservationsHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reservationsHistoryButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.reservationsHistoryButton.ForeColor = System.Drawing.Color.Gainsboro;
+            this.reservationsHistoryButton.Location = new System.Drawing.Point(3, 549);
+            this.reservationsHistoryButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
+            this.reservationsHistoryButton.Name = "reservationsHistoryButton";
+            this.reservationsHistoryButton.Size = new System.Drawing.Size(276, 56);
+            this.reservationsHistoryButton.TabIndex = 8;
+            this.reservationsHistoryButton.Text = "Reservations history";
+            this.reservationsHistoryButton.UseVisualStyleBackColor = false;
+            this.reservationsHistoryButton.Click += new System.EventHandler(this.reservationsHistoryButton_Click);
             // 
             // priceLabel
             // 
@@ -466,22 +482,6 @@ namespace RoomReservationSystem.UserInterface
             this.label7.Size = new System.Drawing.Size(92, 24);
             this.label7.TabIndex = 10;
             this.label7.Text = "Comment";
-            // 
-            // reservationsHistoryButton
-            // 
-            this.reservationsHistoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
-            this.reservationsHistoryButton.FlatAppearance.BorderSize = 0;
-            this.reservationsHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.reservationsHistoryButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.reservationsHistoryButton.ForeColor = System.Drawing.Color.Gainsboro;
-            this.reservationsHistoryButton.Location = new System.Drawing.Point(3, 549);
-            this.reservationsHistoryButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
-            this.reservationsHistoryButton.Name = "reservationsHistoryButton";
-            this.reservationsHistoryButton.Size = new System.Drawing.Size(276, 56);
-            this.reservationsHistoryButton.TabIndex = 8;
-            this.reservationsHistoryButton.Text = "Reservations history";
-            this.reservationsHistoryButton.UseVisualStyleBackColor = false;
-            this.reservationsHistoryButton.Click += new System.EventHandler(this.reservationsHistoryButton_Click);
             // 
             // FormRoom
             // 

@@ -26,6 +26,25 @@ namespace RoomReservationSystem.UserInterface
             }
         }
 
+        public void EnableClientPermissions()
+        {
+            SetComponentsVisibility(false);
+        }
+        public void EnableWorkerPermissions()
+        {
+            SetComponentsVisibility(false);
+        }
+
+        public void EnableAdminPermissions()
+        {
+            SetComponentsVisibility(true);
+        }
+        private void SetComponentsVisibility(bool deleteProfile = false)
+        {
+            this.deleteProfileButton.Visible = deleteProfile;
+            this.deleteProfileButton.Enabled = deleteProfile;
+        }
+
         public void initializeLabels()
         {
             this.nameLabel.Text = _userManager.managedUser.name + " "+ _userManager.managedUser.surname;
@@ -46,6 +65,11 @@ namespace RoomReservationSystem.UserInterface
         private void editProfileButton_Click(object sender, EventArgs e)
         {
             ViewManager.GetInstance().DisplayChildForm(new FormNewPerson(FormMode.Edit, false, _userManager));
+        }
+
+        private void deleteProfileButton_Click(object sender, EventArgs e)
+        {
+            //TODO: deleting a profile
         }
     }
 }
