@@ -80,6 +80,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Manager\ReservationManager.cs" />
     <Compile Include="Manager\manager.cs" />
     <Compile Include="Manager\roomManager.cs" />
     <Compile Include="Manager\userManager.cs" />
