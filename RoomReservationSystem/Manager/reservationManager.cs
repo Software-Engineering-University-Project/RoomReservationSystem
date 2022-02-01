@@ -96,10 +96,12 @@ namespace Manager
                         if (isRoom)
                         {
                             command.CommandText = "Search_Reservation_ByRoomID";
+                            command.Parameters.Add(new SqlParameter("@RoomID", clientId));
                         }
                         else
                         {
                             command.CommandText = "Search_Reservation_ByPersonID";
+                            command.Parameters.Add(new SqlParameter("@PersonID", clientId));
                         }
 
 
