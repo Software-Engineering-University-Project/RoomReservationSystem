@@ -203,7 +203,8 @@ namespace RoomReservationSystem.UserInterface
 
         private void logOutButton_Click(object sender, EventArgs e)
         {
-            // TODO: logging out
+            userManager.logout();
+            EnableGuestPermissions();
         }
     }
 }

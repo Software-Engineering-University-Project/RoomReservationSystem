@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Manager;
+using RoomReservationSyster;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,24 +15,34 @@ namespace RoomReservationSystem.UserInterface
 {
     public partial class FormMakeReservation : Form
     {
+        ReservationManager _reservationManager;
         public FormMakeReservation()
         {
             InitializeComponent();
+            _reservationManager = new ReservationManager();
+            
         }
 
 
         private void MakeReservation()
         {
-            //brak walidacji
+            
+            Regex regex = new Regex(@"^[0-9]+$");
             DateTime reservationFrom = dateFrom.Value;
             DateTime reservationTO = dateTo.Value;
             String userID = this.userId.Text;
             String roomID = this.roomId.Text;
-
+            if (regex.IsMatch(userID) && regex.IsMatch(roomID)) { 
+                Room room = Searcher.SearchRoomById(Int32.Parse(roomID));
             //wywołanie metody do tworzenia nowej rezerwacji
 
-        //    if dodane
-          //      ClearForm();
+                bool added = _reservationManager.add(room.price, Int32.Parse(userID), Int32.Parse(roomID),reservationFrom, reservationTO);
+                if (added)
+                {
+                    ClearForm();
+                }
+                
+            }
         }
 
         private void ClearForm()

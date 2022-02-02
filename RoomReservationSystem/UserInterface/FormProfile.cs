@@ -59,7 +59,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void displayHistoryButton_Click(object sender, EventArgs e)
         {
-            ViewManager.GetInstance().DisplayChildForm(new FormTableView(TableType.UserReservationsHistory));
+            ViewManager.GetInstance().DisplayChildForm(new FormTableView(TableType.UserReservationsHistory, _userManager.managedUser.id));
         }
 
         private void editProfileButton_Click(object sender, EventArgs e)
