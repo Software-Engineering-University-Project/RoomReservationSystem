@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Manager;
+using Reservations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,16 +14,20 @@ namespace RoomReservationSystem.UserInterface
 {
     public partial class FormTableView : Form
     {
+        ReservationManager _reservationManager;
+        int searchID;
         public FormTableView()
         {
             InitializeComponent();
-
+            _reservationManager = new ReservationManager();
+            searchID = 0;
         }
 
-        public FormTableView(TableType type)
+        public FormTableView(TableType type, int id)
         {
             InitializeComponent();
-
+            _reservationManager = new ReservationManager();
+            searchID = id;
             switch (type)
             {
                 case (TableType.UserReservationsHistory):
@@ -57,18 +63,25 @@ namespace RoomReservationSystem.UserInterface
         {
             // do zrobienia: kolumny: from, to, room id, person id
             // SetTableColumnsAndRows(, );
-
+            List<Reservation> reservlist = _reservationManager.displayReservations();
+            SetTableColumnsAndRows(reservlist.Count, 4);
             // table.Controls.Add() <- dodatnie kontrolki do odpowiedniego wiersza i kolumny, u nas to labele
+
         }
 
         public void InitializeTableWithClientReservationsHistory()
         {
             // do zrobienia: kolumny: from, to, room id/name, price
+            List<Reservation> reservlist = _reservationManager.getReservations(searchID, false);
+            SetTableColumnsAndRows(reservlist.Count, 4);
         }
 
         public void InitializeTableWithRoomHistory()
         {
+
             // do zrobienia: kolumny: from, to, room id/name, price
+            List<Reservation> reservlist = _reservationManager.getReservations(searchID, true);
+            SetTableColumnsAndRows(reservlist.Count, 4);
         }
     }
 }

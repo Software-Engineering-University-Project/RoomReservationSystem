@@ -1,4 +1,4 @@
-﻿using RoomReservationSystem.Reservation;
+﻿using Reservations;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Manager
 {
-    class ReservationManager : Manager
+    class ReservationManager : Manager<Reservation>
     {
-        public void delete(int reservationId)
+        public override void delete(int Id)
         {
             string provider = ConfigurationManager.AppSettings["provider"];
             string connectionString = ConfigurationManager.AppSettings["connectionString"];
@@ -32,7 +32,7 @@ namespace Manager
                         command.Connection = connection;
                         command.CommandText = "Delete_Reservation_ById";
 
-                        command.Parameters.Add(new SqlParameter("@Id", reservationId));
+                        command.Parameters.Add(new SqlParameter("@Id", Id));
 
                         command.ExecuteNonQuery();
                     }
@@ -40,9 +40,9 @@ namespace Manager
             }
         }
 
-        public void add(float pricePerNight, int userId, int roomId, DateTime checkInDate, DateTime checkOutDate)
+        public bool add(double pricePerNight, int userId, int roomId, DateTime checkInDate, DateTime checkOutDate)
         {
-            float totalPrize = pricePerNight * (checkOutDate - checkInDate).Days;
+            double totalPrize = pricePerNight * (checkOutDate - checkInDate).Days;
             string provider = ConfigurationManager.AppSettings["provider"];
             string connectionString = ConfigurationManager.AppSettings["connectionString"];
             DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
@@ -50,7 +50,6 @@ namespace Manager
             {
                 if (connection != null)
                 {
-                    int id = 0;
                     connection.ConnectionString = connectionString;
                     connection.Open();
                     DbCommand command = factory.CreateCommand();
@@ -71,10 +70,61 @@ namespace Manager
 
 
                         command.ExecuteNonQuery();
+                        return true;
                     }
+                    return false;
                 }
+                return false;
             }
         }
+
+        public List<Reservation> displayReservations() { 
+            List<Reservation> reservations = new List<Reservation>();
+            string provider = ConfigurationManager.AppSettings["provider"];
+            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+            DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                if (connection != null)
+                {
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+                    DbCommand command = factory.CreateCommand();
+                    if (command != null)
+                    {
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.Connection = connection;
+                       
+                        command.CommandText = "Display_Reservation_ByRoomID";
+                           
+                        
+
+
+
+                        using (DbDataReader dataReader = command.ExecuteReader())
+                        {
+                            while (dataReader.Read())
+                            {
+                                Reservation reservation = new Reservation();
+                                reservation.id = (int)dataReader["ReservationId"];
+                                reservation.reservationDate = (DateTime)dataReader["ReservationDate"];
+                                reservation.roomId = (int)dataReader["RoomId"];
+                                reservation.clientId = (int)dataReader["PersonId"];
+                                reservation.price = (float)dataReader["TotalPrice"];
+                                reservation.checkInDate = (DateTime)dataReader["BeginDate"];
+                                reservation.checkOutDate = (DateTime)dataReader["EndDate"];
+                                reservations.Add(reservation);
+                            }
+                        }
+                    }
+
+                }
+                return reservations;
+            }
+            
+        
+        }
+
 
         public List<Reservation> getReservations(int clientId, bool isRoom)
         {

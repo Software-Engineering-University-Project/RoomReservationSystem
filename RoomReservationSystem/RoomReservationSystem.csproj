@@ -85,6 +85,7 @@
     <Compile Include="Manager\roomManager.cs" />
     <Compile Include="Manager\userManager.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Reservation\Reservation.cs" />
     <Compile Include="Room\BedType.cs" />
     <Compile Include="Room\Meals.cs" />
     <Compile Include="Room\Room.cs" />
