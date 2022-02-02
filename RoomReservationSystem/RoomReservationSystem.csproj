@@ -150,6 +150,7 @@
     <Compile Include="UserInterface\FormTableView.Designer.cs">
       <DependentUpon>FormTableView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserInterface\InformationPopup.cs" />
     <Compile Include="UserInterface\RoomReservationSystem.cs">
       <SubType>Form</SubType>
     </Compile>
