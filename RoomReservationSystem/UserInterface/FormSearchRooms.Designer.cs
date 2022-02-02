@@ -304,8 +304,8 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.37037F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.62963F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 136F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Controls.Add(this.label7, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.priceFrom, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.priceTo, 2, 0);
@@ -327,7 +327,7 @@ namespace RoomReservationSystem.UserInterface
             this.label7.Location = new System.Drawing.Point(93, 0);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(5, 22);
+            this.label7.Size = new System.Drawing.Size(6, 26);
             this.label7.TabIndex = 0;
             this.label7.Text = "s";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -352,10 +352,9 @@ namespace RoomReservationSystem.UserInterface
             this.priceTo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.priceTo.Font = new System.Drawing.Font("Calibri", 12F);
             this.priceTo.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.priceTo.Location = new System.Drawing.Point(102, 2);
-            this.priceTo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.priceTo.Location = new System.Drawing.Point(136, 3);
             this.priceTo.Name = "priceTo";
-            this.priceTo.Size = new System.Drawing.Size(99, 20);
+            this.priceTo.Size = new System.Drawing.Size(131, 25);
             this.priceTo.TabIndex = 2;
             // 
             // label8
@@ -418,10 +417,9 @@ namespace RoomReservationSystem.UserInterface
             // 
             this.considerDateCheckBox.AutoSize = true;
             this.considerDateCheckBox.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.considerDateCheckBox.Location = new System.Drawing.Point(14, 153);
-            this.considerDateCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.considerDateCheckBox.Location = new System.Drawing.Point(19, 190);
             this.considerDateCheckBox.Name = "considerDateCheckBox";
-            this.considerDateCheckBox.Size = new System.Drawing.Size(113, 22);
+            this.considerDateCheckBox.Size = new System.Drawing.Size(138, 27);
             this.considerDateCheckBox.TabIndex = 15;
             this.considerDateCheckBox.Text = "Consider date";
             this.considerDateCheckBox.UseVisualStyleBackColor = true;
@@ -456,8 +454,7 @@ namespace RoomReservationSystem.UserInterface
             listViewItem2,
             listViewItem3,
             listViewItem4});
-            this.roomsList.Location = new System.Drawing.Point(16, 2);
-            this.roomsList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.roomsList.Location = new System.Drawing.Point(22, 3);
             this.roomsList.Name = "roomsList";
             this.roomsList.Size = new System.Drawing.Size(655, 574);
             this.roomsList.TabIndex = 0;
