@@ -125,7 +125,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void reservationsHistoryButton_Click(object sender, EventArgs e)
         {
-            ViewManager.GetInstance().DisplayChildForm(new FormTableView(TableType.UserReservationsHistory));
+            ViewManager.GetInstance().DisplayChildForm(new FormTableView(TableType.UserReservationsHistory, _room.id));
         }
     }
 }
