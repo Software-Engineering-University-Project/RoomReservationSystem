@@ -141,6 +141,7 @@ namespace RoomReservationSystem.UserInterface
             this.maxNumGuests.Text = room.maxGuestNumber.ToString();
             this.roomName.Text = room.roomNumber;
             this.standardComboBox.SelectedIndex = (int)room.roomStandard;
+            this.comment.Text = room.comment;
             
             foreach(var bed in room.beds)
             {

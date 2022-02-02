@@ -97,7 +97,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void addCommentButton_Click(object sender, EventArgs e)
         {
-            // wpisanie komentarza do modelu
+            _roomManager.CurrentRoom.comment = this.commentText.Text;
         }
 
         private void reservateButton_Click(object sender, EventArgs e)
