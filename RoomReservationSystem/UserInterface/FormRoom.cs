@@ -82,8 +82,6 @@ namespace RoomReservationSystem.UserInterface
             this.reservateButton.Visible = reservate;
             this.reservateButton.Enabled = reservate;
             this.commentText.Visible = comment;
-            this.isOutOfService.Visible = outOfService;
-            this.isOutOfService.Enabled = outOfService;
             this.deleteRoomButton.Visible = delete;
             this.deleteRoomButton.Enabled = delete;
             this.editRoomButton.Visible = edit;
