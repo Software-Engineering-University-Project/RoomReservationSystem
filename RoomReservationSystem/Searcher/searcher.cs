@@ -68,6 +68,15 @@ namespace RoomReservationSystem
                                 client.name = (string) dataReader["FirstName"];
                                 client.surname = (string) dataReader["LastName"];
                                 client.id = (int) dataReader["PersonID"];
+                                client.address.country = (string)dataReader["Country"];
+                                client.address.city = (string)dataReader["City"];
+                                client.address.apartmentNumber = (string)dataReader["ApartamentNumber"];
+                                client.address.postCode = (string)dataReader["PostCode"];
+                                client.address.propertyNumber = (string)dataReader["PropertyNumber"];
+                                client.address.street = (string)dataReader["Street"];
+                                client.logon.email = (string)dataReader["EmailAddress"];
+                                client.logon.phoneNumber = (string)dataReader["PhoneNumber"];
+                               
                                 people.Add(client);
                             }
                         }
@@ -138,8 +147,17 @@ namespace RoomReservationSystem
                             while (dataReader.Read())
                             {
                                 Worker worker = new Worker();
-                                worker.name = (string) dataReader["FirstName"];
-                                worker.surname = (string) dataReader["LastName"];
+                                worker.name = (string)dataReader["FirstName"];
+                                worker.surname = (string)dataReader["LastName"];
+                                worker.id = (int)dataReader["PersonID"];
+                                worker.address.country = (string)dataReader["Country"];
+                                worker.address.city = (string)dataReader["City"];
+                                worker.address.apartmentNumber = (string)dataReader["ApartamentNumber"];
+                                worker.address.postCode = (string)dataReader["PostCode"];
+                                worker.address.propertyNumber = (string)dataReader["PropertyNumber"];
+                                worker.address.street = (string)dataReader["Street"];
+                                worker.logon.email = (string)dataReader["EmailAddress"];
+                                worker.logon.phoneNumber = (string)dataReader["PhoneNumber"];
                                 people.Add(worker);
                             }
                         }
@@ -148,6 +166,33 @@ namespace RoomReservationSystem
             }
 
             return people;
+        }
+        public static void DeleteUser(int id)
+        {
+            string provider = ConfigurationManager.AppSettings["provider"];
+
+            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+
+            DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
+
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                if (connection != null)
+                {
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+
+                    DbCommand command = factory.CreateCommand();
+                    if (command != null)
+                    {
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.Connection = connection;
+                        command.CommandText = "DeleteUser";
+                        command.Parameters.Add(new SqlParameter("@id", id));
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
         }
 
         public static List<Room> SearchRooms(DateTime beginDate, DateTime endDate, List<RoomFacilities> facilitiesList,

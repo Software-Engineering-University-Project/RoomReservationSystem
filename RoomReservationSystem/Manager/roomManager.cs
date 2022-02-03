@@ -140,16 +140,83 @@ namespace RoomReservationSyster
 
 					foreach (var meal in meals)
 					{
-						DbCommand addMeals = factory.CreateCommand();
-						if (addMeals != null)
+						validation.CommandType = System.Data.CommandType.StoredProcedure;
+						validation.Connection = connection;
+						validation.CommandText = "Check_Unique_Values_Room";
+
+						validation.Parameters.Add(new SqlParameter("@roomNumber", roomNumber));
+
+						validation.Parameters.Add(new SqlParameter("@ReturnValue", SqlDbType.Bit));
+						validation.Parameters["@ReturnValue"].Direction = ParameterDirection.Output;
+
+						validation.ExecuteNonQuery();
+						bool check = Convert.ToBoolean(validation.Parameters["@ReturnValue"].Value);
+
+						if (check == false)
 						{
-							addMeals.CommandType = System.Data.CommandType.StoredProcedure;
-							addMeals.Connection = connection;
-							addMeals.CommandText = "Insert_MealsTypeConnection";
-							addMeals.Parameters.Add(new SqlParameter("@RoomId", roomId));
-							addMeals.Parameters.Add(new SqlParameter("@MealTypeID", (int) meal + 1));
-							addMeals.ExecuteNonQuery();
+							DbCommand command = factory.CreateCommand();
+							if (command != null)
+							{
+								command.CommandType = System.Data.CommandType.StoredProcedure;
+								command.Connection = connection;
+								command.CommandText = "Insert_Rooms";
+								command.Parameters.Add(new SqlParameter("@RoomPrice", price));
+								command.Parameters.Add(new SqlParameter("@RoomSquareMetrage", squareMeterage));
+								command.Parameters.Add(new SqlParameter("@RoomStandard", standard));
+								command.Parameters.Add(new SqlParameter("@RoomMaxGuestNumber", maxGuest));
+								command.Parameters.Add(new SqlParameter("@RoomNumber", roomNumber));
+								command.Parameters.Add(new SqlParameter("@ReturnValue", SqlDbType.Int));
+								command.Parameters["@ReturnValue"].Direction = ParameterDirection.Output;
+								command.ExecuteNonQuery();
+								roomId = (int)command.Parameters["@ReturnValue"].Value;
+							}
+
+							foreach (var bed in beds)
+							{
+								DbCommand addBeds = factory.CreateCommand();
+								if (addBeds != null)
+								{
+									addBeds.CommandType = System.Data.CommandType.StoredProcedure;
+									addBeds.Connection = connection;
+									addBeds.CommandText = "Insert_BedTypesConnection";
+									addBeds.Parameters.Add(new SqlParameter("@RoomId", roomId));
+									addBeds.Parameters.Add(new SqlParameter("@BedDTypeID", (int)bed + 1));
+									addBeds.ExecuteNonQuery();
+								}
+							}
+
+							foreach (var facility in facilities)
+							{
+								DbCommand addFacilities = factory.CreateCommand();
+								if (addFacilities != null)
+								{
+
+									addFacilities.CommandType = System.Data.CommandType.StoredProcedure;
+									addFacilities.Connection = connection;
+									addFacilities.CommandText = "Insert_RoomFacilitiesConnection";
+									addFacilities.Parameters.Add(new SqlParameter("@RoomId", roomId));
+									addFacilities.Parameters.Add(new SqlParameter("@RoomFacilityID", (int)facility + 1));
+									addFacilities.ExecuteNonQuery();
+								}
+							}
+							foreach (var meal in meals)
+							{
+								DbCommand addMeals = factory.CreateCommand();
+								if (addMeals != null)
+								{
+									addMeals.CommandType = System.Data.CommandType.StoredProcedure;
+									addMeals.Connection = connection;
+									addMeals.CommandText = "Insert_MealsTypeConnection";
+									addMeals.Parameters.Add(new SqlParameter("@RoomId", roomId));
+									addMeals.Parameters.Add(new SqlParameter("@MealTypeID", (int)meal + 1));
+									addMeals.ExecuteNonQuery();
+								}
+							}
 						}
+                        else
+                        {
+							return false;
+                        }
 					}
 					
 					connection.Close();
@@ -258,7 +325,6 @@ namespace RoomReservationSyster
 					bedDelete.ExecuteNonQuery();
 				}
 			}
-
 			foreach (Meals meal in mealsToAdd)
 			{
 				DbCommand mealInsert = factory.CreateCommand();
