@@ -8,6 +8,8 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Manager;
+using Reservations;
 using RoomReservationSyster;
 
 namespace RoomReservationSystem.UserInterface
@@ -15,15 +17,7 @@ namespace RoomReservationSystem.UserInterface
     // this.considerDateCheckBox.Checked <= pobieranie boola z checkboxa
     public partial class FormSearchRooms : Form
     {
-        // public FormSearchRooms()
-        // {
-        //     InitializeComponent();
-        //     FillFacilitiesList();
-        //     FillGuestComboBox();
-        //     FillTypesOfBedList();
-        //     roomsList.Clear();
-        // }
-
+        private ReservationManager _reservationManager
         private RoomManager _roomManager;
         public FormSearchRooms(RoomManager roomManager)
         {
@@ -33,6 +27,7 @@ namespace RoomReservationSystem.UserInterface
             FillGuestComboBox();
             FillTypesOfBedList();
             roomsList.Clear();
+            _reservationManager = new ReservationManager();
         }
 
         private void buttonApplyFilters_Click(object sender, EventArgs e)
@@ -70,9 +65,22 @@ namespace RoomReservationSystem.UserInterface
             }
             List<Room> rooms = Searcher.SearchRooms(dateFrom, dateTo, selectedFacilities,
                 priceMin, priceMax, guests, false);
+                
             foreach (Room r in rooms)
             {
-                roomsList.Items.Add(r.id.ToString());
+                List<Reservation> reservations = _reservationManager.getReservations(r.id, true);
+                bool isOccupied = false;
+                foreach (Reservation re in reservations)
+                {
+                    if ((dateFrom > re.checkInDate ? dateFrom : re.checkInDate) <= (dateTo < re.checkOutDate ? dateTo : re.checkOutDate))
+                    {
+                        isOccupied = true;
+                    }
+                }
+                if (!isOccupied)
+                {
+                    roomsList.Items.Add(r.id.ToString());
+                }
             }
         }
 

@@ -63,36 +63,41 @@ namespace RoomReservationSystem.UserInterface
         }
         public void EnableClientPermissions()
         {
-            SetComponentsVisibility(true, false, false, false, false, false);
+            SetComponentsVisibility(true, false, false, false, false, false, false);
         }
         public void EnableWorkerPermissions()
         {
-            SetComponentsVisibility(true, true, true, false, false, false);
+            SetComponentsVisibility(true, true, true, false, false, false, true);
         }
 
         public void EnableAdminPermissions()
         {
-            SetComponentsVisibility(true, true, true, true, true, true);
+            SetComponentsVisibility(true, true, true, true, true, true, true);
         }
         private void SetComponentsVisibility(bool reservate = false, bool comment = false, 
-            bool outOfService = false, bool delete = false, bool edit = false, bool editableValues = false)
+            bool outOfService = false, bool delete = false, bool edit = false, bool editableValues = false, bool reservationHistory = false)
         {
-            reservateButton.Visible = reservate;
-            reservateButton.Enabled = reservate;
-            addCommentButton.Visible = comment;
-            addCommentButton.Enabled = comment;
-            commentText.Visible = comment;
-            isOutOfService.Visible = outOfService;
-            isOutOfService.Enabled = outOfService;
-            deleteRoomButton.Visible = delete;
-            deleteRoomButton.Enabled = delete;
-            editRoomButton.Visible = edit;
-            editRoomButton.Enabled = edit;
+            this.reservateButton.Visible = reservate;
+            this.reservateButton.Enabled = reservate;
+            this.addCommentButton.Visible = comment;
+            this.addCommentButton.Enabled = comment;
+            this.commentText.Visible = comment;
+            this.isOutOfService.Visible = outOfService;
+            this.isOutOfService.Enabled = outOfService;
+            this.deleteRoomButton.Visible = delete;
+            this.deleteRoomButton.Enabled = delete;
+            this.editRoomButton.Visible = edit;
+            this.editRoomButton.Enabled = edit;
+            this.reservationsHistoryButton.Visible = reservationHistory;
+            this.reservationsHistoryButton.Enabled = reservationHistory;
         }
         
         private void deleteRoomButton_Click(object sender, EventArgs e)
         {
-            _roomManager.Delete(_roomManager.CurrentRoom.id);
+            bool shouldDelete = ConfirmationPopup.ShowDialog("Do you confirm room deletion?");
+
+            if (shouldDelete)
+                _roomManager.Delete(_room.id);
         }
 
         private void addCommentButton_Click(object sender, EventArgs e)
@@ -114,6 +119,11 @@ namespace RoomReservationSystem.UserInterface
         private void editRoomButton_Click(object sender, EventArgs e)
         {
             ViewManager.GetInstance().DisplayChildForm(new FormNewRoom(_roomManager, FormMode.Edit));
+        }
+
+        private void reservationsHistoryButton_Click(object sender, EventArgs e)
+        {
+            ViewManager.GetInstance().DisplayChildForm(new FormTableView(TableType.UserReservationsHistory, _room.id));
         }
     }
 }

@@ -60,7 +60,10 @@ namespace RoomReservationSystem.UserInterface
 
         private void button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < listViewClients.Items.Count; i++)
+            bool shouldDelete = ConfirmationPopup.ShowDialog("Do you confirm clients deletion?");
+
+            if (shouldDelete)
+                for (int i = 0; i < listViewClients.Items.Count; i++)
             {
                 if (listViewClients.Items[i].Selected)
                 {

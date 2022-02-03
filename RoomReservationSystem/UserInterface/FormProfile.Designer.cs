@@ -32,7 +32,6 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.editProfileButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,6 +47,8 @@ namespace RoomReservationSystem.UserInterface
             this.phoneNumLabel = new System.Windows.Forms.Label();
             this.dateOfBirthLabel = new System.Windows.Forms.Label();
             this.displayHistoryButton = new System.Windows.Forms.Button();
+            this.editProfileButton = new System.Windows.Forms.Button();
+            this.deleteProfileButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,12 +80,13 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel1.Controls.Add(this.dateOfBirthLabel, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.displayHistoryButton, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.editProfileButton, 3, 9);
+            this.tableLayoutPanel1.Controls.Add(this.deleteProfileButton, 3, 10);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 11;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 132F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayoutPanel1.RowCount = 12;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 133F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
@@ -92,8 +94,9 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 171F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 274F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 127F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 114F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 224F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1351, 765);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -120,22 +123,6 @@ namespace RoomReservationSystem.UserInterface
             this.label2.Size = new System.Drawing.Size(91, 29);
             this.label2.TabIndex = 12;
             this.label2.Text = "Address";
-            // 
-            // editProfileButton
-            // 
-            this.editProfileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.editProfileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.editProfileButton.FlatAppearance.BorderSize = 0;
-            this.editProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editProfileButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.editProfileButton.ForeColor = System.Drawing.Color.Gainsboro;
-            this.editProfileButton.Location = new System.Drawing.Point(708, 554);
-            this.editProfileButton.Name = "editProfileButton";
-            this.editProfileButton.Size = new System.Drawing.Size(331, 100);
-            this.editProfileButton.TabIndex = 10;
-            this.editProfileButton.Text = "Edit profile";
-            this.editProfileButton.UseVisualStyleBackColor = false;
-            this.editProfileButton.Click += new System.EventHandler(this.editProfileButton_Click);
             // 
             // label3
             // 
@@ -329,13 +316,45 @@ namespace RoomReservationSystem.UserInterface
             this.displayHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.displayHistoryButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.displayHistoryButton.ForeColor = System.Drawing.Color.Gainsboro;
-            this.displayHistoryButton.Location = new System.Drawing.Point(205, 554);
+            this.displayHistoryButton.Location = new System.Drawing.Point(205, 534);
             this.displayHistoryButton.Name = "displayHistoryButton";
-            this.displayHistoryButton.Size = new System.Drawing.Size(330, 100);
+            this.displayHistoryButton.Size = new System.Drawing.Size(286, 76);
             this.displayHistoryButton.TabIndex = 27;
             this.displayHistoryButton.Text = "Reservation history";
             this.displayHistoryButton.UseVisualStyleBackColor = false;
             this.displayHistoryButton.Click += new System.EventHandler(this.displayHistoryButton_Click);
+            // 
+            // editProfileButton
+            // 
+            this.editProfileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.editProfileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.editProfileButton.FlatAppearance.BorderSize = 0;
+            this.editProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editProfileButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.editProfileButton.ForeColor = System.Drawing.Color.Gainsboro;
+            this.editProfileButton.Location = new System.Drawing.Point(708, 534);
+            this.editProfileButton.Name = "editProfileButton";
+            this.editProfileButton.Size = new System.Drawing.Size(291, 76);
+            this.editProfileButton.TabIndex = 10;
+            this.editProfileButton.Text = "Edit profile";
+            this.editProfileButton.UseVisualStyleBackColor = false;
+            this.editProfileButton.Click += new System.EventHandler(this.editProfileButton_Click);
+            // 
+            // deleteProfileButton
+            // 
+            this.deleteProfileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.deleteProfileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.deleteProfileButton.FlatAppearance.BorderSize = 0;
+            this.deleteProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteProfileButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.deleteProfileButton.ForeColor = System.Drawing.Color.Gainsboro;
+            this.deleteProfileButton.Location = new System.Drawing.Point(708, 648);
+            this.deleteProfileButton.Name = "deleteProfileButton";
+            this.deleteProfileButton.Size = new System.Drawing.Size(291, 76);
+            this.deleteProfileButton.TabIndex = 28;
+            this.deleteProfileButton.Text = "Delete profile";
+            this.deleteProfileButton.UseVisualStyleBackColor = false;
+            this.deleteProfileButton.Click += new System.EventHandler(this.deleteProfileButton_Click);
             // 
             // FormProfile
             // 
@@ -373,7 +392,6 @@ namespace RoomReservationSystem.UserInterface
         private System.Windows.Forms.Label phoneNumLabel;
         private System.Windows.Forms.Label dateOfBirthLabel;
         private System.Windows.Forms.Button displayHistoryButton;
-
-        
+        private System.Windows.Forms.Button deleteProfileButton;
     }
 }

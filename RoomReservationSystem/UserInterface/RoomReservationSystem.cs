@@ -147,8 +147,8 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonReservations_Click(object sender, EventArgs e)
         {
-
-              OpenChildForm(new FormTableView(), sender, "RESERVATIONS");
+          
+                OpenChildForm(new FormTableView(), sender, "RESERVATIONS");
         }
 
         private void buttonNewReservation_Click(object sender, EventArgs e)
@@ -205,7 +205,9 @@ namespace RoomReservationSystem.UserInterface
 
         private void logOutButton_Click(object sender, EventArgs e)
         {
-            // TODO: logging out
+            userManager.logout();
+            EnableGuestPermissions();
+            OpenChildForm(new FormLogIn(), buttonLogInProfile, "LOG IN");
         }
     }
 }

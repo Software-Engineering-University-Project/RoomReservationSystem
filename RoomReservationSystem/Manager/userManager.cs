@@ -402,5 +402,11 @@ namespace Manager
             }
         }
 
+        public void logout()
+        {
+            currUser = null;
+            managedUser = null;
+        }
+
     }
 }
