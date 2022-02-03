@@ -59,7 +59,7 @@ namespace RoomReservationSystem.UserInterface
         public void EnableClientPermissions()
         {
             this.buttonLogInProfile.Text = "Profile";
-            SetButtonsVisibility(true, true);
+            SetButtonsVisibility(true, true, false, false, false);
         }
         public void EnableWorkerPermissions()
         {
