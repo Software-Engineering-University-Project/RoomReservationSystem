@@ -205,6 +205,7 @@ namespace RoomReservationSystem.UserInterface
         {
             userManager.logout();
             EnableGuestPermissions();
+            OpenChildForm(new FormLogIn(), buttonLogInProfile, "LOG IN");
         }
     }
 }
