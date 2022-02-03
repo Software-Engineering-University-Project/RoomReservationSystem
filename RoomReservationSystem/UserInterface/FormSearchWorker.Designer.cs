@@ -100,7 +100,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.59392F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.40608F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 253F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 211F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 212F));
             this.tableLayoutPanel3.Controls.Add(this.buttonDeleteWorker, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.comboBoxSearchWorker, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.textBoxSearchWorker, 3, 0);
@@ -154,7 +154,7 @@
             this.textBoxSearchWorker.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSearchWorker.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxSearchWorker.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBoxSearchWorker.Location = new System.Drawing.Point(653, 22);
+            this.textBoxSearchWorker.Location = new System.Drawing.Point(652, 22);
             this.textBoxSearchWorker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSearchWorker.Name = "textBoxSearchWorker";
             this.textBoxSearchWorker.Size = new System.Drawing.Size(219, 25);
@@ -170,7 +170,7 @@
             this.buttonSearchWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearchWorker.Font = new System.Drawing.Font("Calibri", 14F);
             this.buttonSearchWorker.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonSearchWorker.Location = new System.Drawing.Point(906, 15);
+            this.buttonSearchWorker.Location = new System.Drawing.Point(905, 15);
             this.buttonSearchWorker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSearchWorker.Name = "buttonSearchWorker";
             this.buttonSearchWorker.Size = new System.Drawing.Size(179, 38);
