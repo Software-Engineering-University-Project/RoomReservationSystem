@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Users;
 using RoomReservationSyster;
 
 namespace RoomReservationSystem.UserInterface
@@ -32,6 +33,7 @@ namespace RoomReservationSystem.UserInterface
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
             //do zrobienia: zmiana nazwy buttona logInProfile, na razie brakuje informacji o obecnym użytkowniku
+            EnableGuestPermissions();
             _userManager = new UserManager();
             _roomManager = new RoomManager();
         }
@@ -134,10 +136,15 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonLogInProfile_Click(object sender, EventArgs e)
         {//if ...
-            //OpenChildForm(new FormLogIn(), sender, "LOG IN");
-            //brak informacji o typie użytkownika
-            OpenChildForm(new FormProfile(_userManager), sender, "PROFILE");
-           
+            if (userManager.currUser == null)
+            {
+                OpenChildForm(new FormLogIn(this,sender, userManager), sender, "LOG IN");
+                //brak informacji o typie użytkownika
+
+            }
+            else { 
+                OpenChildForm(new FormProfile(userManager), sender, "PROFILE");
+            }
         }
 
         private void buttonSearchRooms_Click(object sender, EventArgs e)
@@ -203,6 +210,11 @@ namespace RoomReservationSystem.UserInterface
             Application.Exit();
         }
 
+        public void afterChangeUserOpenForm(object sender)
+        {
+            
+            OpenChildForm(new FormProfile(userManager), sender, "PROFILE");
+        }
         private void logOutButton_Click(object sender, EventArgs e)
         {
             userManager.logout();

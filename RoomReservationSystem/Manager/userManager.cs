@@ -16,7 +16,6 @@ namespace Manager
             currUser = null;
             managedUser = null;
         }
-
         public bool add(String firstName, String secondName, DateTime dateOfBirth, String phoneNum,
             String postCode, String city, String eMail, String street, String houseNum, String flatNum, String country, Boolean worker, String passWord)
         {
@@ -145,7 +144,7 @@ namespace Manager
             }
         }
 
-        public void getCurrUser(int id)
+        private void getCurrUser(int id)
         {
             string provider = ConfigurationManager.AppSettings["provider"];
             string connectionString = ConfigurationManager.AppSettings["connectionString"];

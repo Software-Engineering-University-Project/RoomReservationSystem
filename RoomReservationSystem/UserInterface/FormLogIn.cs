@@ -14,15 +14,20 @@ namespace RoomReservationSystem.UserInterface
 {
     public partial class FormLogIn : Form
     {
-        public FormLogIn()
+        public FormLogIn(RoomReservationSystem parentForm, object sender, UserManager userManager)
         {
             InitializeComponent();
             password.UseSystemPasswordChar = true;
             password.PasswordChar = '*';
+            _userManager = userManager;
+            _parent = parentForm;
+            _sender = sender;
         }
 
         private UserManager _userManager;
 
+        private RoomReservationSystem _parent;
+        private object _sender;
         //to delete
         private void FormLogIn_Load(object sender, EventArgs e)
         {
@@ -32,6 +37,23 @@ namespace RoomReservationSystem.UserInterface
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
             //login
+            _userManager.login(password.Text, login.Text);
+            if (_userManager.currUser == null)
+            {
+                _parent.EnableGuestPermissions();
+            }
+            else if(_userManager.currUser is Admin)
+            {
+                _parent.EnableAdminPermissions();
+            }
+            else if (_userManager.currUser is Worker)
+            {
+                _parent.EnableWorkerPermissions();
+            }else if(_userManager.currUser is Client)
+            {
+                _parent.EnableClientPermissions();
+            }
+            _parent.afterChangeUserOpenForm(_sender);
         }
     }
 }
