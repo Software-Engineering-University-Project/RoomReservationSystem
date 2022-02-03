@@ -126,7 +126,7 @@ namespace Manager
         }
 
 
-        public List<Reservation> getReservations(int clientId, bool isRoom)
+        public List<Reservation> getReservations(int Id, bool isRoom)
         {
             List<Reservation> reservations = new List<Reservation>();
             string provider = ConfigurationManager.AppSettings["provider"];
@@ -146,12 +146,12 @@ namespace Manager
                         if (isRoom)
                         {
                             command.CommandText = "Search_Reservation_ByRoomID";
-                            command.Parameters.Add(new SqlParameter("@RoomID", clientId));
+                            command.Parameters.Add(new SqlParameter("@RoomID", Id));
                         }
                         else
                         {
                             command.CommandText = "Search_Reservation_ByPersonID";
-                            command.Parameters.Add(new SqlParameter("@PersonID", clientId));
+                            command.Parameters.Add(new SqlParameter("@PersonID", Id));
                         }
 
 

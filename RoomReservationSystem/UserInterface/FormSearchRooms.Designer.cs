@@ -82,7 +82,7 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel3.Font = new System.Drawing.Font("Calibri", 24F);
             this.tableLayoutPanel3.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
@@ -117,7 +117,7 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel1.Controls.Add(this.considerDateCheckBox, 1, 9);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(33, 21);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 24;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
@@ -157,7 +157,7 @@ namespace RoomReservationSystem.UserInterface
             this.dateTo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateTo.Font = new System.Drawing.Font("Calibri", 12F);
             this.dateTo.Location = new System.Drawing.Point(14, 110);
-            this.dateTo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTo.Margin = new System.Windows.Forms.Padding(2);
             this.dateTo.Name = "dateTo";
             this.dateTo.Size = new System.Drawing.Size(203, 27);
             this.dateTo.TabIndex = 3;
@@ -170,7 +170,7 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel2.Controls.Add(this.buttonApplyFilters, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(14, 511);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
@@ -222,7 +222,7 @@ namespace RoomReservationSystem.UserInterface
             this.dateFrom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateFrom.Font = new System.Drawing.Font("Calibri", 12F);
             this.dateFrom.Location = new System.Drawing.Point(14, 54);
-            this.dateFrom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateFrom.Margin = new System.Windows.Forms.Padding(2);
             this.dateFrom.Name = "dateFrom";
             this.dateFrom.Size = new System.Drawing.Size(203, 27);
             this.dateFrom.TabIndex = 2;
@@ -265,7 +265,7 @@ namespace RoomReservationSystem.UserInterface
             this.comboBoxGuestsNum.ForeColor = System.Drawing.Color.Gainsboro;
             this.comboBoxGuestsNum.FormattingEnabled = true;
             this.comboBoxGuestsNum.Location = new System.Drawing.Point(14, 203);
-            this.comboBoxGuestsNum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxGuestsNum.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxGuestsNum.Name = "comboBoxGuestsNum";
             this.comboBoxGuestsNum.Size = new System.Drawing.Size(203, 27);
             this.comboBoxGuestsNum.TabIndex = 6;
@@ -304,14 +304,14 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.37037F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.62963F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 136F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Controls.Add(this.label7, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.priceFrom, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.priceTo, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(14, 360);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -324,10 +324,10 @@ namespace RoomReservationSystem.UserInterface
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Calibri", 18F);
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(93, 0);
+            this.label7.Location = new System.Drawing.Point(61, 0);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(6, 26);
+            this.label7.Size = new System.Drawing.Size(2, 22);
             this.label7.TabIndex = 0;
             this.label7.Text = "s";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -340,9 +340,9 @@ namespace RoomReservationSystem.UserInterface
             this.priceFrom.Font = new System.Drawing.Font("Calibri", 12F);
             this.priceFrom.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.priceFrom.Location = new System.Drawing.Point(2, 2);
-            this.priceFrom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.priceFrom.Margin = new System.Windows.Forms.Padding(2);
             this.priceFrom.Name = "priceFrom";
-            this.priceFrom.Size = new System.Drawing.Size(87, 20);
+            this.priceFrom.Size = new System.Drawing.Size(55, 20);
             this.priceFrom.TabIndex = 1;
             // 
             // priceTo
@@ -352,9 +352,9 @@ namespace RoomReservationSystem.UserInterface
             this.priceTo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.priceTo.Font = new System.Drawing.Font("Calibri", 12F);
             this.priceTo.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.priceTo.Location = new System.Drawing.Point(136, 3);
+            this.priceTo.Location = new System.Drawing.Point(68, 3);
             this.priceTo.Name = "priceTo";
-            this.priceTo.Size = new System.Drawing.Size(131, 25);
+            this.priceTo.Size = new System.Drawing.Size(132, 20);
             this.priceTo.TabIndex = 2;
             // 
             // label8
@@ -394,7 +394,7 @@ namespace RoomReservationSystem.UserInterface
             this.facilitiesList.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.facilitiesList.FormattingEnabled = true;
             this.facilitiesList.Location = new System.Drawing.Point(14, 417);
-            this.facilitiesList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.facilitiesList.Margin = new System.Windows.Forms.Padding(2);
             this.facilitiesList.Name = "facilitiesList";
             this.facilitiesList.Size = new System.Drawing.Size(203, 84);
             this.facilitiesList.TabIndex = 13;
@@ -408,7 +408,7 @@ namespace RoomReservationSystem.UserInterface
             this.typesOfBedList.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.typesOfBedList.FormattingEnabled = true;
             this.typesOfBedList.Location = new System.Drawing.Point(14, 261);
-            this.typesOfBedList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.typesOfBedList.Margin = new System.Windows.Forms.Padding(2);
             this.typesOfBedList.Name = "typesOfBedList";
             this.typesOfBedList.Size = new System.Drawing.Size(203, 72);
             this.typesOfBedList.TabIndex = 14;
@@ -417,9 +417,9 @@ namespace RoomReservationSystem.UserInterface
             // 
             this.considerDateCheckBox.AutoSize = true;
             this.considerDateCheckBox.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.considerDateCheckBox.Location = new System.Drawing.Point(19, 190);
+            this.considerDateCheckBox.Location = new System.Drawing.Point(15, 154);
             this.considerDateCheckBox.Name = "considerDateCheckBox";
-            this.considerDateCheckBox.Size = new System.Drawing.Size(138, 27);
+            this.considerDateCheckBox.Size = new System.Drawing.Size(113, 22);
             this.considerDateCheckBox.TabIndex = 15;
             this.considerDateCheckBox.Text = "Consider date";
             this.considerDateCheckBox.UseVisualStyleBackColor = true;
@@ -433,11 +433,11 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel7.Controls.Add(this.roomsList, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(268, 21);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 577F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 578F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(696, 578);
             this.tableLayoutPanel7.TabIndex = 2;
             // 
@@ -454,9 +454,9 @@ namespace RoomReservationSystem.UserInterface
             listViewItem2,
             listViewItem3,
             listViewItem4});
-            this.roomsList.Location = new System.Drawing.Point(22, 3);
+            this.roomsList.Location = new System.Drawing.Point(17, 3);
             this.roomsList.Name = "roomsList";
-            this.roomsList.Size = new System.Drawing.Size(655, 574);
+            this.roomsList.Size = new System.Drawing.Size(653, 572);
             this.roomsList.TabIndex = 0;
             this.roomsList.TileSize = new System.Drawing.Size(600, 100);
             this.roomsList.UseCompatibleStateImageBehavior = false;
@@ -470,7 +470,7 @@ namespace RoomReservationSystem.UserInterface
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(1238, 682);
             this.Controls.Add(this.tableLayoutPanel3);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormSearchRooms";
             this.Text = "SEARCH ROOMS";
             this.tableLayoutPanel3.ResumeLayout(false);

@@ -1,4 +1,5 @@
 ﻿using Manager;
+using Reservations;
 using RoomReservationSyster;
 using System;
 using System.Collections.Generic;
@@ -10,17 +11,19 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Users;
 
 namespace RoomReservationSystem.UserInterface
 {
     public partial class FormMakeReservation : Form
     {
         ReservationManager _reservationManager;
+        UserManager _userManager;
         public FormMakeReservation()
         {
             InitializeComponent();
             _reservationManager = new ReservationManager();
-            
+            _userManager = new UserManager();
         }
 
 
@@ -32,16 +35,64 @@ namespace RoomReservationSystem.UserInterface
             DateTime reservationTO = dateTo.Value;
             String userID = this.userId.Text;
             String roomID = this.roomId.Text;
-            if (regex.IsMatch(userID) && regex.IsMatch(roomID)) { 
-                Room room = Searcher.SearchRoomById(Int32.Parse(roomID));
-            //wywołanie metody do tworzenia nowej rezerwacji
+            if (regex.IsMatch(userID)) {
+                if (regex.IsMatch(roomID)) {
 
-                bool added = _reservationManager.add(room.price, Int32.Parse(userID), Int32.Parse(roomID),reservationFrom, reservationTO);
-                if (added)
-                {
-                    ClearForm();
+                    Room room = Searcher.SearchRoomById(Int32.Parse(roomID));
+                    if (room != null)
+                    {
+                        _userManager.getManagedUser(Int32.Parse(userID));
+                        if (_userManager.managedUser != null)
+                        {
+
+                            List<Reservation> reservations = _reservationManager.getReservations(Int32.Parse(roomID), true);
+                            bool isOccupied = false;
+                            foreach (Reservation r in reservations)
+                            {
+                                if ((reservationFrom > r.checkInDate ? reservationFrom : r.checkInDate) <= (reservationTO < r.checkOutDate ? reservationTO : r.checkOutDate))
+                                {
+                                    isOccupied = true;
+                                }
+                            }
+                            if (!isOccupied)
+                            {
+                                //wywołanie metody do tworzenia nowej rezerwacji
+
+                                bool added = _reservationManager.add(room.price, Int32.Parse(userID), Int32.Parse(roomID), reservationFrom, reservationTO);
+                                if (added)
+                                {
+                                    ClearForm();
+                                }
+                            }
+                            else
+                            {
+                                this.dateFrom.Value = DateTime.Now;
+                                this.dateTo.Value = DateTime.Now;
+                                InformationPopup.ShowDialog("Room is occupied at given time please change your dates","Wrong date");
+                            }
+                        }
+                        else
+                        {
+                            this.userId.Text = string.Empty;
+                            InformationPopup.ShowDialog("No user with given ID, please check once more and change it", "No user info");
+                        }
+                    }
+                    else
+                    {
+                        this.roomId.Text = string.Empty;
+                        InformationPopup.ShowDialog("No room with given ID, please check once more and change it", "No room info");
+                    }
                 }
-                
+                else
+                {
+                    this.roomId.Text = string.Empty;
+                    InformationPopup.ShowDialog("Room ID should be an number, please check once more and change it", "Wrong format");
+                }
+            }
+            else
+            {
+                this.userId.Text = string.Empty;
+                InformationPopup.ShowDialog("User ID should be an number, please check once more and change it", "Wrong format");
             }
         }
 
