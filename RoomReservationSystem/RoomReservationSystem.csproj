@@ -80,10 +80,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Manager\ReservationManager.cs" />
     <Compile Include="Manager\manager.cs" />
     <Compile Include="Manager\roomManager.cs" />
     <Compile Include="Manager\userManager.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Reservation\Reservation.cs" />
     <Compile Include="Room\BedType.cs" />
     <Compile Include="Room\Meals.cs" />
     <Compile Include="Room\Room.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="Room\RoomReservationSystem.cs" />
     <Compile Include="Room\RoomState.cs" />
     <Compile Include="Searcher\searcher.cs" />
+    <Compile Include="UserInterface\ConfirmationPopup.cs" />
     <Compile Include="UserInterface\FormLogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +150,7 @@
     <Compile Include="UserInterface\FormTableView.Designer.cs">
       <DependentUpon>FormTableView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserInterface\InformationPopup.cs" />
     <Compile Include="UserInterface\RoomReservationSystem.cs">
       <SubType>Form</SubType>
     </Compile>

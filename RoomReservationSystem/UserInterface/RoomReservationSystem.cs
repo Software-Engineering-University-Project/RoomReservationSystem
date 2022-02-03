@@ -10,75 +10,79 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Users;
+using RoomReservationSyster;
 
 namespace RoomReservationSystem.UserInterface
 {
     public partial class RoomReservationSystem : Form
     {
-        private Button currentButton;
-        private Random random;
-        private int tempIndex;
-        private ViewManager viewManager = ViewManager.GetInstance();
-        private UserManager userManager;
+        private Button _currentButton;
+        private Random _random;
+        private int _tempIndex;
+        private ViewManager _viewManager = ViewManager.GetInstance();
+        private UserManager _userManager;
+        private RoomManager _roomManager;
         public RoomReservationSystem()
         {
             InitializeComponent();
             ViewManager.SetDesktopPanel(this.panelDesktopPane);
-            random = new Random();
+            _random = new Random();
             //  btnCloseChildForm.Visible = false;
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
             //do zrobienia: zmiana nazwy buttona logInProfile, na razie brakuje informacji o obecnym użytkowniku
-            userManager = new UserManager();
             EnableGuestPermissions();
+            _userManager = new UserManager();
+            _roomManager = new RoomManager();
         }
 
         
 
-        private void SetButtonsVisibility(bool logProfile = true, bool reservations = false, bool newReservation = false, bool newClient = false, bool newRoom = false,
+        private void SetButtonsVisibility(bool logProfile = true, bool logOut = false, bool reservations = false, bool newReservation = false, bool newClient = false, bool newRoom = false,
             bool newWorker = false, bool searchClients = false, bool searchWorkers = false)
         {
-            buttonLogInProfile.Visible = logProfile;
-            buttonReservations.Visible = reservations;
-            buttonNewReservation.Visible = newReservation;
-            buttonNewClient.Visible = newClient;
-            buttonNewRoom.Visible = newRoom;
-            buttonNewWorker.Visible = newWorker;
-            buttonSearchClients.Visible = searchClients;
-            buttonSearchWorkers.Visible = searchWorkers;
+            this.buttonLogInProfile.Visible = logProfile;
+            this.logOutButton.Visible = logOut;
+            this.buttonReservations.Visible = reservations;
+            this.buttonNewReservation.Visible = newReservation;
+            this.buttonNewClient.Visible = newClient;
+            this.buttonNewRoom.Visible = newRoom;
+            this.buttonNewWorker.Visible = newWorker;
+            this.buttonSearchClients.Visible = searchClients;
+            this.buttonSearchWorkers.Visible = searchWorkers;
         }
 
         public void EnableGuestPermissions()
         {
-            buttonLogInProfile.Text = "Log in";
+            this.buttonLogInProfile.Text = "Log in";
             SetButtonsVisibility();
         }
         public void EnableClientPermissions()
         {
-            buttonLogInProfile.Text = "Profile";
-            SetButtonsVisibility();
+            this.buttonLogInProfile.Text = "Profile";
+            SetButtonsVisibility(true, true);
         }
         public void EnableWorkerPermissions()
         {
-            buttonLogInProfile.Text = "Profile";
-            SetButtonsVisibility(true, true, true, false, false, true, false);
+            this.buttonLogInProfile.Text = "Profile";
+            SetButtonsVisibility(true, true, true, true, false, false, true, false);
         }
 
         public void EnableAdminPermissions()
         {
-            SetButtonsVisibility(false, true, true, true, true, true, true, true);
+            SetButtonsVisibility(false, true, true, true, true, true, true, true, true);
         }
 
         private Color SelectThemeColor()
         {
-            int index = random.Next(ThemeColor.ColorList.Count);
-            while (tempIndex == index)
+            int index = _random.Next(ThemeColor.ColorList.Count);
+            while (_tempIndex == index)
             {
-                index = random.Next(ThemeColor.ColorList.Count);
+                index = _random.Next(ThemeColor.ColorList.Count);
             }
-            tempIndex = index;
+            _tempIndex = index;
             string color = ThemeColor.ColorList[index];
             return ColorTranslator.FromHtml(color);
         }
@@ -88,14 +92,14 @@ namespace RoomReservationSystem.UserInterface
         {
             if (btnSender != null)
             {
-                if (currentButton != (Button)btnSender)
+                if (_currentButton != (Button)btnSender)
                 {
                     UnselectButton();
                     Color color = SelectThemeColor();
-                    currentButton = (Button)btnSender;
-                    currentButton.BackColor = color;
-                    currentButton.ForeColor = Color.White;
-                    currentButton.Font = new System.Drawing.Font("Calibri", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    _currentButton = (Button)btnSender;
+                    _currentButton.BackColor = color;
+                    _currentButton.ForeColor = Color.White;
+                    _currentButton.Font = new System.Drawing.Font("Calibri", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                     panelTitleBar.BackColor = color;
                     panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
                     ThemeColor.PrimaryColor = color;
@@ -125,7 +129,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void OpenChildForm(Form childForm, object btnSender, String header)
         {
-            viewManager.DisplayChildForm(childForm, this.panelDesktopPane);   
+            _viewManager.DisplayChildForm(childForm, this.panelDesktopPane);   
             ActivateButton(btnSender);
             labelTitleBar.Text = header;
         }
@@ -145,13 +149,13 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonSearchRooms_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSearchRooms(), sender, "SEARCH ROOMS");
+            OpenChildForm(new FormSearchRooms(_roomManager), sender, "SEARCH ROOMS");
         }
 
         private void buttonReservations_Click(object sender, EventArgs e)
         {
-
-              OpenChildForm(new FormTableView(), sender, "RESERVATIONS");
+          
+                OpenChildForm(new FormTableView(), sender, "RESERVATIONS");
         }
 
         private void buttonNewReservation_Click(object sender, EventArgs e)
@@ -166,7 +170,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonNewClient_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNewPerson(FormMode.NewElement, false, userManager), sender, "NEW CLIENT");
+            OpenChildForm(new FormNewPerson(FormMode.NewElement, false, _userManager), sender, "NEW CLIENT");
         }
 
         private void buttonSearchWorkers_Click(object sender, EventArgs e)
@@ -176,12 +180,12 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonNewWorker_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNewPerson(FormMode.NewElement, true, userManager), sender, "NEW WORKER");
+            OpenChildForm(new FormNewPerson(FormMode.NewElement, true, _userManager), sender, "NEW WORKER");
         }
 
         private void buttonNewRoom_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNewRoom(FormMode.NewElement), sender, "NEW ROOM");
+            OpenChildForm(new FormNewRoom(_roomManager, FormMode.NewElement), sender, "NEW ROOM");
         }
 
         private void RoomReservationSystem_Load(object sender, EventArgs e)
@@ -210,6 +214,12 @@ namespace RoomReservationSystem.UserInterface
         {
             
             OpenChildForm(new FormProfile(userManager), sender, "PROFILE");
+        }
+        private void logOutButton_Click(object sender, EventArgs e)
+        {
+            userManager.logout();
+            EnableGuestPermissions();
+            OpenChildForm(new FormLogIn(), buttonLogInProfile, "LOG IN");
         }
     }
 }

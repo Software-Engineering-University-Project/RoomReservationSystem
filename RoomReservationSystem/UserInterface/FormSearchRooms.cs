@@ -8,30 +8,31 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Manager;
+using Reservations;
 using RoomReservationSyster;
 
 namespace RoomReservationSystem.UserInterface
 {
+    // this.considerDateCheckBox.Checked <= pobieranie boola z checkboxa
     public partial class FormSearchRooms : Form
     {
-        public FormSearchRooms()
+        private ReservationManager _reservationManager
+        private RoomManager _roomManager;
+        public FormSearchRooms(RoomManager roomManager)
         {
+            _roomManager = roomManager;
             InitializeComponent();
             FillFacilitiesList();
             FillGuestComboBox();
             FillTypesOfBedList();
             roomsList.Clear();
-        }
-
-        private RoomManager _roomManager;
-        public FormSearchRooms(RoomManager roomManager)
-        {
-            _roomManager = roomManager;
+            _reservationManager = new ReservationManager();
         }
 
         private void buttonApplyFilters_Click(object sender, EventArgs e)
         {
-            //brak walidacji
+            roomsList.Items.Clear();
             double priceMin = Int32.Parse(priceFrom.Text);
             double priceMax = Int32.Parse(priceTo.Text);
 
@@ -63,10 +64,23 @@ namespace RoomReservationSystem.UserInterface
                 selectedFacilities.Add((RoomFacilities)checkedFacility);
             }
             List<Room> rooms = Searcher.SearchRooms(dateFrom, dateTo, selectedFacilities,
-                priceMin, priceMax, guests);
+                priceMin, priceMax, guests, false);
+                
             foreach (Room r in rooms)
             {
-                roomsList.Items.Add(r.id.ToString());
+                List<Reservation> reservations = _reservationManager.getReservations(r.id, true);
+                bool isOccupied = false;
+                foreach (Reservation re in reservations)
+                {
+                    if ((dateFrom > re.checkInDate ? dateFrom : re.checkInDate) <= (dateTo < re.checkOutDate ? dateTo : re.checkOutDate))
+                    {
+                        isOccupied = true;
+                    }
+                }
+                if (!isOccupied)
+                {
+                    roomsList.Items.Add(r.id.ToString());
+                }
             }
         }
 
@@ -97,8 +111,8 @@ namespace RoomReservationSystem.UserInterface
 
         private void roomsList_DoubleClick(object sender, EventArgs e)
         {
-            Room room = Searcher.SearchRoomById(Convert.ToInt32(roomsList.FocusedItem.Text));
-            ViewManager.GetInstance().DisplayChildForm(new FormRoom(room));
+            _roomManager.CurrentRoom = Searcher.SearchRoomById(Convert.ToInt32(roomsList.FocusedItem.Text));
+            ViewManager.GetInstance().DisplayChildForm(new FormRoom(_roomManager));
         }
     }
 }
