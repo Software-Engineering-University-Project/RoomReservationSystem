@@ -15,5 +15,6 @@ namespace RoomReservationSystem
         public List<RoomFacilities> facilitiesProvided { set; get; }
         public RoomStandard roomStandard { set; get; }
         public RoomState roomState { set; get; }
+        public string comment { set; get; }
     }
 }

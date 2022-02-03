@@ -196,7 +196,7 @@ namespace RoomReservationSystem
         }
 
         public static List<Room> SearchRooms(DateTime beginDate, DateTime endDate, List<RoomFacilities> facilitiesList,
-            double minPrice, double maxPrice, int maxGuestNumber)
+            double minPrice, double maxPrice, int maxGuestNumber, bool searchByDate)
         {
             List<Room> rooms = new List<Room>();
             string provider = ConfigurationManager.AppSettings["provider"];
@@ -211,61 +211,19 @@ namespace RoomReservationSystem
                 {
                     connection.ConnectionString = connectionString;
                     connection.Open();
-
-                    DbCommand command = factory.CreateCommand();
-                    if (command != null)
+                    rooms = ReadRoomsWithParamters(connection, factory, facilitiesList, minPrice, maxPrice, maxGuestNumber);
+                    List<int> idsToRemove = new List<int>();
+                    if (searchByDate)
                     {
-                        command.CommandType = System.Data.CommandType.StoredProcedure;
-                        command.Connection = connection;
-                        command.CommandText = "SearchRoom";
-                        command.Parameters.Add(new SqlParameter("@MinRoomPrice", minPrice));
-                        command.Parameters.Add(new SqlParameter("@MaxRoomPrice", maxPrice));
-                        command.Parameters.Add(new SqlParameter("@BeginDate", beginDate));
-                        command.Parameters.Add(new SqlParameter("@EndDate", endDate));
-                        command.Parameters.Add(new SqlParameter("@MaxGuestNumber", maxGuestNumber));
-                        using (DbDataReader dataReader = command.ExecuteReader())
+                        foreach (Room r in rooms)
                         {
-                            while (dataReader.Read())
+                            if (!CheckReservationOverlap(connection, factory, r.id, beginDate, endDate))
                             {
-                                Room room = new Room();
-                                room.price = (double) dataReader["RoomPrice"];
-                                room.id = Int32.Parse(dataReader["RoomID"].ToString());
-                                room.squareMeterage = (double) dataReader["RoomSquareMetrage"];
-                                room.roomStandard = (RoomStandard) Enum.Parse(typeof(RoomStandard),
-                                    dataReader["RoomStandard"].ToString(), true);
-                                room.roomState = (RoomState) Enum.Parse(typeof(RoomState),
-                                    dataReader["RoomStatus"].ToString(), true);
-                                room.roomNumber = dataReader["RoomNumber"].ToString();
-                                room.maxGuestNumber = Int32.Parse(dataReader["RoomMaxGuestNumber"].ToString());
-                                rooms.Add(room);
+                                idsToRemove.Add(r.id);
                             }
                         }
                     }
-
-                    List<int> removedIds = new List<int>();
-                    foreach (Room r in rooms)
-                    {
-                        foreach (var facility in facilitiesList)
-                        {
-                            DbCommand facilitiesCommand = factory.CreateCommand();
-                            if (facilitiesCommand != null)
-                            {
-                                facilitiesCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                                facilitiesCommand.Connection = connection;
-                                facilitiesCommand.CommandText = "CheckFacility";
-                                facilitiesCommand.Parameters.Add(new SqlParameter("@FacilityId", (int) facility + 1));
-                                facilitiesCommand.Parameters.Add(new SqlParameter("@RoomId", r.id));
-                                int count = (int) facilitiesCommand.ExecuteScalar();
-                                if (count == 0)
-                                {
-                                    removedIds.Add(r.id);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-                    rooms.RemoveAll(r => removedIds.Contains(r.id));
+                    rooms.RemoveAll(r => idsToRemove.Contains(r.id));
                 }
             }
 
@@ -275,6 +233,7 @@ namespace RoomReservationSystem
         public static Room SearchRoomById(int id)
         {
             Room room = new Room();
+
             string provider = ConfigurationManager.AppSettings["provider"];
 
             string connectionString = ConfigurationManager.AppSettings["connectionString"];
@@ -367,12 +326,92 @@ namespace RoomReservationSystem
                                     dataReader["MealTypeDescription"].ToString(), true));
                             }
                         }
-                    
+
                         room.mealsProvided = mealsList;
+                    }
+
+                    connection.Close();
+                }
+            }
+
+            return room;
+        }
+
+        private static List<Room> ReadRoomsWithParamters(DbConnection connection, DbProviderFactory factory, List<RoomFacilities> facilitiesList,
+            double minPrice, double maxPrice, int maxGuestNumber)
+        {
+            List<Room> rooms = new List<Room>();
+            DbCommand command = factory.CreateCommand();
+            if (command != null)
+            {
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Connection = connection;
+                command.CommandText = "SearchRoom";
+                command.Parameters.Add(new SqlParameter("@MinRoomPrice", minPrice));
+                command.Parameters.Add(new SqlParameter("@MaxRoomPrice", maxPrice));
+                command.Parameters.Add(new SqlParameter("@MaxGuestNumber", maxGuestNumber));
+                using (DbDataReader dataReader = command.ExecuteReader())
+                {
+                    while (dataReader.Read())
+                    {
+                        Room room = new Room();
+                        room.price = (double) dataReader["RoomPrice"];
+                        room.id = Int32.Parse(dataReader["RoomID"].ToString());
+                        room.squareMeterage = (double) dataReader["RoomSquareMetrage"];
+                        room.roomStandard = (RoomStandard) Enum.Parse(typeof(RoomStandard),
+                            dataReader["RoomStandard"].ToString(), true);
+                        room.roomState = (RoomState) Enum.Parse(typeof(RoomState),
+                            dataReader["RoomStatus"].ToString(), true);
+                        room.roomNumber = dataReader["RoomNumber"].ToString();
+                        room.maxGuestNumber = Int32.Parse(dataReader["RoomMaxGuestNumber"].ToString());
+                        rooms.Add(room);
                     }
                 }
             }
-            return room;
+
+            List<int> removedIds = new List<int>();
+            foreach (Room r in rooms)
+            {
+                foreach (var facility in facilitiesList)
+                {
+                    DbCommand facilitiesCommand = factory.CreateCommand();
+                    if (facilitiesCommand != null)
+                    {
+                        facilitiesCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                        facilitiesCommand.Connection = connection;
+                        facilitiesCommand.CommandText = "CheckFacility";
+                        facilitiesCommand.Parameters.Add(new SqlParameter("@FacilityId", (int) facility + 1));
+                        facilitiesCommand.Parameters.Add(new SqlParameter("@RoomId", r.id));
+                        int count = (int) facilitiesCommand.ExecuteScalar();
+                        if (count == 0)
+                        {
+                            removedIds.Add(r.id);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            rooms.RemoveAll(r => removedIds.Contains(r.id));
+            return rooms;
+        }
+
+        private static bool CheckReservationOverlap(DbConnection connection, DbProviderFactory factory, int id,
+            DateTime beginDate, DateTime endDate)
+        {
+            DbCommand overlapCheck = factory.CreateCommand();
+            if (overlapCheck != null)
+            {
+                overlapCheck.CommandType = System.Data.CommandType.StoredProcedure;
+                overlapCheck.Connection = connection;
+                overlapCheck.CommandText = "SearchRoomReservationOverlap";
+                overlapCheck.Parameters.Add(new SqlParameter("@RoomId", id));
+                overlapCheck.Parameters.Add(new SqlParameter("@BeginDate", beginDate));
+                overlapCheck.Parameters.Add(new SqlParameter("@EndDate", endDate));
+                return (int) overlapCheck.ExecuteScalar()==0;
+            }
+
+            return false;
         }
     }
 }
