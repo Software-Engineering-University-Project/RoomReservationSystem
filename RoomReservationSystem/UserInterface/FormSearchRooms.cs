@@ -17,7 +17,7 @@ namespace RoomReservationSystem.UserInterface
     // this.considerDateCheckBox.Checked <= pobieranie boola z checkboxa
     public partial class FormSearchRooms : Form
     {
-        private ReservationManager _reservationManager
+        private ReservationManager _reservationManager;
         private RoomManager _roomManager;
         public FormSearchRooms(RoomManager roomManager)
         {
@@ -33,13 +33,39 @@ namespace RoomReservationSystem.UserInterface
         private void buttonApplyFilters_Click(object sender, EventArgs e)
         {
             roomsList.Items.Clear();
-            double priceMin = Int32.Parse(priceFrom.Text);
-            double priceMax = Int32.Parse(priceTo.Text);
+            double priceMin;
+            if (!priceFrom.Text.Equals(""))
+            {
+                priceMin = Int32.Parse(priceFrom.Text);
+            }
+            else
+            {
+                priceMin = 0;
+            }
+
+            double priceMax;
+            if (!priceTo.Text.Equals(""))
+            {
+                priceMax = Int32.Parse(priceTo.Text);
+            }
+            else
+            {
+                priceMax = 10000;
+            }
 
             DateTime dateFrom = this.dateFrom.Value;
             DateTime dateTo = this.dateTo.Value;
 
-            int guests = comboBoxGuestsNum.SelectedIndex;
+            int guests;
+            int selectedGuests = comboBoxGuestsNum.SelectedIndex;
+            if (selectedGuests != 0)
+            {
+                guests = selectedGuests;
+            }
+            else
+            {
+                guests = 100;
+            }
 
             List<BedType> bedList = new List<BedType>();
             List<RoomFacilities> facilities = new List<RoomFacilities>();
@@ -64,23 +90,24 @@ namespace RoomReservationSystem.UserInterface
                 selectedFacilities.Add((RoomFacilities)checkedFacility);
             }
             List<Room> rooms = Searcher.SearchRooms(dateFrom, dateTo, selectedFacilities,
-                priceMin, priceMax, guests, false);
+                priceMin, priceMax, guests, this.considerDateCheckBox.Checked);
                 
             foreach (Room r in rooms)
             {
-                List<Reservation> reservations = _reservationManager.getReservations(r.id, true);
-                bool isOccupied = false;
-                foreach (Reservation re in reservations)
-                {
-                    if ((dateFrom > re.checkInDate ? dateFrom : re.checkInDate) <= (dateTo < re.checkOutDate ? dateTo : re.checkOutDate))
-                    {
-                        isOccupied = true;
-                    }
-                }
-                if (!isOccupied)
-                {
-                    roomsList.Items.Add(r.id.ToString());
-                }
+                roomsList.Items.Add(r.id.ToString());
+                // List<Reservation> reservations = _reservationManager.getReservations(r.id, true);
+                // bool isOccupied = false;
+                // foreach (Reservation re in reservations)
+                // {
+                //     if ((dateFrom > re.checkInDate ? dateFrom : re.checkInDate) <= (dateTo < re.checkOutDate ? dateTo : re.checkOutDate))
+                //     {
+                //         isOccupied = true;
+                //     }
+                // }
+                // if (!isOccupied)
+                // {
+                //     roomsList.Items.Add(r.id.ToString());
+                // }
             }
         }
 

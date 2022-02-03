@@ -15,11 +15,14 @@ namespace RoomReservationSystem.UserInterface
     {
         private UserManager _userManager;
 
-        public FormProfile(UserManager userManger)
+        private RoomReservationSystem _roomReservationSystem;
+
+        public FormProfile(UserManager userManger, RoomReservationSystem rs)
         {
             InitializeComponent();
             _userManager = userManger;
-            _userManager.getManagedUser(3);
+            _roomReservationSystem = rs;
+            _userManager.getManagedUser(_userManager.currUser.id);
             if (_userManager.managedUser != null)
             {
                 initializeLabels();
@@ -74,7 +77,9 @@ namespace RoomReservationSystem.UserInterface
 
             if (shouldDelete)
             {
-                //TODO: deleting a profile
+                _userManager.delete(_userManager.managedUser.id);
+                _userManager.logout();
+                _roomReservationSystem.LogOutLayoutSetter(sender);
             }
         }
     }

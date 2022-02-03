@@ -44,6 +44,8 @@ namespace RoomReservationSystem.UserInterface
 
             this.squareMeters.Text = _roomManager.CurrentRoom.squareMeterage.ToString();
 
+            this.commentText.Text = _roomManager.CurrentRoom.comment;
+
             foreach(var bed in _roomManager.CurrentRoom.beds)
             {
                 this.typeOfBed.Text += bed.ToString() + ",";
@@ -79,8 +81,6 @@ namespace RoomReservationSystem.UserInterface
         {
             this.reservateButton.Visible = reservate;
             this.reservateButton.Enabled = reservate;
-            this.addCommentButton.Visible = comment;
-            this.addCommentButton.Enabled = comment;
             this.commentText.Visible = comment;
             this.isOutOfService.Visible = outOfService;
             this.isOutOfService.Enabled = outOfService;
@@ -97,7 +97,7 @@ namespace RoomReservationSystem.UserInterface
             bool shouldDelete = ConfirmationPopup.ShowDialog("Do you confirm room deletion?");
 
             if (shouldDelete)
-                _roomManager.Delete(_room.id);
+                _roomManager.Delete(_roomManager.CurrentRoom.id);
         }
 
         private void addCommentButton_Click(object sender, EventArgs e)
@@ -123,7 +123,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void reservationsHistoryButton_Click(object sender, EventArgs e)
         {
-            ViewManager.GetInstance().DisplayChildForm(new FormTableView(TableType.UserReservationsHistory, _room.id));
+            ViewManager.GetInstance().DisplayChildForm(new FormTableView(TableType.RoomHistory, _roomManager.CurrentRoom.id));
         }
     }
 }

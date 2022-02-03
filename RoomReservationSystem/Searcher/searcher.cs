@@ -266,6 +266,7 @@ namespace RoomReservationSystem
                                 dataReader["RoomStatus"].ToString(), true);
                             room.roomNumber = dataReader["RoomNumber"].ToString();
                             room.maxGuestNumber = Int32.Parse(dataReader["RoomMaxGuestNumber"].ToString());
+                            room.comment = dataReader["RoomComment"].ToString();
                         }
                     }
 

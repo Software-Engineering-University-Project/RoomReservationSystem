@@ -58,9 +58,17 @@ namespace RoomReservationSystem.UserInterface
 
             if (_mode == FormMode.NewElement)
             {
-                _roomManager.Insert(roomName.Text, Convert.ToDouble(price.Text), Convert.ToDouble(squareMeters.Text),
+                if (_roomManager.Insert(roomName.Text, Convert.ToDouble(price.Text),
+                    Convert.ToDouble(squareMeters.Text),
                     Convert.ToInt32(maxNumGuests.Text), beds, meals, facilitiesEnumList,
-                    standardComboBox.GetItemText(this.standardComboBox.SelectedItem), this.comment.Text);
+                    standardComboBox.GetItemText(this.standardComboBox.SelectedItem), this.comment.Text))
+                {
+                    InformationPopup.ShowDialog("Room added successfully.", "Information");
+                }
+                else
+                {
+                    InformationPopup.ShowDialog("Room was not added successfully.", "Warning");
+                }
             }
             else
             {
@@ -68,6 +76,7 @@ namespace RoomReservationSystem.UserInterface
                     Convert.ToInt32(maxNumGuests.Text),
                     standardComboBox.GetItemText(this.standardComboBox.SelectedItem), this.comment.Text, beds, meals,
                     facilitiesEnumList);
+                InformationPopup.ShowDialog("Room updated.", "Information");
             }
         }
 

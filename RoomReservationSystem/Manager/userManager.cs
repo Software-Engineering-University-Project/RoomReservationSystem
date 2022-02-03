@@ -136,7 +136,7 @@ namespace Manager
                         command.Connection = connection;
                         command.CommandText = "Delete_PersonalData_ById";
 
-                        command.Parameters.Add(new SqlParameter("@Id", userId));
+                        command.Parameters.Add(new SqlParameter("@ID", userId));
 
                         command.ExecuteNonQuery();
                     }
@@ -162,23 +162,23 @@ namespace Manager
                         command.Connection = connection;
                         command.CommandText = "Search_PersonalRoles_ByPersonId";
 
-                        command.Parameters.Add(new SqlParameter("@id", id));
+                        command.Parameters.Add(new SqlParameter("@ID", id));
 
                         command.ExecuteNonQuery();
 
                         using (DbDataReader dataReader = command.ExecuteReader())
                         {
                             dataReader.Read();
-                            char role = (char)dataReader["PersonRole"];
+                            string role = (string)dataReader["PersonRole"];
                             switch (role)
                             {
-                                case 'C':
+                                case "C":
                                     currUser = new Client();
                                     break;
-                                case 'W':
+                                case "W":
                                     currUser = new Worker();
                                     break;
-                                case 'A':
+                                case "A":
                                     currUser = new Admin();
                                     break;
                                 default:
@@ -194,7 +194,7 @@ namespace Manager
                             getDetailsCommand.Connection = connection;
                             getDetailsCommand.CommandText = "Search_PersonalData_ById";
 
-                            getDetailsCommand.Parameters.Add(new SqlParameter("@id", managedUser.id));
+                            getDetailsCommand.Parameters.Add(new SqlParameter("@ID", id));
 
                             getDetailsCommand.ExecuteNonQuery();
 
@@ -246,14 +246,14 @@ namespace Manager
                         using(DbDataReader dataReader = command.ExecuteReader())
                         {
                             dataReader.Read();
-                            var role = dataReader["PersonRole"];
+                            string role = (string)dataReader["PersonRole"];
                             switch (role)
                             {
-                                case 'C': managedUser = new Client();
+                                case "C": managedUser = new Client();
                                     break;
-                                case 'W': managedUser = new Worker();
+                                case "W": managedUser = new Worker();
                                     break;
-                                case 'A': managedUser = new Admin();
+                                case "A": managedUser = new Admin();
                                     break;
                                 default: managedUser = new Client();
                                     break;
@@ -385,7 +385,7 @@ namespace Manager
 
                         command.Parameters.Add(new SqlParameter("@LoginDetail", mailOrPhone));
                         
-                        command.Parameters.Add(new SqlParameter("@LogonPassword", decryptedPassword.encodePassword()));
+                        command.Parameters.Add(new SqlParameter("@Password", decryptedPassword.encodePassword()));
                         command.ExecuteNonQuery();
                         using (DbDataReader dataReader = command.ExecuteReader())
                         {
@@ -405,6 +405,7 @@ namespace Manager
         {
             currUser = null;
             managedUser = null;
+            
         }
 
     }
