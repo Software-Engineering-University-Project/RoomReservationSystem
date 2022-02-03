@@ -134,7 +134,7 @@ namespace RoomReservationSystem.UserInterface
         {//if ...
             if (userManager.currUser == null)
             {
-                OpenChildForm(new FormLogIn(this, sender, userManager), sender, "LOG IN");
+                OpenChildForm(new FormLogIn(this,sender, userManager), sender, "LOG IN");
                 //brak informacji o typie użytkownika
 
             }
@@ -208,7 +208,8 @@ namespace RoomReservationSystem.UserInterface
 
         public void afterChangeUserOpenForm(object sender)
         {
-            OpenChildForm(new FormSearchRooms(), sender, "SEARCH ROOMS");
+            
+            OpenChildForm(new FormProfile(userManager), sender, "PROFILE");
         }
     }
 }
