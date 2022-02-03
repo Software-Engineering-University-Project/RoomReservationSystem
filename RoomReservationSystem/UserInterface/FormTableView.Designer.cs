@@ -30,7 +30,7 @@ namespace RoomReservationSystem.UserInterface
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listView = new System.Windows.Forms.ListView();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,7 +41,7 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1236F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.listView1, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.listView, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -53,19 +53,19 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1398, 810);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // listView1
+            // listView
             // 
-            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.listView1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(42, 64);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1230, 660);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.listView.ForeColor = System.Drawing.Color.Gainsboro;
+            this.listView.HideSelection = false;
+            this.listView.Location = new System.Drawing.Point(42, 64);
+            this.listView.Name = "listView";
+            this.listView.Size = new System.Drawing.Size(1230, 660);
+            this.listView.TabIndex = 0;
+            this.listView.UseCompatibleStateImageBehavior = false;
             // 
             // FormTableView
             // 
@@ -84,6 +84,6 @@ namespace RoomReservationSystem.UserInterface
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listView;
     }
 }
