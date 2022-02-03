@@ -21,38 +21,36 @@ namespace RoomReservationSystem.UserInterface
         static extern bool HideCaret(IntPtr hWnd);
 
         private RoomManager _roomManager;
-
-        private Room _room;
-        public FormRoom(Room room)
+        
+        public FormRoom(RoomManager roomManager)
         {
-            _roomManager = new RoomManager();
-            _room = room;
+            _roomManager = roomManager;
             InitializeComponent();
             //EnableGuestPermissions();
             
-            this.roomNameLabel.Text = room.id.ToString();
+            this.roomNameLabel.Text = _roomManager.CurrentRoom.id.ToString();
 
-            this.standard.Text = room.roomStandard.ToString();
+            this.standard.Text = _roomManager.CurrentRoom.roomStandard.ToString();
 
-            foreach( var meal in room.mealsProvided)
+            foreach( var meal in _roomManager.CurrentRoom.mealsProvided)
             {
                 this.meals.Text += meal.ToString() + ",";
             }
             //this.meals.Text = this.meals.Text.Substring(0, room.mealsProvided.Count - 2);
 
-            this.priceLabel.Text = room.price.ToString();
+            this.priceLabel.Text = _roomManager.CurrentRoom.price.ToString();
 
-            this.maxNumGuests.Text = room.maxGuestNumber.ToString();
+            this.maxNumGuests.Text = _roomManager.CurrentRoom.maxGuestNumber.ToString();
 
-            this.squareMeters.Text = room.squareMeterage.ToString();
+            this.squareMeters.Text = _roomManager.CurrentRoom.squareMeterage.ToString();
 
-            foreach(var bed in room.beds)
+            foreach(var bed in _roomManager.CurrentRoom.beds)
             {
                 this.typeOfBed.Text += bed.ToString() + ",";
             }
             //this.typeOfBed.Text = this.typeOfBed.Text.Substring(0, room.beds.Count - 2);
 
-            foreach (var facility in room.facilitiesProvided)
+            foreach (var facility in _roomManager.CurrentRoom.facilitiesProvided)
             {
                 this.facilities.Items.Add(facility.ToString());
             }
@@ -104,7 +102,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void addCommentButton_Click(object sender, EventArgs e)
         {
-            // wpisanie komentarza do modelu
+            _roomManager.CurrentRoom.comment = this.commentText.Text;
         }
 
         private void reservateButton_Click(object sender, EventArgs e)
@@ -120,7 +118,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void editRoomButton_Click(object sender, EventArgs e)
         {
-            ViewManager.GetInstance().DisplayChildForm(new FormNewRoom(FormMode.Edit));
+            ViewManager.GetInstance().DisplayChildForm(new FormNewRoom(_roomManager, FormMode.Edit));
         }
 
         private void reservationsHistoryButton_Click(object sender, EventArgs e)

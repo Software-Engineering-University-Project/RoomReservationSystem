@@ -9,28 +9,31 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RoomReservationSyster;
 
 namespace RoomReservationSystem.UserInterface
 {
     public partial class RoomReservationSystem : Form
     {
-        private Button currentButton;
-        private Random random;
-        private int tempIndex;
-        private ViewManager viewManager = ViewManager.GetInstance();
-        private UserManager userManager;
+        private Button _currentButton;
+        private Random _random;
+        private int _tempIndex;
+        private ViewManager _viewManager = ViewManager.GetInstance();
+        private UserManager _userManager;
+        private RoomManager _roomManager;
         public RoomReservationSystem()
         {
             InitializeComponent();
             ViewManager.SetDesktopPanel(this.panelDesktopPane);
-            random = new Random();
+            _random = new Random();
             //  btnCloseChildForm.Visible = false;
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
             //do zrobienia: zmiana nazwy buttona logInProfile, na razie brakuje informacji o obecnym użytkowniku
-            userManager = new UserManager();
+            _userManager = new UserManager();
+            _roomManager = new RoomManager();
         }
 
         
@@ -72,12 +75,12 @@ namespace RoomReservationSystem.UserInterface
 
         private Color SelectThemeColor()
         {
-            int index = random.Next(ThemeColor.ColorList.Count);
-            while (tempIndex == index)
+            int index = _random.Next(ThemeColor.ColorList.Count);
+            while (_tempIndex == index)
             {
-                index = random.Next(ThemeColor.ColorList.Count);
+                index = _random.Next(ThemeColor.ColorList.Count);
             }
-            tempIndex = index;
+            _tempIndex = index;
             string color = ThemeColor.ColorList[index];
             return ColorTranslator.FromHtml(color);
         }
@@ -87,14 +90,14 @@ namespace RoomReservationSystem.UserInterface
         {
             if (btnSender != null)
             {
-                if (currentButton != (Button)btnSender)
+                if (_currentButton != (Button)btnSender)
                 {
                     UnselectButton();
                     Color color = SelectThemeColor();
-                    currentButton = (Button)btnSender;
-                    currentButton.BackColor = color;
-                    currentButton.ForeColor = Color.White;
-                    currentButton.Font = new System.Drawing.Font("Calibri", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    _currentButton = (Button)btnSender;
+                    _currentButton.BackColor = color;
+                    _currentButton.ForeColor = Color.White;
+                    _currentButton.Font = new System.Drawing.Font("Calibri", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                     panelTitleBar.BackColor = color;
                     panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
                     ThemeColor.PrimaryColor = color;
@@ -124,7 +127,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void OpenChildForm(Form childForm, object btnSender, String header)
         {
-            viewManager.DisplayChildForm(childForm, this.panelDesktopPane);   
+            _viewManager.DisplayChildForm(childForm, this.panelDesktopPane);   
             ActivateButton(btnSender);
             labelTitleBar.Text = header;
         }
@@ -133,14 +136,13 @@ namespace RoomReservationSystem.UserInterface
         {//if ...
             //OpenChildForm(new FormLogIn(), sender, "LOG IN");
             //brak informacji o typie użytkownika
+            OpenChildForm(new FormProfile(_userManager), sender, "PROFILE");
            
-            OpenChildForm(new FormProfile(userManager), sender, "PROFILE");
-
         }
 
         private void buttonSearchRooms_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSearchRooms(), sender, "SEARCH ROOMS");
+            OpenChildForm(new FormSearchRooms(_roomManager), sender, "SEARCH ROOMS");
         }
 
         private void buttonReservations_Click(object sender, EventArgs e)
@@ -161,7 +163,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonNewClient_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNewPerson(FormMode.NewElement, false, userManager), sender, "NEW CLIENT");
+            OpenChildForm(new FormNewPerson(FormMode.NewElement, false, _userManager), sender, "NEW CLIENT");
         }
 
         private void buttonSearchWorkers_Click(object sender, EventArgs e)
@@ -171,12 +173,12 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonNewWorker_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNewPerson(FormMode.NewElement, true, userManager), sender, "NEW WORKER");
+            OpenChildForm(new FormNewPerson(FormMode.NewElement, true, _userManager), sender, "NEW WORKER");
         }
 
         private void buttonNewRoom_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNewRoom(FormMode.NewElement), sender, "NEW ROOM");
+            OpenChildForm(new FormNewRoom(_roomManager, FormMode.NewElement), sender, "NEW ROOM");
         }
 
         private void RoomReservationSystem_Load(object sender, EventArgs e)

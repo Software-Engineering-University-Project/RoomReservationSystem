@@ -62,7 +62,14 @@ namespace RoomReservationSystem.UserInterface
             else if (_mode == FormMode.NewElement) // zapisanie nowego elementu
             {
                 // potrzebny dostęp do informacji, jaki rodzaj użytkownika zapisujemy
-                _userManager.add(this.firstName.Text, this.secondName.Text, this.dateOfBirth.Value, this.phoneNum.Text, this.postCode.Text, this.city.Text, this.eMail.Text, this.street.Text, this.houseNum.Text, this.flatNum.Text, this.country.Text, _isWorker, this.password.Text);
+                if(_userManager.add(this.firstName.Text, this.secondName.Text, this.dateOfBirth.Value, this.phoneNum.Text, this.postCode.Text, this.city.Text, this.eMail.Text, this.street.Text, this.houseNum.Text, this.flatNum.Text, this.country.Text, _isWorker, this.password.Text))
+                {
+                    MessageBox.Show("Person has been added!");
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect phone number or e-mail address!");
+                }
             }
 
         }

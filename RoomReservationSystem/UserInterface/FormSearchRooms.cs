@@ -17,9 +17,11 @@ namespace RoomReservationSystem.UserInterface
     // this.considerDateCheckBox.Checked <= pobieranie boola z checkboxa
     public partial class FormSearchRooms : Form
     {
-        ReservationManager _reservationManager
-        public FormSearchRooms()
+        private ReservationManager _reservationManager
+        private RoomManager _roomManager;
+        public FormSearchRooms(RoomManager roomManager)
         {
+            _roomManager = roomManager;
             InitializeComponent();
             FillFacilitiesList();
             FillGuestComboBox();
@@ -28,15 +30,9 @@ namespace RoomReservationSystem.UserInterface
             _reservationManager = new ReservationManager();
         }
 
-        private RoomManager _roomManager;
-        public FormSearchRooms(RoomManager roomManager)
-        {
-            _roomManager = roomManager;
-        }
-
         private void buttonApplyFilters_Click(object sender, EventArgs e)
         {
-            //brak walidacji
+            roomsList.Items.Clear();
             double priceMin = Int32.Parse(priceFrom.Text);
             double priceMax = Int32.Parse(priceTo.Text);
 
@@ -68,8 +64,8 @@ namespace RoomReservationSystem.UserInterface
                 selectedFacilities.Add((RoomFacilities)checkedFacility);
             }
             List<Room> rooms = Searcher.SearchRooms(dateFrom, dateTo, selectedFacilities,
-                priceMin, priceMax, guests);
-
+                priceMin, priceMax, guests, false);
+                
             foreach (Room r in rooms)
             {
                 List<Reservation> reservations = _reservationManager.getReservations(r.id, true);
@@ -115,8 +111,8 @@ namespace RoomReservationSystem.UserInterface
 
         private void roomsList_DoubleClick(object sender, EventArgs e)
         {
-            Room room = Searcher.SearchRoomById(Convert.ToInt32(roomsList.FocusedItem.Text));
-            ViewManager.GetInstance().DisplayChildForm(new FormRoom(room));
+            _roomManager.CurrentRoom = Searcher.SearchRoomById(Convert.ToInt32(roomsList.FocusedItem.Text));
+            ViewManager.GetInstance().DisplayChildForm(new FormRoom(_roomManager));
         }
     }
 }

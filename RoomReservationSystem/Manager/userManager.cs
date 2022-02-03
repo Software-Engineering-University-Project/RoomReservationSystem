@@ -17,7 +17,7 @@ namespace Manager
             managedUser = null;
         }
 
-        public void add(String firstName, String secondName, DateTime dateOfBirth, String phoneNum,
+        public bool add(String firstName, String secondName, DateTime dateOfBirth, String phoneNum,
             String postCode, String city, String eMail, String street, String houseNum, String flatNum, String country, Boolean worker, String passWord)
         {
             string provider = ConfigurationManager.AppSettings["provider"];
@@ -30,72 +30,93 @@ namespace Manager
                     int id = 0;
                     connection.ConnectionString = connectionString;
                     connection.Open();
-                    DbCommand command = factory.CreateCommand();
-                    if (command != null)
+                    DbCommand validation = factory.CreateCommand();
+                    if(validation!=null)
                     {
+                        validation.CommandType = System.Data.CommandType.StoredProcedure;
+                        validation.Connection = connection;
+                        validation.CommandText = "Check_Unique_Values_Person";
 
-                        command.CommandType = System.Data.CommandType.StoredProcedure;
-                        command.Connection = connection;
-                        command.CommandText = "Insert_PersonalData_Procedure";
+                        validation.Parameters.Add(new SqlParameter("@email", eMail));
+                        validation.Parameters.Add(new SqlParameter("@phoneNumber", phoneNum));
 
+                        validation.Parameters.Add(new SqlParameter("@ReturnValue", SqlDbType.Bit));
+                        validation.Parameters["@ReturnValue"].Direction = ParameterDirection.Output;
 
-                        command.Parameters.Add(new SqlParameter("@FirstName", firstName));
-                        command.Parameters.Add(new SqlParameter("@LastName", secondName));
-                        command.Parameters.Add(new SqlParameter("@PhoneNumber", phoneNum));
-                        command.Parameters.Add(new SqlParameter("@BirthDate", dateOfBirth));
-                        command.Parameters.Add(new SqlParameter("@EmailAddress", eMail));
-                        command.Parameters.Add(new SqlParameter("@Street", street));
-                        command.Parameters.Add(new SqlParameter("@PropertyNumber", houseNum));
-                        command.Parameters.Add(new SqlParameter("@ApartamentNumber", flatNum));
-                        command.Parameters.Add(new SqlParameter("@PostCode", postCode));
-                        command.Parameters.Add(new SqlParameter("@Country", country));
-                        command.Parameters.Add(new SqlParameter("@City", city));
+                        validation.ExecuteNonQuery();
+                        bool check = Convert.ToBoolean(validation.Parameters["@ReturnValue"].Value);
 
-                        command.Parameters.Add(new SqlParameter("@ReturnValue", SqlDbType.Int));
-                        command.Parameters["@ReturnValue"].Direction = ParameterDirection.Output;
-
-
-                        command.ExecuteNonQuery();
-                        id = (int)command.Parameters["@ReturnValue"].Value;
-
-
-
-
-                        DbCommand isWorkerCommand = factory.CreateCommand();
-                        if (isWorkerCommand != null)
+                        if(check == false)
                         {
-                            isWorkerCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                            isWorkerCommand.Connection = connection;
-                            isWorkerCommand.CommandText = "Insert_PersonRoles";
-                            isWorkerCommand.Parameters.Add(new SqlParameter("@PersonID", id));
-                            if (worker)
+                            DbCommand command = factory.CreateCommand();
+                            if (command != null)
                             {
-                                isWorkerCommand.Parameters.Add(new SqlParameter("@PersonRole", "W"));
-                            }
-                            else
-                            {
-                                isWorkerCommand.Parameters.Add(new SqlParameter("@PersonRole", "C"));
-                            }
-                            isWorkerCommand.ExecuteNonQuery();
-                        }
-                        Logon log = new Logon();
-                        log.passWord = passWord;
+                                command.CommandType = System.Data.CommandType.StoredProcedure;
+                                command.Connection = connection;
+                                command.CommandText = "Insert_PersonalData_Procedure";
 
-                        DbCommand addPasswordCommand = factory.CreateCommand();
-                        if (addPasswordCommand != null)
+                                command.Parameters.Add(new SqlParameter("@FirstName", firstName));
+                                command.Parameters.Add(new SqlParameter("@LastName", secondName));
+                                command.Parameters.Add(new SqlParameter("@PhoneNumber", phoneNum));
+                                command.Parameters.Add(new SqlParameter("@BirthDate", dateOfBirth));
+                                command.Parameters.Add(new SqlParameter("@EmailAddress", eMail));
+                                command.Parameters.Add(new SqlParameter("@Street", street));
+                                command.Parameters.Add(new SqlParameter("@PropertyNumber", houseNum));
+                                command.Parameters.Add(new SqlParameter("@ApartamentNumber", flatNum));
+                                command.Parameters.Add(new SqlParameter("@PostCode", postCode));
+                                command.Parameters.Add(new SqlParameter("@Country", country));
+                                command.Parameters.Add(new SqlParameter("@City", city));
+
+                                command.Parameters.Add(new SqlParameter("@ReturnValue", SqlDbType.Int));
+                                command.Parameters["@ReturnValue"].Direction = ParameterDirection.Output;
+
+
+                                command.ExecuteNonQuery();
+                                id = (int)command.Parameters["@ReturnValue"].Value;
+
+
+                                DbCommand isWorkerCommand = factory.CreateCommand();
+                                if (isWorkerCommand != null)
+                                {
+                                    isWorkerCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                                    isWorkerCommand.Connection = connection;
+                                    isWorkerCommand.CommandText = "Insert_PersonRoles";
+                                    isWorkerCommand.Parameters.Add(new SqlParameter("@PersonID", id));
+                                    if (worker)
+                                    {
+                                        isWorkerCommand.Parameters.Add(new SqlParameter("@PersonRole", "W"));
+                                    }
+                                    else
+                                    {
+                                        isWorkerCommand.Parameters.Add(new SqlParameter("@PersonRole", "C"));
+                                    }
+                                    isWorkerCommand.ExecuteNonQuery();
+                                }
+                                Logon log = new Logon();
+                                log.passWord = passWord;
+
+                                DbCommand addPasswordCommand = factory.CreateCommand();
+                                if (addPasswordCommand != null)
+                                {
+                                    addPasswordCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                                    addPasswordCommand.Connection = connection;
+                                    addPasswordCommand.CommandText = "Insert_Logon";
+                                    addPasswordCommand.Parameters.Add(new SqlParameter("@PersonID", id));
+                                    addPasswordCommand.Parameters.Add(new SqlParameter("@LogonPassword", log.encodePassword()));
+
+                                    addPasswordCommand.ExecuteNonQuery();
+                                }
+
+                            }
+                        }
+                        else 
                         {
-                            addPasswordCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                            addPasswordCommand.Connection = connection;
-                            addPasswordCommand.CommandText = "Insert_Logon";
-                            addPasswordCommand.Parameters.Add(new SqlParameter("@PersonID", id));
-                            addPasswordCommand.Parameters.Add(new SqlParameter("@LogonPassword", log.encodePassword()));
-
-                            addPasswordCommand.ExecuteNonQuery();
+                            return false;
                         }
-
-                    }
+                    }  
                 }
             }
+            return true;
         }
 
         public override void delete(int userId)
@@ -107,13 +128,11 @@ namespace Manager
             {
                 if (connection != null)
                 {
-                    
                     connection.ConnectionString = connectionString;
                     connection.Open();
                     DbCommand command = factory.CreateCommand();
                     if (command != null)
                     {
-
                         command.CommandType = System.Data.CommandType.StoredProcedure;
                         command.Connection = connection;
                         command.CommandText = "Delete_PersonalData_ById";
