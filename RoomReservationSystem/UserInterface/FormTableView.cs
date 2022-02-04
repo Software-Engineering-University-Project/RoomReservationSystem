@@ -53,121 +53,61 @@ namespace RoomReservationSystem.UserInterface
 
         }
 
-        private void SetTableColumnsAndRows(int rows, int columns)
-        {
-            table.ColumnCount = rows;
-            table.RowCount = columns;
-        }
-
         public void InitializeTableWithAllReservations()
         {
-            table.Controls.Clear();
-            // do zrobienia: kolumny: from, to, room id, person id
-            // SetTableColumnsAndRows(, );
-            List<Reservation> reservList = _reservationManager.displayReservations();
-            SetTableColumnsAndRows(reservList.Count, 4);
-            Label[] headerLabel = new Label[4];
-            headerLabel[0].Text = "From";
-            headerLabel[1].Text = "To";
-            headerLabel[2].Text = "Room ID";
-            headerLabel[3].Text = "Client ID";
-            for (int i = 0; i < 4; i++)
-            {
-                table.Controls.Add(headerLabel[i], 0, i);
-            }
-            // table.Controls.Add() <- dodatnie kontrolki do odpowiedniego wiersza i kolumny, u nas to labele
-            for (int i = 0; i< reservList.Count;i++)
-            {
-                Label[] lbl = new Label[4];
-                lbl[0].Text = reservList[i].checkInDate.ToString();
-                lbl[1].Text = reservList[i].checkOutDate.ToString();
-                lbl[2].Text = reservList[i].roomId.ToString();
-                lbl[3].Text = reservList[i].clientId.ToString();
-                for(int j = 0; j < 4; j++)
-                {
-                    table.Controls.Add(lbl[j], j,i);
-                }
-                
-            }
+            listView.Items.Clear();
+            listView.Columns.Clear();
+            listView.View = View.Details;
+            listView.Columns.Add("From");
+            listView.Columns.Add("To");
+            listView.Columns.Add("Room ID");
+            listView.Columns.Add("Client ID");
+
             
+            // do zrobienia: kolumny: from, to, room id, person id
+            List<Reservation> reservList = _reservationManager.displayReservations();
+            foreach (var r in reservList)
+            {
+                listView.Items.Add(new ListViewItem(new string[] { r.checkInDate.ToString(), r.checkInDate.ToString(), r.clientId.ToString(), r.roomId.ToString() }));
+            }
+
         }
 
         public void InitializeTableWithRoomHistory()
         {
-            table.Controls.Clear();
+            listView.Items.Clear();
+            listView.Columns.Clear();
+            listView.View = View.Details;
+            listView.Columns.Add("From");
+            listView.Columns.Add("To");
+            listView.Columns.Add("Room ID");
+            listView.Columns.Add("price");
             // do zrobienia: kolumny: from, to, room id/name, price
             List<Reservation> reservList = _reservationManager.getReservations(searchID, true);
-            SetTableColumnsAndRows(reservList.Count, 4);
-            List<Label> headerLabels = new List<Label>();
-            for(int i = 0; i < 4; i++)
+            foreach (var r in reservList)
             {
-                headerLabels.Add(new Label());
-            }
-            headerLabels[0].Text = "From";
-            headerLabels[1].Text = "To";
-            headerLabels[2].Text = "Room ID";
-            headerLabels[3].Text = "Price";
-            for (int i = 0; i < 4; i++)
-            {
-                table.Controls.Add(headerLabels[i], 0, i);
-            }
-            for (int i = 0; i < reservList.Count; i++)
-            {
-                List<Label> lbls = new List<Label>();
-                for (int j = 0; j < 4; j++)
-                {
-                    lbls.Add(new Label());
-                }
-                lbls[0].Text = reservList[i].checkInDate.ToString();
-                lbls[1].Text = reservList[i].checkOutDate.ToString();
-                lbls[2].Text = reservList[i].roomId.ToString();
-                lbls[3].Text = reservList[i].price.ToString();
-                for (int j = 0; j < 4; j++)
-                {
-                    table.Controls.Add(lbls[j], j, i);
-                }
-
+                listView.Items.Add(new ListViewItem(new string[] { r.checkInDate.ToString(), r.checkInDate.ToString(), r.roomId.ToString(), r.price.ToString() }));
             }
         }
 
         public void InitializeTableWithClientReservationsHistory()
         {
-            table.Controls.Clear();
+            listView.Items.Clear();
+            listView.Columns.Clear();
+            listView.View = View.Details;
+            listView.Columns.Add("From");
+            listView.Columns.Add("To");
+            listView.Columns.Add("Room ID");
+            listView.Columns.Add("price");
+
+
             // do zrobienia: kolumny: from, to, room id/name, price
             List<Reservation> reservList = _reservationManager.getReservations(searchID, false);
-            SetTableColumnsAndRows(reservList.Count+1, 4);
-            List<Label> headerLabels = new List<Label>();
-            for(int i = 0; i < 4; i++)
+            foreach (var r in reservList)
             {
-                headerLabels.Add(new Label());
-            }
-            headerLabels[0].Text = "From";
-            headerLabels[1].Text = "To";
-            headerLabels[2].Text = "Client ID";
-            headerLabels[3].Text = "Price";
-            for(int i = 0; i < 4; i++)
-            {
-                table.Controls.Add(headerLabels[i], i, 0);
+                listView.Items.Add(new ListViewItem(new string[] { r.checkInDate.ToString(), r.checkInDate.ToString(), r.roomId.ToString(), r.price.ToString()}));
             }
             
-
-            for (int i = 0; i < reservList.Count; i++)
-            {
-                List<Label> lbls = new List<Label>();
-                for (int j = 0; j < 4; j++)
-                {
-                    lbls.Add(new Label());
-                }
-                lbls[0].Text = reservList[i].checkInDate.ToString();
-                lbls[1].Text = reservList[i].checkOutDate.ToString();
-                lbls[2].Text = reservList[i].clientId.ToString();
-                lbls[3].Text = reservList[i].price.ToString();
-                for (int j = 0; j < 4; j++)
-                {
-                    table.Controls.Add(lbls[j], j, i+1);
-                }
-
-            }
         }
     }
 }

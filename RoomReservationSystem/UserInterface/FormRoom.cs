@@ -21,8 +21,9 @@ namespace RoomReservationSystem.UserInterface
         static extern bool HideCaret(IntPtr hWnd);
 
         private RoomManager _roomManager;
-        
-        public FormRoom(RoomManager roomManager)
+        private UserManager _userManager;
+
+        public FormRoom(RoomManager roomManager, UserManager userManager)
         {
             _roomManager = roomManager;
             InitializeComponent();
@@ -31,11 +32,11 @@ namespace RoomReservationSystem.UserInterface
             this.roomNameLabel.Text = _roomManager.CurrentRoom.id.ToString();
 
             this.standard.Text = _roomManager.CurrentRoom.roomStandard.ToString();
-
+            /**
             foreach( var meal in _roomManager.CurrentRoom.mealsProvided)
             {
                 this.meals.Text += meal.ToString() + ",";
-            }
+            }*/
             //this.meals.Text = this.meals.Text.Substring(0, room.mealsProvided.Count - 2);
 
             this.priceLabel.Text = _roomManager.CurrentRoom.price.ToString();
@@ -56,6 +57,8 @@ namespace RoomReservationSystem.UserInterface
             {
                 this.facilities.Items.Add(facility.ToString());
             }
+
+            _userManager = userManager;
 
         }
 
@@ -105,7 +108,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void reservateButton_Click(object sender, EventArgs e)
         {
-
+            ViewManager.GetInstance().DisplayChildForm(new FormMakeReservation(_userManager, _roomManager.CurrentRoom.id));
         }
 
 
