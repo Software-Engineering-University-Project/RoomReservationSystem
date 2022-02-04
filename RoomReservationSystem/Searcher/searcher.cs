@@ -266,7 +266,7 @@ namespace RoomReservationSystem
                                 dataReader["RoomStatus"].ToString(), true);
                             room.roomNumber = dataReader["RoomNumber"].ToString();
                             room.maxGuestNumber = Int32.Parse(dataReader["RoomMaxGuestNumber"].ToString());
-                            //room.comment = dataReader["RoomComment"].ToString();
+                            room.comment = dataReader["RoomComment"].ToString();
                             }
                             else
                             {
@@ -315,7 +315,7 @@ namespace RoomReservationSystem
 
                         room.beds = bedTypes;
                     }
-                    /**
+                    
                     DbCommand mealsCommand = factory.CreateCommand();
                     if (mealsCommand != null)
                     {
@@ -335,7 +335,7 @@ namespace RoomReservationSystem
 
                         room.mealsProvided = mealsList;
                     }
-                    */
+                    
                     connection.Close();
                 }
             }
