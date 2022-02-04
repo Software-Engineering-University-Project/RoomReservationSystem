@@ -97,9 +97,7 @@ namespace RoomReservationSyster
 						validation.CommandType = System.Data.CommandType.StoredProcedure;
 						validation.Connection = connection;
 						validation.CommandText = "Check_Unique_Values_Room";
-
 						validation.Parameters.Add(new SqlParameter("@roomNumber", roomNumber));
-
 						validation.Parameters.Add(new SqlParameter("@ReturnValue", SqlDbType.Bit));
 						validation.Parameters["@ReturnValue"].Direction = ParameterDirection.Output;
 

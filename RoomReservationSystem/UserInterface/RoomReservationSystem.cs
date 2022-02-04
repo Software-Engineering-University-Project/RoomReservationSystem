@@ -69,7 +69,8 @@ namespace RoomReservationSystem.UserInterface
 
         public void EnableAdminPermissions()
         {
-            SetButtonsVisibility(false, true, true, true, true, true, true, true, true);
+            this.buttonLogInProfile.Text = "Profile";
+            SetButtonsVisibility(true, true, true, true, true, true, true, true, true);
         }
 
         public void LogOutLayoutSetter()

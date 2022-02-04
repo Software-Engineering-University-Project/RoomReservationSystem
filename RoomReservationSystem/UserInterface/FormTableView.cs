@@ -68,7 +68,7 @@ namespace RoomReservationSystem.UserInterface
             List<Reservation> reservList = _reservationManager.displayReservations();
             foreach (var r in reservList)
             {
-                listView.Items.Add(new ListViewItem(new string[] { r.checkInDate.ToString(), r.checkInDate.ToString(), r.clientId.ToString(), r.roomId.ToString() }));
+                listView.Items.Add(new ListViewItem(new string[] { r.checkInDate.ToString(), r.checkOutDate.ToString(), r.clientId.ToString(), r.roomId.ToString() }));
             }
 
         }
@@ -86,7 +86,7 @@ namespace RoomReservationSystem.UserInterface
             List<Reservation> reservList = _reservationManager.getReservations(searchID, true);
             foreach (var r in reservList)
             {
-                listView.Items.Add(new ListViewItem(new string[] { r.checkInDate.ToString(), r.checkInDate.ToString(), r.roomId.ToString(), r.price.ToString() }));
+                listView.Items.Add(new ListViewItem(new string[] { r.checkInDate.ToString(), r.checkOutDate.ToString(), r.roomId.ToString(), r.price.ToString() }));
             }
         }
 
@@ -105,7 +105,7 @@ namespace RoomReservationSystem.UserInterface
             List<Reservation> reservList = _reservationManager.getReservations(searchID, false);
             foreach (var r in reservList)
             {
-                listView.Items.Add(new ListViewItem(new string[] { r.checkInDate.ToString(), r.checkInDate.ToString(), r.roomId.ToString(), r.price.ToString()}));
+                listView.Items.Add(new ListViewItem(new string[] { r.checkInDate.ToString(), r.checkOutDate.ToString(), r.roomId.ToString(), r.price.ToString()}));
             }
             
         }

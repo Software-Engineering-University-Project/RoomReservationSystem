@@ -58,16 +58,32 @@ namespace RoomReservationSystem.UserInterface
 
             if (_mode == FormMode.NewElement)
             {
-                if (_roomManager.Insert(roomName.Text, Convert.ToDouble(price.Text),
-                    Convert.ToDouble(squareMeters.Text),
-                    Convert.ToInt32(maxNumGuests.Text), beds, meals, facilitiesEnumList,
-                    standardComboBox.GetItemText(this.standardComboBox.SelectedItem), this.comment.Text))
+                string commentText;
+                if (this.comment.Text.Length != 0)
                 {
-                    InformationPopup.ShowDialog("Room added successfully.", "Information");
+                    commentText = comment.Text;
                 }
                 else
                 {
-                    InformationPopup.ShowDialog("Room was not added successfully.", "Warning");
+                    commentText = "";
+                }
+                try
+                {
+                    if (_roomManager.Insert(roomName.Text, Convert.ToDouble(price.Text),
+                        Convert.ToDouble(squareMeters.Text),
+                        Convert.ToInt32(maxNumGuests.Text), beds, meals, facilitiesEnumList,
+                        standardComboBox.GetItemText(this.standardComboBox.SelectedItem), commentText))
+                    {
+                        InformationPopup.ShowDialog("Room added successfully.", "Information");
+                    }
+                    else
+                    {
+                        InformationPopup.ShowDialog("Room was not added successfully.", "Warning");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    InformationPopup.ShowDialog("Blank values not allowed", "Warning");
                 }
             }
             else

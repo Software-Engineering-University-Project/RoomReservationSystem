@@ -143,7 +143,7 @@ namespace RoomReservationSystem.UserInterface
         {
             int clickedRoomId = Convert.ToInt32(Regex.Match(roomsList.FocusedItem.Text, @"\d+").Value);
             _roomManager.CurrentRoom = Searcher.SearchRoomById(clickedRoomId);
-            ViewManager.GetInstance().DisplayChildForm(new FormRoom(_roomManager));
+            ViewManager.GetInstance().DisplayChildForm(new FormRoom(_roomManager, _userManager));
         }
     }
 }

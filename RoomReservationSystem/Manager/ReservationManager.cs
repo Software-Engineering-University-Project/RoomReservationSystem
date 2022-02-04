@@ -65,7 +65,7 @@ namespace Manager
                         command.Parameters.Add(new SqlParameter("@RoomID", roomId));
                         command.Parameters.Add(new SqlParameter("@TotalPrice", totalPrize));
                         command.Parameters.Add(new SqlParameter("@BeginDate", checkInDate));
-                        command.Parameters.Add(new SqlParameter("@EndDate", checkInDate));
+                        command.Parameters.Add(new SqlParameter("@EndDate", checkOutDate));
                         command.Parameters.Add(new SqlParameter("@reservationDate", DateTime.Now));
 
 
