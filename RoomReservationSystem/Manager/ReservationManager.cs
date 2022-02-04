@@ -42,7 +42,7 @@ namespace Manager
 
         public bool add(double pricePerNight, int userId, int roomId, DateTime checkInDate, DateTime checkOutDate)
         {
-            double totalPrize = pricePerNight * (checkOutDate - checkInDate).Days;
+            double totalPrize = pricePerNight * ((checkOutDate - checkInDate).Days + 1);
             string provider = ConfigurationManager.AppSettings["provider"];
             string connectionString = ConfigurationManager.AppSettings["connectionString"];
             DbProviderFactory factory = DbProviderFactories.GetFactory(provider);

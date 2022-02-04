@@ -389,8 +389,16 @@ namespace Manager
                         command.ExecuteNonQuery();
                         using (DbDataReader dataReader = command.ExecuteReader())
                         {
-                            dataReader.Read();
-                            id = (int)dataReader["PersonID"];
+                            if (dataReader.Read())
+                            {
+                                id = (int)dataReader["PersonID"];
+                            }
+                            else
+                            {
+                                currUser = null;
+                                managedUser = null;
+                                return;
+                            }
                         }
                         if (id != 0)
                         {

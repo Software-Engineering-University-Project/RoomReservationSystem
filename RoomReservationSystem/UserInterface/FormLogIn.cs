@@ -37,23 +37,47 @@ namespace RoomReservationSystem.UserInterface
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
             //login
-            _userManager.login(password.Text, login.Text);
-            if (_userManager.currUser == null)
+            if (password.Text != "")
             {
-                _parent.EnableGuestPermissions();
+                if (login.Text != "")
+                {
+                    _userManager.login(password.Text, login.Text);
+                    if (_userManager.currUser != null)
+                    {
+                        if (_userManager.currUser == null)
+                        {
+                            _parent.EnableGuestPermissions();
+                        }
+                        else if (_userManager.currUser is Admin)
+                        {
+                            _parent.EnableAdminPermissions();
+                        }
+                        else if (_userManager.currUser is Worker)
+                        {
+                            _parent.EnableWorkerPermissions();
+                        }
+                        else if (_userManager.currUser is Client)
+                        {
+                            _parent.EnableClientPermissions();
+                        }
+                        _parent.afterChangeUserOpenForm(_sender);
+                    }
+                    else
+                    {
+                        password.Text = "";
+                        login.Text = "";
+                        InformationPopup.ShowDialog("Wrong login or password provided", "Wrond data");
+                    }
+                }
+                else
+                {
+                    InformationPopup.ShowDialog("No login provided", "No login");
+                }
             }
-            else if(_userManager.currUser is Admin)
+            else
             {
-                _parent.EnableAdminPermissions();
+                InformationPopup.ShowDialog("No password provided", "No password");
             }
-            else if (_userManager.currUser is Worker)
-            {
-                _parent.EnableWorkerPermissions();
-            }else if(_userManager.currUser is Client)
-            {
-                _parent.EnableClientPermissions();
-            }
-            _parent.afterChangeUserOpenForm(_sender);
         }
     }
 }

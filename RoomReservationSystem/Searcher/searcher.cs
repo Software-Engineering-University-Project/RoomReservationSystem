@@ -310,7 +310,7 @@ namespace RoomReservationSystem
 
                         room.beds = bedTypes;
                     }
-
+                    
                     DbCommand mealsCommand = factory.CreateCommand();
                     if (mealsCommand != null)
                     {
@@ -330,7 +330,7 @@ namespace RoomReservationSystem
 
                         room.mealsProvided = mealsList;
                     }
-
+                    
                     connection.Close();
                 }
             }

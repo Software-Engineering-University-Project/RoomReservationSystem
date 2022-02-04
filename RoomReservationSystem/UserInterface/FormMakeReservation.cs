@@ -24,6 +24,8 @@ namespace RoomReservationSystem.UserInterface
             InitializeComponent();
             _reservationManager = new ReservationManager();
             _userManager = new UserManager();
+            dateFrom.MinDate = DateTime.Today;
+            dateTo.MinDate = DateTime.Today;
         }
 
 
@@ -44,31 +46,39 @@ namespace RoomReservationSystem.UserInterface
                         _userManager.getManagedUser(Int32.Parse(userID));
                         if (_userManager.managedUser != null)
                         {
-
-                            List<Reservation> reservations = _reservationManager.getReservations(Int32.Parse(roomID), true);
-                            bool isOccupied = false;
-                            foreach (Reservation r in reservations)
+                            if (reservationFrom.Date < reservationTO.Date)
                             {
-                                if ((reservationFrom > r.checkInDate ? reservationFrom : r.checkInDate) <= (reservationTO < r.checkOutDate ? reservationTO : r.checkOutDate))
+                                List<Reservation> reservations = _reservationManager.getReservations(Int32.Parse(roomID), true);
+                                bool isOccupied = false;
+                                foreach (Reservation r in reservations)
                                 {
-                                    isOccupied = true;
+                                    if ((reservationFrom > r.checkInDate ? reservationFrom : r.checkInDate) <= (reservationTO < r.checkOutDate ? reservationTO : r.checkOutDate))
+                                    {
+                                        isOccupied = true;
+                                    }
                                 }
-                            }
-                            if (!isOccupied)
-                            {
-                                //wywołanie metody do tworzenia nowej rezerwacji
-
-                                bool added = _reservationManager.add(room.price, Int32.Parse(userID), Int32.Parse(roomID), reservationFrom, reservationTO);
-                                if (added)
+                                if (!isOccupied)
                                 {
-                                    ClearForm();
+                                    //wywołanie metody do tworzenia nowej rezerwacji
+
+                                    bool added = _reservationManager.add(room.price, Int32.Parse(userID), Int32.Parse(roomID), reservationFrom, reservationTO);
+                                    if (added)
+                                    {
+                                        ClearForm();
+                                    }
+                                }
+                                else
+                                {
+                                    this.dateFrom.Value = DateTime.Now;
+                                    this.dateTo.Value = DateTime.Now;
+                                    InformationPopup.ShowDialog("Room is occupied at given time please change your dates", "Wrong date");
                                 }
                             }
                             else
                             {
                                 this.dateFrom.Value = DateTime.Now;
                                 this.dateTo.Value = DateTime.Now;
-                                InformationPopup.ShowDialog("Room is occupied at given time please change your dates","Wrong date");
+                                InformationPopup.ShowDialog("You can't reservate room without a night, or with negative number of them", "Wrong date");
                             }
                         }
                         else
@@ -133,17 +143,43 @@ namespace RoomReservationSystem.UserInterface
 
         private void roomId_TextChanged(object sender, EventArgs e)
         {
-
+            updatePrice();
         }
 
         private void dateFrom_ValueChanged(object sender, EventArgs e)
         {
-
+            updatePrice();
         }
 
         private void dateTo_ValueChanged(object sender, EventArgs e)
         {
+            updatePrice();
+        }
 
+        private void updatePrice()
+        {
+            DateTime reservationFrom = dateFrom.Value;
+            DateTime reservationTO = dateTo.Value;
+            Regex regex = new Regex(@"^[0-9]+$");
+            String roomID = this.roomId.Text;
+            if (roomID != "")
+            {
+                if (regex.IsMatch(roomID))
+                {
+                    Room room = Searcher.SearchRoomById(Int32.Parse(roomID));
+                    if (room != null)
+                    {
+                        if (reservationFrom.Date < reservationTO.Date)
+                        {
+                            labelPrice.Text = (room.price * ((reservationTO - reservationFrom).Days + 1)).ToString();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                labelPrice.Text = "0";
+            }
         }
     }
 }
