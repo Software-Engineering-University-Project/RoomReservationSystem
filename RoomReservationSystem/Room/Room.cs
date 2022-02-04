@@ -16,5 +16,10 @@ namespace RoomReservationSystem
         public RoomStandard roomStandard { set; get; }
         public RoomState roomState { set; get; }
         public string comment { set; get; }
+
+        public override string ToString()
+        {
+            return $"{id} - Price: {price}     Guests: {maxGuestNumber}";
+        }
     }
 }

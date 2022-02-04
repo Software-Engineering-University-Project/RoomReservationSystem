@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Manager;
@@ -94,7 +95,7 @@ namespace RoomReservationSystem.UserInterface
                 
             foreach (Room r in rooms)
             {
-                roomsList.Items.Add(r.id.ToString());
+                roomsList.Items.Add(r.ToString());
                 // List<Reservation> reservations = _reservationManager.getReservations(r.id, true);
                 // bool isOccupied = false;
                 // foreach (Reservation re in reservations)
@@ -138,7 +139,8 @@ namespace RoomReservationSystem.UserInterface
 
         private void roomsList_DoubleClick(object sender, EventArgs e)
         {
-            _roomManager.CurrentRoom = Searcher.SearchRoomById(Convert.ToInt32(roomsList.FocusedItem.Text));
+            int clickedRoomId = Convert.ToInt32(Regex.Match(roomsList.FocusedItem.Text, @"\d+").Value);
+            _roomManager.CurrentRoom = Searcher.SearchRoomById(clickedRoomId);
             ViewManager.GetInstance().DisplayChildForm(new FormRoom(_roomManager));
         }
     }
