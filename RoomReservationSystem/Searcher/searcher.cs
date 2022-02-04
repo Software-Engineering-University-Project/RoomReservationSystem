@@ -256,7 +256,7 @@ namespace RoomReservationSystem
                         command.Parameters.Add(new SqlParameter("@RoomId", id));
                         using (DbDataReader dataReader = command.ExecuteReader())
                         {
-                            dataReader.Read();
+                            if (dataReader.Read()) { 
                             room.price = (double) dataReader["RoomPrice"];
                             room.id = Int32.Parse(dataReader["RoomID"].ToString());
                             room.squareMeterage = (double) dataReader["RoomSquareMetrage"];
@@ -267,6 +267,11 @@ namespace RoomReservationSystem
                             room.roomNumber = dataReader["RoomNumber"].ToString();
                             room.maxGuestNumber = Int32.Parse(dataReader["RoomMaxGuestNumber"].ToString());
                             room.comment = dataReader["RoomComment"].ToString();
+                            }
+                            else
+                            {
+                                return null;
+                            }
                         }
                     }
 
@@ -310,7 +315,7 @@ namespace RoomReservationSystem
 
                         room.beds = bedTypes;
                     }
-
+                    
                     DbCommand mealsCommand = factory.CreateCommand();
                     if (mealsCommand != null)
                     {
@@ -330,7 +335,7 @@ namespace RoomReservationSystem
 
                         room.mealsProvided = mealsList;
                     }
-
+                    
                     connection.Close();
                 }
             }

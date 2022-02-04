@@ -59,7 +59,7 @@ namespace RoomReservationSystem.UserInterface
         public void EnableClientPermissions()
         {
             this.buttonLogInProfile.Text = "Profile";
-            SetButtonsVisibility(true, true);
+            SetButtonsVisibility(true, true, false, false, false);
         }
         public void EnableWorkerPermissions()
         {
@@ -72,10 +72,10 @@ namespace RoomReservationSystem.UserInterface
             SetButtonsVisibility(false, true, true, true, true, true, true, true, true);
         }
 
-        public void LogOutLayoutSetter(Object sender)
+        public void LogOutLayoutSetter()
         {
             EnableGuestPermissions();
-            OpenChildForm(new FormLogIn(this, sender, _userManager), buttonLogInProfile, "LOG IN");
+            OpenChildForm(new FormLogIn(this, buttonLogInProfile, _userManager), buttonLogInProfile, "LOG IN");
         }
 
         private Color SelectThemeColor()
@@ -139,7 +139,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonSearchRooms_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSearchRooms(_roomManager), sender, "SEARCH ROOMS");
+            OpenChildForm(new FormSearchRooms(_roomManager, _userManager), sender, "SEARCH ROOMS");
         }
 
         private void buttonReservations_Click(object sender, EventArgs e)
@@ -203,7 +203,7 @@ namespace RoomReservationSystem.UserInterface
         private void logOutButton_Click(object sender, EventArgs e)
         {
             _userManager.logout();
-            LogOutLayoutSetter(sender);
+            LogOutLayoutSetter();
         }
         public void afterChangeUserOpenForm(object sender)
         {

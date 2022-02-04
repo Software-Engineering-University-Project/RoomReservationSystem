@@ -59,6 +59,7 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.addFacilityButton = new System.Windows.Forms.Button();
             this.facilitiesComboBox = new System.Windows.Forms.ComboBox();
+            this.isOutOfService = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -80,7 +81,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 3, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
@@ -155,7 +156,7 @@
             this.addBedTypeButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.addBedTypeButton.ForeColor = System.Drawing.Color.Gainsboro;
             this.addBedTypeButton.Location = new System.Drawing.Point(39, 211);
-            this.addBedTypeButton.Margin = new System.Windows.Forms.Padding(2);
+            this.addBedTypeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addBedTypeButton.Name = "addBedTypeButton";
             this.addBedTypeButton.Size = new System.Drawing.Size(133, 32);
             this.addBedTypeButton.TabIndex = 16;
@@ -185,7 +186,7 @@
             this.addMealButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.addMealButton.ForeColor = System.Drawing.Color.Gainsboro;
             this.addMealButton.Location = new System.Drawing.Point(39, 427);
-            this.addMealButton.Margin = new System.Windows.Forms.Padding(2);
+            this.addMealButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addMealButton.Name = "addMealButton";
             this.addMealButton.Size = new System.Drawing.Size(133, 37);
             this.addMealButton.TabIndex = 2;
@@ -244,7 +245,7 @@
             this.comment.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comment.ForeColor = System.Drawing.Color.Gainsboro;
             this.comment.Location = new System.Drawing.Point(2, 90);
-            this.comment.Margin = new System.Windows.Forms.Padding(2);
+            this.comment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comment.Name = "comment";
             this.comment.Size = new System.Drawing.Size(207, 20);
             this.comment.TabIndex = 10;
@@ -258,7 +259,7 @@
             this.price.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.price.ForeColor = System.Drawing.Color.Gainsboro;
             this.price.Location = new System.Drawing.Point(2, 25);
-            this.price.Margin = new System.Windows.Forms.Padding(2);
+            this.price.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.price.Name = "price";
             this.price.Size = new System.Drawing.Size(207, 20);
             this.price.TabIndex = 11;
@@ -312,16 +313,17 @@
             this.tableLayoutPanel3.Controls.Add(this.confirmButton, 0, 5);
             this.tableLayoutPanel3.Controls.Add(this.label5, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.isOutOfService, 0, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(288, 29);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 7;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 156F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 190F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 7F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(631, 548);
@@ -343,7 +345,7 @@
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 4;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
@@ -403,7 +405,7 @@
             this.maxNumGuests.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.maxNumGuests.ForeColor = System.Drawing.Color.Gainsboro;
             this.maxNumGuests.Location = new System.Drawing.Point(306, 7);
-            this.maxNumGuests.Margin = new System.Windows.Forms.Padding(2);
+            this.maxNumGuests.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.maxNumGuests.Name = "maxNumGuests";
             this.maxNumGuests.Size = new System.Drawing.Size(317, 20);
             this.maxNumGuests.TabIndex = 3;
@@ -416,7 +418,7 @@
             this.squareMeters.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.squareMeters.ForeColor = System.Drawing.Color.Gainsboro;
             this.squareMeters.Location = new System.Drawing.Point(306, 80);
-            this.squareMeters.Margin = new System.Windows.Forms.Padding(2);
+            this.squareMeters.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.squareMeters.Name = "squareMeters";
             this.squareMeters.Size = new System.Drawing.Size(317, 20);
             this.squareMeters.TabIndex = 5;
@@ -429,7 +431,7 @@
             this.roomName.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.roomName.ForeColor = System.Drawing.Color.Gainsboro;
             this.roomName.Location = new System.Drawing.Point(306, 120);
-            this.roomName.Margin = new System.Windows.Forms.Padding(2);
+            this.roomName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.roomName.Name = "roomName";
             this.roomName.Size = new System.Drawing.Size(317, 20);
             this.roomName.TabIndex = 7;
@@ -500,7 +502,7 @@
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel6, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 225);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -533,7 +535,7 @@
             this.tableLayoutPanel6.Controls.Add(this.facilitiesComboBox, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 3;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.25373F));
@@ -573,6 +575,21 @@
             this.facilitiesComboBox.Size = new System.Drawing.Size(164, 27);
             this.facilitiesComboBox.TabIndex = 1;
             // 
+            // isOutOfService
+            // 
+            this.isOutOfService.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.isOutOfService.AutoSize = true;
+            this.isOutOfService.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.isOutOfService.ForeColor = System.Drawing.Color.Gainsboro;
+            this.isOutOfService.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.isOutOfService.Location = new System.Drawing.Point(443, 423);
+            this.isOutOfService.Name = "isOutOfService";
+            this.isOutOfService.Size = new System.Drawing.Size(185, 44);
+            this.isOutOfService.TabIndex = 7;
+            this.isOutOfService.Text = "Take it out of service";
+            this.isOutOfService.UseVisualStyleBackColor = true;
+            // 
             // FormNewRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -580,7 +597,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(1035, 719);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormNewRoom";
             this.Text = "FormNewRoom";
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -629,5 +646,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox standardComboBox;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox isOutOfService;
     }
 }

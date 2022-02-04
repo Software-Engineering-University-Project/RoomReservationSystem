@@ -245,18 +245,24 @@ namespace Manager
 
                         using(DbDataReader dataReader = command.ExecuteReader())
                         {
-                            dataReader.Read();
-                            string role = (string)dataReader["PersonRole"];
-                            switch (role)
+                            if (dataReader.Read()) { 
+                                string role = (string)dataReader["PersonRole"];
+                                switch (role)
+                                {
+                                    case "C": managedUser = new Client();
+                                        break;
+                                    case "W": managedUser = new Worker();
+                                        break;
+                                    case "A": managedUser = new Admin();
+                                        break;
+                                    default: managedUser = new Client();
+                                        break;
+                                }
+                            }
+                            else
                             {
-                                case "C": managedUser = new Client();
-                                    break;
-                                case "W": managedUser = new Worker();
-                                    break;
-                                case "A": managedUser = new Admin();
-                                    break;
-                                default: managedUser = new Client();
-                                    break;
+                                managedUser = null;
+                                return;
                             }
                         }
 
@@ -389,8 +395,15 @@ namespace Manager
                         command.ExecuteNonQuery();
                         using (DbDataReader dataReader = command.ExecuteReader())
                         {
-                            dataReader.Read();
-                            id = (int)dataReader["PersonID"];
+                            if (dataReader.Read()) { 
+                                id = (int)dataReader["PersonID"];
+                            }
+                            else
+                            {
+                                currUser = null;
+                                managedUser = null;
+                                return;
+                            }
                         }
                         if (id != 0)
                         {
