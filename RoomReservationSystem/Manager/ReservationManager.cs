@@ -58,14 +58,14 @@ namespace Manager
 
                         command.CommandType = System.Data.CommandType.StoredProcedure;
                         command.Connection = connection;
-                        command.CommandText = "Insert_Reservation_Procedure";
+                        command.CommandText = "Insert_Reservations";
 
 
                         command.Parameters.Add(new SqlParameter("@PersonID", userId));
                         command.Parameters.Add(new SqlParameter("@RoomID", roomId));
                         command.Parameters.Add(new SqlParameter("@TotalPrice", totalPrize));
-                        command.Parameters.Add(new SqlParameter("@checkInDate", checkInDate));
-                        command.Parameters.Add(new SqlParameter("@checkOutDate", checkInDate));
+                        command.Parameters.Add(new SqlParameter("@BeginDate", checkInDate));
+                        command.Parameters.Add(new SqlParameter("@EndDate", checkInDate));
                         command.Parameters.Add(new SqlParameter("@reservationDate", DateTime.Now));
 
 
@@ -110,7 +110,7 @@ namespace Manager
                                 reservation.reservationDate = (DateTime)dataReader["ReservationDate"];
                                 reservation.roomId = (int)dataReader["RoomId"];
                                 reservation.clientId = (int)dataReader["PersonId"];
-                                reservation.price = (float)dataReader["TotalPrice"];
+                                reservation.price = (double)dataReader["TotalPrice"];
                                 reservation.checkInDate = (DateTime)dataReader["BeginDate"];
                                 reservation.checkOutDate = (DateTime)dataReader["EndDate"];
                                 reservations.Add(reservation);
@@ -151,7 +151,7 @@ namespace Manager
                         else
                         {
                             command.CommandText = "Search_Reservation_ByPersonID";
-                            command.Parameters.Add(new SqlParameter("@PersonID", Id));
+                            command.Parameters.Add(new SqlParameter("@PesonID", Id));
                         }
 
 
@@ -165,7 +165,7 @@ namespace Manager
                                 reservation.reservationDate = (DateTime)dataReader["ReservationDate"];
                                 reservation.roomId = (int)dataReader["RoomId"];
                                 reservation.clientId = (int)dataReader["PersonId"];
-                                reservation.price = (float)dataReader["TotalPrice"];
+                                reservation.price = (double)dataReader["TotalPrice"];
                                 reservation.checkInDate = (DateTime)dataReader["BeginDate"];
                                 reservation.checkOutDate = (DateTime)dataReader["EndDate"];
                                 reservations.Add(reservation);

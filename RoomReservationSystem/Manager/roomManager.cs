@@ -119,7 +119,7 @@ namespace RoomReservationSyster
 								command.Parameters.Add(new SqlParameter("@RoomStandard", standard));
 								command.Parameters.Add(new SqlParameter("@RoomMaxGuestNumber", maxGuest));
 								command.Parameters.Add(new SqlParameter("@RoomNumber", roomNumber));
-								command.Parameters.Add(new SqlParameter("RoomComment", comment));
+								command.Parameters.Add(new SqlParameter("@RoomComment", comment));
 								command.Parameters.Add(new SqlParameter("@ReturnValue", SqlDbType.Int));
 								command.Parameters["@ReturnValue"].Direction = ParameterDirection.Output;
 								command.ExecuteNonQuery();

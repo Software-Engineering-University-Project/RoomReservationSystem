@@ -18,8 +18,9 @@ namespace RoomReservationSystem.UserInterface
     public partial class FormSearchRooms : Form
     {
         private ReservationManager _reservationManager;
+        private UserManager _userManager;
         private RoomManager _roomManager;
-        public FormSearchRooms(RoomManager roomManager)
+        public FormSearchRooms(RoomManager roomManager,UserManager userManager)
         {
             _roomManager = roomManager;
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace RoomReservationSystem.UserInterface
             FillTypesOfBedList();
             roomsList.Clear();
             _reservationManager = new ReservationManager();
+            _userManager = userManager;
         }
 
         private void buttonApplyFilters_Click(object sender, EventArgs e)
@@ -139,7 +141,7 @@ namespace RoomReservationSystem.UserInterface
         private void roomsList_DoubleClick(object sender, EventArgs e)
         {
             _roomManager.CurrentRoom = Searcher.SearchRoomById(Convert.ToInt32(roomsList.FocusedItem.Text));
-            ViewManager.GetInstance().DisplayChildForm(new FormRoom(_roomManager));
+            ViewManager.GetInstance().DisplayChildForm(new FormRoom(_roomManager, _userManager));
         }
     }
 }
