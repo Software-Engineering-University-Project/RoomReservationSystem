@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Manager;
 using RoomReservationSyster;
+using Users;
 
 //do zrobienia: edycja facilities
 
@@ -30,7 +31,9 @@ namespace RoomReservationSystem.UserInterface
             _roomManager = roomManager;
             InitializeComponent();
             //EnableGuestPermissions();
-            
+
+            EnablePermissions();
+
             this.roomNameLabel.Text = _roomManager.CurrentRoom.id.ToString();
 
             this.standard.Text = _roomManager.CurrentRoom.roomStandard.ToString();
@@ -59,9 +62,27 @@ namespace RoomReservationSystem.UserInterface
             {
                 this.facilities.Items.Add(facility.ToString());
             }
-
         }
 
+        private void EnablePermissions()
+        {
+            if (_userManager.currUser == null)
+            {
+                EnableGuestPermissions();
+            }
+            else if (_userManager.currUser is Client)
+            {
+                EnableClientPermissions();
+            }
+            else if (_userManager.currUser is Worker)
+            {
+                EnableWorkerPermissions();
+            }
+            else if (_userManager.currUser is Admin)
+            {
+                EnableAdminPermissions();
+            }
+        }
         public void EnableGuestPermissions()
         {
             SetComponentsVisibility();
