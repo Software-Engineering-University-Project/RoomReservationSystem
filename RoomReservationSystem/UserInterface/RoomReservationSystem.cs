@@ -203,8 +203,11 @@ namespace RoomReservationSystem.UserInterface
 
         private void logOutButton_Click(object sender, EventArgs e)
         {
-            _userManager.logout();
-            LogOutLayoutSetter();
+            if (ConfirmationPopup.ShowDialog("Do you want to log out?", "Logout"))
+            {
+                _userManager.logout();
+                LogOutLayoutSetter();
+            }
         }
         public void afterChangeUserOpenForm(object sender)
         {
