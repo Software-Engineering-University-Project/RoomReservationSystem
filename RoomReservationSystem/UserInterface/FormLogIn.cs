@@ -37,7 +37,7 @@ namespace RoomReservationSystem.UserInterface
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
             //login
-            if(password.Text != "")
+            if (password.Text != "")
             {
                 if (login.Text != "")
                 {
@@ -78,7 +78,6 @@ namespace RoomReservationSystem.UserInterface
             {
                 InformationPopup.ShowDialog("No password provided", "No password");
             }
-            
         }
     }
 }

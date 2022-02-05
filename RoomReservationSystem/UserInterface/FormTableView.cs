@@ -21,6 +21,7 @@ namespace RoomReservationSystem.UserInterface
             InitializeComponent();
             _reservationManager = new ReservationManager();
             searchID = 0;
+            InitializeTableAdminView();
         }
 
         public FormTableView(TableType type, int id)
@@ -47,10 +48,12 @@ namespace RoomReservationSystem.UserInterface
                         InitializeTableWithAllReservations();
                     }
                     break;
+                case (TableType.AdminView):
+                    {
+                        InitializeTableAdminView();
+                    }
+                    break;
             }
-
-
-
         }
 
         public void InitializeTableWithAllReservations()
@@ -111,6 +114,30 @@ namespace RoomReservationSystem.UserInterface
         }
 
         private void listView_DoubleClick(object sender, EventArgs e)
+        {
+        
+        }
+
+        public void InitializeTableAdminView()
+        {
+            listView.Items.Clear();
+            listView.Columns.Clear();
+            listView.View = View.Details;
+            listView.Columns.Add("ID");
+            listView.Columns.Add("Date");
+            listView.Columns.Add("Room ID");
+            listView.Columns.Add("Total Price");
+            listView.Columns.Add("From");
+            listView.Columns.Add("To");
+
+            List<Reservation> reservationList = _reservationManager.displayAllReservations();
+            foreach (var r in reservationList)
+            {
+                listView.Items.Add(new ListViewItem(new string[] { r.id.ToString(), r.reservationDate.ToString(), r.roomId.ToString(), r.price.ToString(), r.checkInDate.ToString(), r.checkOutDate.ToString() }));
+            }
+        }
+
+        private void listView_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

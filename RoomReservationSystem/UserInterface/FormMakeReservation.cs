@@ -25,6 +25,8 @@ namespace RoomReservationSystem.UserInterface
             _reservationManager = new ReservationManager();
             _userManager = new UserManager();
             EnablePermissions();
+            dateFrom.MinDate = DateTime.Today;
+            dateTo.MinDate = DateTime.Today;
         }
 
         public FormMakeReservation(UserManager userManager, int roomId)
@@ -41,7 +43,6 @@ namespace RoomReservationSystem.UserInterface
 
         private void MakeReservation()
         {
-            
             Regex regex = new Regex(@"^[0-9]+$");
             DateTime reservationFrom = dateFrom.Value;
             DateTime reservationTO = dateTo.Value;
@@ -66,7 +67,6 @@ namespace RoomReservationSystem.UserInterface
                     {
                         if (regex.IsMatch(roomID))
                         {
-
                             Room room = Searcher.SearchRoomById(Int32.Parse(roomID));
                             if (room != null)
                             {
@@ -90,6 +90,7 @@ namespace RoomReservationSystem.UserInterface
                                         bool added = _reservationManager.add(room.price, Int32.Parse(userID), Int32.Parse(roomID), reservationFrom, reservationTO);
                                         if (added)
                                         {
+                                            InformationPopup.ShowDialog("Room has been successfully booked", "Successful booking");
                                             ClearForm();
                                         }
                                     }
@@ -173,17 +174,43 @@ namespace RoomReservationSystem.UserInterface
 
         private void roomId_TextChanged(object sender, EventArgs e)
         {
-
+            updatePrice();
         }
 
         private void dateFrom_ValueChanged(object sender, EventArgs e)
         {
-
+            updatePrice();
         }
 
         private void dateTo_ValueChanged(object sender, EventArgs e)
         {
+            updatePrice();
+        }
 
+        private void updatePrice()
+        {
+            DateTime reservationFrom = dateFrom.Value;
+            DateTime reservationTO = dateTo.Value;
+            Regex regex = new Regex(@"^[0-9]+$");
+            String roomID = this.roomId.Text;
+            if (roomID != "")
+            {
+                if (regex.IsMatch(roomID))
+                {
+                    Room room = Searcher.SearchRoomById(Int32.Parse(roomID));
+                    if (room != null)
+                    {
+                        if (reservationFrom.Date < reservationTO.Date)
+                        {
+                            labelPrice.Text = (room.price * ((reservationTO - reservationFrom).Days + 1)).ToString();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                labelPrice.Text = "0";
+            }
         }
     }
 }
