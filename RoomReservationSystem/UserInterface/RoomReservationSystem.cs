@@ -1,13 +1,7 @@
 ﻿using Manager;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using RoomReservationSyster;
 
@@ -26,7 +20,6 @@ namespace RoomReservationSystem.UserInterface
             InitializeComponent();
             ViewManager.SetDesktopPanel(this.panelDesktopPane);
             _random = new Random();
-            //  btnCloseChildForm.Visible = false;
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
@@ -64,7 +57,7 @@ namespace RoomReservationSystem.UserInterface
         public void EnableWorkerPermissions()
         {
             this.buttonLogInProfile.Text = "Profile";
-            SetButtonsVisibility(true, true, true, true, false, false, true, false);
+            SetButtonsVisibility(true, true, true, true, true, true, false, false);
         }
 
         public void EnableAdminPermissions()
@@ -218,8 +211,6 @@ namespace RoomReservationSystem.UserInterface
             if (_userManager.currUser == null)
             {
                 OpenChildForm(new FormLogIn(this,sender, _userManager), sender, "LOG IN");
-                //brak informacji o typie użytkownika
-
             }
             else {
                 _userManager.managedUser = _userManager.currUser;

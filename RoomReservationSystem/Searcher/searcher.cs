@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using Users;
@@ -211,19 +210,8 @@ namespace RoomReservationSystem
                 {
                     connection.ConnectionString = connectionString;
                     connection.Open();
-                    rooms = ReadRoomsWithParamters(connection, factory, facilitiesList, minPrice, maxPrice, maxGuestNumber);
-                    List<int> idsToRemove = new List<int>();
-                    if (searchByDate)
-                    {
-                        foreach (Room r in rooms)
-                        {
-                            if (!CheckReservationOverlap(connection, factory, r.id, beginDate, endDate))
-                            {
-                                idsToRemove.Add(r.id);
-                            }
-                        }
-                    }
-                    rooms.RemoveAll(r => idsToRemove.Contains(r.id));
+                    rooms = ReadRoomsWithParamters(connection, factory, facilitiesList, minPrice, maxPrice,
+                        maxGuestNumber);
                 }
             }
 
@@ -400,24 +388,6 @@ namespace RoomReservationSystem
 
             rooms.RemoveAll(r => removedIds.Contains(r.id));
             return rooms;
-        }
-
-        private static bool CheckReservationOverlap(DbConnection connection, DbProviderFactory factory, int id,
-            DateTime beginDate, DateTime endDate)
-        {
-            DbCommand overlapCheck = factory.CreateCommand();
-            if (overlapCheck != null)
-            {
-                overlapCheck.CommandType = System.Data.CommandType.StoredProcedure;
-                overlapCheck.Connection = connection;
-                overlapCheck.CommandText = "SearchRoomReservationOverlap";
-                overlapCheck.Parameters.Add(new SqlParameter("@RoomId", id));
-                overlapCheck.Parameters.Add(new SqlParameter("@BeginDate", beginDate));
-                overlapCheck.Parameters.Add(new SqlParameter("@EndDate", endDate));
-                return (int) overlapCheck.ExecuteScalar()==0;
-            }
-
-            return false;
         }
     }
 }

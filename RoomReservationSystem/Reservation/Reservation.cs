@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Reservations
 {
@@ -15,10 +11,5 @@ namespace Reservations
         public double price { set; get; }
         public DateTime checkInDate { set; get; }
         public DateTime checkOutDate { set; get; }
-
-        public Reservation()
-        {
-
-        }
     }
 }

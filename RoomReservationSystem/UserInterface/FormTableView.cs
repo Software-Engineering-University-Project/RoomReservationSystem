@@ -2,12 +2,6 @@
 using Reservations;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RoomReservationSystem.UserInterface
@@ -65,15 +59,14 @@ namespace RoomReservationSystem.UserInterface
             listView.Columns.Add("To");
             listView.Columns.Add("Room ID");
             listView.Columns.Add("Client ID");
-
             
-            // do zrobienia: kolumny: from, to, room id, person id
             List<Reservation> reservList = _reservationManager.displayReservations();
             foreach (var r in reservList)
             {
                 listView.Items.Add(new ListViewItem(new string[] { r.checkInDate.ToString(), r.checkOutDate.ToString(), r.clientId.ToString(), r.roomId.ToString() }));
             }
-
+            listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            ListViewHeaderWidth();
         }
 
         public void InitializeTableWithRoomHistory()
@@ -85,12 +78,13 @@ namespace RoomReservationSystem.UserInterface
             listView.Columns.Add("To");
             listView.Columns.Add("Room ID");
             listView.Columns.Add("price");
-            // do zrobienia: kolumny: from, to, room id/name, price
             List<Reservation> reservList = _reservationManager.getReservations(searchID, true);
             foreach (var r in reservList)
             {
                 listView.Items.Add(new ListViewItem(new string[] { r.checkInDate.ToString(), r.checkOutDate.ToString(), r.roomId.ToString(), r.price.ToString() }));
             }
+            listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            ListViewHeaderWidth();
         }
 
         public void InitializeTableWithClientReservationsHistory()
@@ -103,14 +97,14 @@ namespace RoomReservationSystem.UserInterface
             listView.Columns.Add("Room ID");
             listView.Columns.Add("price");
 
-
-            // do zrobienia: kolumny: from, to, room id/name, price
+            
             List<Reservation> reservList = _reservationManager.getReservations(searchID, false);
             foreach (var r in reservList)
             {
                 listView.Items.Add(new ListViewItem(new string[] { r.checkInDate.ToString(), r.checkOutDate.ToString(), r.roomId.ToString(), r.price.ToString()}));
             }
-            
+            listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            ListViewHeaderWidth();
         }
 
         private void listView_DoubleClick(object sender, EventArgs e)
@@ -135,11 +129,17 @@ namespace RoomReservationSystem.UserInterface
             {
                 listView.Items.Add(new ListViewItem(new string[] { r.id.ToString(), r.reservationDate.ToString(), r.roomId.ToString(), r.price.ToString(), r.checkInDate.ToString(), r.checkOutDate.ToString() }));
             }
+
+            listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            ListViewHeaderWidth();
         }
-
-        private void listView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+        
+        private void ListViewHeaderWidth() {
+            int HeaderWidth = (listView.Parent.Width - 2) / listView.Columns.Count;
+            foreach (ColumnHeader header in listView.Columns)
+            {
+                header.Width = HeaderWidth;
+            }
         }
     }
 }

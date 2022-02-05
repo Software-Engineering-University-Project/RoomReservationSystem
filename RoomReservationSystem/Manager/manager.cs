@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Manager
+﻿namespace Manager
 {
     public abstract class Manager<T> {
 

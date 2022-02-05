@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Manager;
 using Users;
@@ -28,7 +21,6 @@ namespace RoomReservationSystem.UserInterface
 
         private RoomReservationSystem _parent;
         private object _sender;
-        //to delete
         private void FormLogIn_Load(object sender, EventArgs e)
         {
 
@@ -36,7 +28,6 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
-            //login
             if (password.Text != "")
             {
                 if (login.Text != "")

@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Manager;
 using Reservations;
@@ -15,7 +8,6 @@ using RoomReservationSyster;
 
 namespace RoomReservationSystem.UserInterface
 {
-    // this.considerDateCheckBox.Checked <= pobieranie boola z checkboxa
     public partial class FormSearchRooms : Form
     {
         private ReservationManager _reservationManager;
@@ -31,6 +23,8 @@ namespace RoomReservationSystem.UserInterface
             roomsList.Clear();
             _reservationManager = new ReservationManager();
             _userManager = userManager;
+            this.dateFrom.Value = DateTime.Today;
+            this.dateTo.Value = DateTime.Today;
         }
 
         private void buttonApplyFilters_Click(object sender, EventArgs e)
@@ -94,23 +88,22 @@ namespace RoomReservationSystem.UserInterface
             }
             List<Room> rooms = Searcher.SearchRooms(dateFrom, dateTo, selectedFacilities,
                 priceMin, priceMax, guests, this.considerDateCheckBox.Checked);
-                
+            bool conciderDate = this.considerDateCheckBox.Checked;
             foreach (Room r in rooms)
             {
-                roomsList.Items.Add(r.ToString());
-                // List<Reservation> reservations = _reservationManager.getReservations(r.id, true);
-                // bool isOccupied = false;
-                // foreach (Reservation re in reservations)
-                // {
-                //     if ((dateFrom > re.checkInDate ? dateFrom : re.checkInDate) <= (dateTo < re.checkOutDate ? dateTo : re.checkOutDate))
-                //     {
-                //         isOccupied = true;
-                //     }
-                // }
-                // if (!isOccupied)
-                // {
-                //     roomsList.Items.Add(r.id.ToString());
-                // }
+                List<Reservation> reservations = _reservationManager.getReservations(r.id, true);
+                bool isFree = true;
+                foreach (Reservation re in reservations)
+                {
+                    if ((dateFrom > re.checkInDate ? dateFrom : re.checkInDate) <= (dateTo < re.checkOutDate ? dateTo : re.checkOutDate))
+                    {
+                        isFree = false;
+                    }
+                }
+                if (isFree||!conciderDate)
+                {
+                    roomsList.Items.Add(r.ToString());
+                }
             }
         }
 

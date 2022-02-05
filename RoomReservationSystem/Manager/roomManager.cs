@@ -6,8 +6,6 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
-using System.Security;
-using System.Windows.Forms;
 using RoomReservationSystem;
 
 namespace RoomReservationSyster

@@ -1,14 +1,7 @@
 ﻿using Manager;
 using RoomReservationSystem.Users;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RoomReservationSystem.UserInterface
@@ -31,8 +24,7 @@ namespace RoomReservationSystem.UserInterface
                 InitializeTextFields();
             }
         }
-
-        //metoda do wywołania, jeśli chcemy edytować dane za pomocą formularza
+        
         public void InitializeTextFields()
         {
             this.firstName.Text = _userManager.managedUser.name;
@@ -51,7 +43,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            Regex phoneReg = new Regex(@"(\+[0-9]{2}|\+[0-9]{2}\(0\)|\(\+[0-9]{2}\)\(0\)|00[0-9]{2}|0)([0-9]{9}|[0-9\-\s]{9,18})");
+            Regex phoneReg = new Regex(@"(\+[0-9]{2}|\+[0-9]{2}\(0\)|\(\+[0-9]{2}\)\(0\)|00[0-9]{2}|0)?([0-9]{9}|[0-9\-\s]{9,18})");
             Regex emailReg = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             string fName = firstName.Text;
             string sName = firstName.Text;
@@ -82,9 +74,8 @@ namespace RoomReservationSystem.UserInterface
                 InformationPopup.ShowDialog("For reservate room you must be at least 18 years old", "Wrong age");
                 return;
             }
-            if (_mode == FormMode.Edit) //nadpisanie danych
+            if (_mode == FormMode.Edit)
             {
-                // potrzebny dostęp do danych zalogowanego użytkownika
                 if (pass.Equals(""))
                 {
                     if (ConfirmationPopup.ShowDialog("There is nothing in password box and you can't change it to empty. Do you confirm? ", "No password")) {
@@ -107,9 +98,8 @@ namespace RoomReservationSystem.UserInterface
                 }
 
             }
-            else if (_mode == FormMode.NewElement) // zapisanie nowego elementu
+            else if (_mode == FormMode.NewElement) 
             {
-                // potrzebny dostęp do informacji, jaki rodzaj użytkownika zapisujemy
 
                 if (pass.Equals(""))
                 {

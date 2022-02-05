@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Manager;
 using RoomReservationSyster;
 using Users;
 
-//do zrobienia: edycja facilities
+
 
 namespace RoomReservationSystem.UserInterface
 {
@@ -30,7 +23,6 @@ namespace RoomReservationSystem.UserInterface
             _userManager = userManager;
             _roomManager = roomManager;
             InitializeComponent();
-            //EnableGuestPermissions();
 
             EnablePermissions();
 
@@ -42,7 +34,6 @@ namespace RoomReservationSystem.UserInterface
             {
                 this.meals.Text += meal.ToString() + ",";
             }
-            //this.meals.Text = this.meals.Text.Substring(0, room.mealsProvided.Count - 2);
 
             this.priceLabel.Text = _roomManager.CurrentRoom.price.ToString();
 
@@ -56,7 +47,6 @@ namespace RoomReservationSystem.UserInterface
             {
                 this.typeOfBed.Text += bed.ToString() + ",";
             }
-            //this.typeOfBed.Text = this.typeOfBed.Text.Substring(0, room.beds.Count - 2);
 
             foreach (var facility in _roomManager.CurrentRoom.facilitiesProvided)
             {
@@ -70,17 +60,17 @@ namespace RoomReservationSystem.UserInterface
             {
                 EnableGuestPermissions();
             }
-            else if (_userManager.currUser is Client)
+            else if (_userManager.currUser is Admin)
             {
-                EnableClientPermissions();
+                EnableAdminPermissions();
             }
             else if (_userManager.currUser is Worker)
             {
                 EnableWorkerPermissions();
             }
-            else if (_userManager.currUser is Admin)
+            else if (_userManager.currUser is Client)
             {
-                EnableAdminPermissions();
+                EnableClientPermissions();
             }
         }
         public void EnableGuestPermissions()
@@ -93,7 +83,7 @@ namespace RoomReservationSystem.UserInterface
         }
         public void EnableWorkerPermissions()
         {
-            SetComponentsVisibility(true, true, true, false, false, false, true);
+            SetComponentsVisibility(true, true, true, false, true, false, true);
         }
 
         public void EnableAdminPermissions()
