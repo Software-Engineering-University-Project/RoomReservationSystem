@@ -18,6 +18,20 @@ namespace RoomReservationSystem.UserInterface
 
         private RoomReservationSystem _roomReservationSystem;
 
+
+        public FormProfile(UserManager userManger)
+        {
+            InitializeComponent();
+            _userManager = userManger;
+            _roomReservationSystem = null;
+            if (_userManager.managedUser != null)
+            {
+                initializeLabels();
+            }
+
+            EnablePermissions();
+        }
+
         public FormProfile(UserManager userManger, RoomReservationSystem rs)
         {
             InitializeComponent();
@@ -34,17 +48,18 @@ namespace RoomReservationSystem.UserInterface
 
         private void EnablePermissions()
         {
-            if (_userManager.currUser is Client)
+            if (_userManager.currUser is Admin)
             {
-                EnableClientPermissions();
+                
+                EnableAdminPermissions();
             }
             else if (_userManager.currUser is Worker)
             {
                 EnableWorkerPermissions();
             }
-            else if (_userManager.currUser is Admin)
+            else if (_userManager.currUser is Client)
             {
-                EnableAdminPermissions();
+                EnableClientPermissions();
             }
         }
 
@@ -96,10 +111,18 @@ namespace RoomReservationSystem.UserInterface
 
             if (shouldDelete)
             {
-                _userManager.delete(_userManager.managedUser.id);
-                _userManager.logout();
-                _roomReservationSystem.LogOutLayoutSetter();
+                if (_roomReservationSystem != null) {
+                    _userManager.delete(_userManager.managedUser.id);
+                    _userManager.logout();
+                    _roomReservationSystem.LogOutLayoutSetter();
+                }
+                else
+                {
+                    _userManager.delete(_userManager.managedUser.id);
+                    ViewManager.GetInstance().DisplayChildForm(new FormSearchClient(_userManager));
+                }
             }
+            
         }
     }
 }

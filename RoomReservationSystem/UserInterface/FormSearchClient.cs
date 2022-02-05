@@ -7,16 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Manager;
 using RoomReservationSystem;
 
 namespace RoomReservationSystem.UserInterface
 {
     public partial class FormSearchClient : Form
     {
-        public FormSearchClient()
+        UserManager _userManager;
+        public FormSearchClient(UserManager userManager)
         {
             InitializeComponent();
             InitializeComboBox();
+            _userManager = userManager;
         }
 
         public void InitializeComboBox()
@@ -77,7 +80,14 @@ namespace RoomReservationSystem.UserInterface
 
         private void listViewClients_DoubleClick(object sender, EventArgs e)
         {
-
+            ListViewItem item = listViewClients.SelectedItems[0];
+            if (item != null)
+            {
+                int id = int.Parse(item.SubItems[0].Text);
+                _userManager.getManagedUser(id);
+                ViewManager.GetInstance().DisplayChildForm(new FormProfile(_userManager));
+            }
+            
         }
     }
 }
