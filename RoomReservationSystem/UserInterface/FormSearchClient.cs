@@ -74,5 +74,10 @@ namespace RoomReservationSystem.UserInterface
                 }
             }
         }
+
+        private void listViewClients_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }
