@@ -395,7 +395,8 @@ namespace Manager
                         command.ExecuteNonQuery();
                         using (DbDataReader dataReader = command.ExecuteReader())
                         {
-                            if (dataReader.Read()) { 
+                            if (dataReader.Read())
+                            {
                                 id = (int)dataReader["PersonID"];
                             }
                             else

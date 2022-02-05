@@ -24,6 +24,8 @@ namespace RoomReservationSystem.UserInterface
             InitializeComponent();
             _reservationManager = new ReservationManager();
             _userManager = new UserManager();
+            dateFrom.MinDate = DateTime.Today;
+            dateTo.MinDate = DateTime.Today;
         }
 
         public FormMakeReservation(UserManager userManager, int roomId)
@@ -62,7 +64,6 @@ namespace RoomReservationSystem.UserInterface
                     {
                         if (regex.IsMatch(roomID))
                         {
-
                             Room room = Searcher.SearchRoomById(Int32.Parse(roomID));
                             if (room != null)
                             {
@@ -161,17 +162,43 @@ namespace RoomReservationSystem.UserInterface
 
         private void roomId_TextChanged(object sender, EventArgs e)
         {
-
+            updatePrice();
         }
 
         private void dateFrom_ValueChanged(object sender, EventArgs e)
         {
-
+            updatePrice();
         }
 
         private void dateTo_ValueChanged(object sender, EventArgs e)
         {
+            updatePrice();
+        }
 
+        private void updatePrice()
+        {
+            DateTime reservationFrom = dateFrom.Value;
+            DateTime reservationTO = dateTo.Value;
+            Regex regex = new Regex(@"^[0-9]+$");
+            String roomID = this.roomId.Text;
+            if (roomID != "")
+            {
+                if (regex.IsMatch(roomID))
+                {
+                    Room room = Searcher.SearchRoomById(Int32.Parse(roomID));
+                    if (room != null)
+                    {
+                        if (reservationFrom.Date < reservationTO.Date)
+                        {
+                            labelPrice.Text = (room.price * ((reservationTO - reservationFrom).Days + 1)).ToString();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                labelPrice.Text = "0";
+            }
         }
     }
 }
