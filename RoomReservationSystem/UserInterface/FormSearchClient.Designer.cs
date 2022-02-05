@@ -94,6 +94,7 @@
             this.listViewClients.TabIndex = 0;
             this.listViewClients.UseCompatibleStateImageBehavior = false;
             this.listViewClients.View = System.Windows.Forms.View.List;
+            this.listViewClients.DoubleClick += new System.EventHandler(this.listViewClients_DoubleClick);
             // 
             // tableLayoutPanel3
             // 
@@ -103,7 +104,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.22807F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.77193F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 219F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanel3.Controls.Add(this.textBoxSearchClient, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.comboBoxSearchClient, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.buttonSearchClient, 4, 0);
@@ -124,7 +125,7 @@
             this.textBoxSearchClient.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSearchClient.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxSearchClient.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBoxSearchClient.Location = new System.Drawing.Point(674, 22);
+            this.textBoxSearchClient.Location = new System.Drawing.Point(673, 22);
             this.textBoxSearchClient.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSearchClient.Name = "textBoxSearchClient";
             this.textBoxSearchClient.Size = new System.Drawing.Size(203, 25);
@@ -139,7 +140,7 @@
             this.comboBoxSearchClient.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxSearchClient.ForeColor = System.Drawing.Color.Gainsboro;
             this.comboBoxSearchClient.FormattingEnabled = true;
-            this.comboBoxSearchClient.Location = new System.Drawing.Point(392, 18);
+            this.comboBoxSearchClient.Location = new System.Drawing.Point(391, 18);
             this.comboBoxSearchClient.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxSearchClient.Name = "comboBoxSearchClient";
             this.comboBoxSearchClient.Size = new System.Drawing.Size(239, 32);
@@ -155,7 +156,7 @@
             this.buttonSearchClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearchClient.Font = new System.Drawing.Font("Calibri", 14F);
             this.buttonSearchClient.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonSearchClient.Location = new System.Drawing.Point(898, 13);
+            this.buttonSearchClient.Location = new System.Drawing.Point(897, 13);
             this.buttonSearchClient.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSearchClient.Name = "buttonSearchClient";
             this.buttonSearchClient.Size = new System.Drawing.Size(173, 42);

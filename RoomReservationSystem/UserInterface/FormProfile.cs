@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Users;
 
 namespace RoomReservationSystem.UserInterface
 {
@@ -16,6 +17,20 @@ namespace RoomReservationSystem.UserInterface
         private UserManager _userManager;
 
         private RoomReservationSystem _roomReservationSystem;
+
+
+        public FormProfile(UserManager userManger)
+        {
+            InitializeComponent();
+            _userManager = userManger;
+            _roomReservationSystem = null;
+            if (_userManager.managedUser != null)
+            {
+                initializeLabels();
+            }
+
+            EnablePermissions();
+        }
 
         public FormProfile(UserManager userManger, RoomReservationSystem rs)
         {
@@ -26,6 +41,25 @@ namespace RoomReservationSystem.UserInterface
             if (_userManager.managedUser != null)
             {
                 initializeLabels();
+            }
+
+            EnablePermissions();
+        }
+
+        private void EnablePermissions()
+        {
+            if (_userManager.currUser is Admin)
+            {
+                
+                EnableAdminPermissions();
+            }
+            else if (_userManager.currUser is Worker)
+            {
+                EnableWorkerPermissions();
+            }
+            else if (_userManager.currUser is Client)
+            {
+                EnableClientPermissions();
             }
         }
 
@@ -77,10 +111,18 @@ namespace RoomReservationSystem.UserInterface
 
             if (shouldDelete)
             {
-                _userManager.delete(_userManager.managedUser.id);
-                _userManager.logout();
-                _roomReservationSystem.LogOutLayoutSetter();
+                if (_roomReservationSystem != null) {
+                    _userManager.delete(_userManager.managedUser.id);
+                    _userManager.logout();
+                    _roomReservationSystem.LogOutLayoutSetter();
+                }
+                else
+                {
+                    _userManager.delete(_userManager.managedUser.id);
+                    ViewManager.GetInstance().DisplayChildForm(new FormSearchClient(_userManager));
+                }
             }
+            
         }
     }
 }

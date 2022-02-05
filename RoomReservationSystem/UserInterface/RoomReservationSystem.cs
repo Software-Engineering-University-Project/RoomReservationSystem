@@ -156,7 +156,7 @@ namespace RoomReservationSystem.UserInterface
 
         private void buttonSearchClients_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSearchClient(), sender, "SEARCH CLIENTS");
+            OpenChildForm(new FormSearchClient(_userManager), sender, "SEARCH CLIENTS");
         }
 
         private void buttonNewClient_Click(object sender, EventArgs e)
@@ -221,7 +221,8 @@ namespace RoomReservationSystem.UserInterface
                 //brak informacji o typie użytkownika
 
             }
-            else { 
+            else {
+                _userManager.managedUser = _userManager.currUser;
                 OpenChildForm(new FormProfile(_userManager, this), sender, "PROFILE");
             }
         }

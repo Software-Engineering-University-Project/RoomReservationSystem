@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Manager;
 using RoomReservationSyster;
+using Users;
 
 //do zrobienia: edycja facilities
 
@@ -23,19 +24,21 @@ namespace RoomReservationSystem.UserInterface
         private RoomManager _roomManager;
 
         private UserManager _userManager;
-        
+
         public FormRoom(RoomManager roomManager, UserManager userManager)
         {
             _userManager = userManager;
             _roomManager = roomManager;
             InitializeComponent();
             //EnableGuestPermissions();
-            
+
+            EnablePermissions();
+
             this.roomNameLabel.Text = _roomManager.CurrentRoom.id.ToString();
 
             this.standard.Text = _roomManager.CurrentRoom.roomStandard.ToString();
 
-            foreach( var meal in _roomManager.CurrentRoom.mealsProvided)
+            foreach (var meal in _roomManager.CurrentRoom.mealsProvided)
             {
                 this.meals.Text += meal.ToString() + ",";
             }
@@ -49,7 +52,7 @@ namespace RoomReservationSystem.UserInterface
 
             this.commentText.Text = _roomManager.CurrentRoom.comment;
 
-            foreach(var bed in _roomManager.CurrentRoom.beds)
+            foreach (var bed in _roomManager.CurrentRoom.beds)
             {
                 this.typeOfBed.Text += bed.ToString() + ",";
             }
@@ -59,9 +62,27 @@ namespace RoomReservationSystem.UserInterface
             {
                 this.facilities.Items.Add(facility.ToString());
             }
-
         }
 
+        private void EnablePermissions()
+        {
+            if (_userManager.currUser == null)
+            {
+                EnableGuestPermissions();
+            }
+            else if (_userManager.currUser is Client)
+            {
+                EnableClientPermissions();
+            }
+            else if (_userManager.currUser is Worker)
+            {
+                EnableWorkerPermissions();
+            }
+            else if (_userManager.currUser is Admin)
+            {
+                EnableAdminPermissions();
+            }
+        }
         public void EnableGuestPermissions()
         {
             SetComponentsVisibility();
@@ -79,7 +100,7 @@ namespace RoomReservationSystem.UserInterface
         {
             SetComponentsVisibility(true, true, true, true, true, true, true);
         }
-        private void SetComponentsVisibility(bool reservate = false, bool comment = false, 
+        private void SetComponentsVisibility(bool reservate = false, bool comment = false,
             bool outOfService = false, bool delete = false, bool edit = false, bool editableValues = false, bool reservationHistory = false)
         {
             this.reservateButton.Visible = reservate;
@@ -92,7 +113,7 @@ namespace RoomReservationSystem.UserInterface
             this.reservationsHistoryButton.Visible = reservationHistory;
             this.reservationsHistoryButton.Enabled = reservationHistory;
         }
-        
+
         private void deleteRoomButton_Click(object sender, EventArgs e)
         {
             bool shouldDelete = ConfirmationPopup.ShowDialog("Do you confirm room deletion?");

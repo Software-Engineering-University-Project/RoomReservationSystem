@@ -24,6 +24,7 @@ namespace RoomReservationSystem.UserInterface
             InitializeComponent();
             _reservationManager = new ReservationManager();
             _userManager = new UserManager();
+            EnablePermissions();
             dateFrom.MinDate = DateTime.Today;
             dateTo.MinDate = DateTime.Today;
         }
@@ -35,6 +36,8 @@ namespace RoomReservationSystem.UserInterface
             _userManager =  userManager;
             this.userId.Text = _userManager.managedUser.id.ToString();
             this.roomId.Text = roomId.ToString();
+
+            EnablePermissions();
         }
 
 
@@ -125,6 +128,21 @@ namespace RoomReservationSystem.UserInterface
             }
         }
 
+        private void EnablePermissions()
+        {
+            if (_userManager.currUser != null)
+            {
+                if (_userManager.currUser is Client)
+                {
+                    EnableClientPermissions();
+                }
+                else
+                {
+                    EnableHighPermissions();
+                }
+            }
+        }
+
         private void ClearForm()
         {
             this.dateFrom.Value = DateTime.Now;
@@ -134,20 +152,14 @@ namespace RoomReservationSystem.UserInterface
         }
         public void EnableClientPermissions()
         {
-            userId.Visible = false;
-            labelUserID.Visible= false;
-
-            roomId.Visible = false;
-            labelRoomId.Visible = false;
+            userId.ReadOnly = true;
+            roomId.ReadOnly = true;
         }
 
         public void EnableHighPermissions()
         {
-            userId.Visible = true;
-            labelUserID.Visible = true;
-
-            roomId.Visible = true;
-            labelRoomId.Visible = true;
+            userId.ReadOnly = false;
+            roomId.ReadOnly = false;
         }
 
         private void makeReservationButton_Click(object sender, EventArgs e)
