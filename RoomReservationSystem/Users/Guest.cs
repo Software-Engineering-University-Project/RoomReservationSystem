@@ -1,9 +1,9 @@
 ﻿using System;
-using User;
 
 
 
-namespace Guest
+
+namespace Users
 {
 	public class Guest : User
 	{

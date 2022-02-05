@@ -1,9 +1,7 @@
 ﻿using System;
-using User;
-using Address;
-using Logon;
 
-namespace Client
+
+namespace Users
 {
 	public class Client : User
 	{
@@ -13,9 +11,12 @@ namespace Client
 		public Address address { set; get; }
 		public Logon logon { set; get; }
 
+		public DateTime BirthDate { set; get; }
+
 		public Client()
 		{
-			
+			address = new Address();
+			logon = new Logon();
 		}
 	}
 }

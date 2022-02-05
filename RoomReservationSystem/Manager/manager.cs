@@ -1,6 +1,9 @@
-﻿using System;
-
-namespace Manager
+﻿namespace Manager
 {
-    public abstract class Manager { }
+    public abstract class Manager<T> {
+
+        public abstract void delete(int Id);
+
+        
+    }
 }

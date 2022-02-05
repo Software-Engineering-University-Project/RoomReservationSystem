@@ -1,11 +1,8 @@
-using namespace RoomReservationSystem
+namespace RoomReservationSystem
 {
     public enum RoomState
     {
         Available,
-        Unavailable,
-        Reserved,
-        Loaned,
         OutOfUse
     }
 }

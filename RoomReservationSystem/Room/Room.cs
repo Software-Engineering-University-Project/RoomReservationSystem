@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RoomReservationSystem
 {
-    class Room
+    public class Room
     {
         public int id { set; get; }
         public string roomNumber { set; get; }
@@ -14,5 +14,12 @@ namespace RoomReservationSystem
         public List<Meals> mealsProvided { set; get; }
         public List<RoomFacilities> facilitiesProvided { set; get; }
         public RoomStandard roomStandard { set; get; }
+        public RoomState roomState { set; get; }
+        public string comment { set; get; }
+
+        public override string ToString()
+        {
+            return $"{id} - Price: {price}     Guests: {maxGuestNumber}";
+        }
     }
 }

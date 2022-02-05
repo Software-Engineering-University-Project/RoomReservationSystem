@@ -1,9 +1,11 @@
 ﻿using System;
 
-namespace Encoder
+namespace Users
 {
+    
     interface Encoder
-    {
+    {        
+        String encodePassword();
 
     }
 }
