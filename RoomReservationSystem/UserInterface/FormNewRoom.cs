@@ -56,25 +56,51 @@ namespace RoomReservationSystem.UserInterface
                 facilitiesEnumList.Add((RoomFacilities)Enum.Parse(typeof(RoomFacilities), item.ToString(), true));
             }
 
+            RoomState state;
+            if (this.isOutOfService.Checked)
+            {
+                state = RoomState.OutOfUse;
+            }
+            else
+            {
+                state = RoomState.Available;
+            }
+            
             if (_mode == FormMode.NewElement)
             {
-                if (_roomManager.Insert(roomName.Text, Convert.ToDouble(price.Text),
-                    Convert.ToDouble(squareMeters.Text),
-                    Convert.ToInt32(maxNumGuests.Text), beds, meals, facilitiesEnumList,
-                    standardComboBox.GetItemText(this.standardComboBox.SelectedItem), this.comment.Text))
+                string commentText;
+                if (this.comment.Text.Length != 0)
                 {
-                    InformationPopup.ShowDialog("Room added successfully.", "Information");
+                    commentText = comment.Text;
                 }
                 else
                 {
-                    InformationPopup.ShowDialog("Room was not added successfully.", "Warning");
+                    commentText = "";
+                }
+                try
+                {
+                    if (_roomManager.Insert(roomName.Text, Convert.ToDouble(price.Text),
+                        Convert.ToDouble(squareMeters.Text),
+                        Convert.ToInt32(maxNumGuests.Text), state, beds, meals, facilitiesEnumList,
+                        standardComboBox.GetItemText(this.standardComboBox.SelectedItem), commentText))
+                    {
+                        InformationPopup.ShowDialog("Room added successfully.", "Information");
+                    }
+                    else
+                    {
+                        InformationPopup.ShowDialog("Room was not added successfully.", "Warning");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    InformationPopup.ShowDialog("Blank values not allowed", "Warning");
                 }
             }
             else
             {
                 _roomManager.Update(roomName.Text, Convert.ToDouble(price.Text), Convert.ToDouble(squareMeters.Text),
                     Convert.ToInt32(maxNumGuests.Text),
-                    standardComboBox.GetItemText(this.standardComboBox.SelectedItem), this.comment.Text, beds, meals,
+                    standardComboBox.GetItemText(this.standardComboBox.SelectedItem), this.comment.Text, state, beds, meals,
                     facilitiesEnumList);
                 InformationPopup.ShowDialog("Room updated.", "Information");
             }
@@ -151,7 +177,11 @@ namespace RoomReservationSystem.UserInterface
             this.roomName.Text = room.roomNumber;
             this.standardComboBox.SelectedIndex = (int)room.roomStandard;
             this.comment.Text = room.comment;
-            
+            if (room.roomState == RoomState.OutOfUse)
+            {
+                this.isOutOfService.Checked = true;
+            }
+
             foreach(var bed in room.beds)
             {
                 this.typesOfBedList.Items.Add(bed.ToString());

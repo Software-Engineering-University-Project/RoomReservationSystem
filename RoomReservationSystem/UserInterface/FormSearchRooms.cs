@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Manager;
@@ -18,8 +19,9 @@ namespace RoomReservationSystem.UserInterface
     public partial class FormSearchRooms : Form
     {
         private ReservationManager _reservationManager;
+        private UserManager _userManager;
         private RoomManager _roomManager;
-        public FormSearchRooms(RoomManager roomManager)
+        public FormSearchRooms(RoomManager roomManager,UserManager userManager)
         {
             _roomManager = roomManager;
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace RoomReservationSystem.UserInterface
             FillTypesOfBedList();
             roomsList.Clear();
             _reservationManager = new ReservationManager();
+            _userManager = userManager;
         }
 
         private void buttonApplyFilters_Click(object sender, EventArgs e)
@@ -94,7 +97,7 @@ namespace RoomReservationSystem.UserInterface
                 
             foreach (Room r in rooms)
             {
-                roomsList.Items.Add(r.id.ToString());
+                roomsList.Items.Add(r.ToString());
                 // List<Reservation> reservations = _reservationManager.getReservations(r.id, true);
                 // bool isOccupied = false;
                 // foreach (Reservation re in reservations)
@@ -138,8 +141,9 @@ namespace RoomReservationSystem.UserInterface
 
         private void roomsList_DoubleClick(object sender, EventArgs e)
         {
-            _roomManager.CurrentRoom = Searcher.SearchRoomById(Convert.ToInt32(roomsList.FocusedItem.Text));
-            ViewManager.GetInstance().DisplayChildForm(new FormRoom(_roomManager));
+            int clickedRoomId = Convert.ToInt32(Regex.Match(roomsList.FocusedItem.Text, @"\d+").Value);
+            _roomManager.CurrentRoom = Searcher.SearchRoomById(clickedRoomId);
+            ViewManager.GetInstance().DisplayChildForm(new FormRoom(_roomManager, _userManager));
         }
     }
 }

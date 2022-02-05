@@ -79,7 +79,7 @@ namespace RoomReservationSystem.UserInterface
             {
                 _userManager.delete(_userManager.managedUser.id);
                 _userManager.logout();
-                _roomReservationSystem.LogOutLayoutSetter(sender);
+                _roomReservationSystem.LogOutLayoutSetter();
             }
         }
     }

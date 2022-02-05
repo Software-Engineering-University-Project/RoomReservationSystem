@@ -65,7 +65,7 @@ namespace RoomReservationSystem.UserInterface
                     else
                     {
                         password.Text = "";
-                        login.Text = "";
+                        login.Text ="";
                         InformationPopup.ShowDialog("Wrong login or password provided", "Wrond data");
                     }
                 }

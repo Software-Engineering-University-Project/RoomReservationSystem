@@ -31,16 +31,15 @@ namespace RoomReservationSystem.UserInterface
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.reservationsHistoryButton = new System.Windows.Forms.Button();
             this.priceLabel = new System.Windows.Forms.Label();
             this.editRoomButton = new System.Windows.Forms.Button();
             this.deleteRoomButton = new System.Windows.Forms.Button();
-            this.isOutOfService = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.standard = new System.Windows.Forms.Label();
             this.meals = new System.Windows.Forms.Label();
+            this.reservationsHistoryButton = new System.Windows.Forms.Button();
             this.roomNameLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.commentText = new System.Windows.Forms.TextBox();
@@ -64,7 +63,7 @@ namespace RoomReservationSystem.UserInterface
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (39)))), ((int) (((byte) (39)))), ((int) (((byte) (58)))));
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 216F));
@@ -76,7 +75,7 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 3, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
@@ -94,7 +93,6 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel2.Controls.Add(this.priceLabel, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.editRoomButton, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.deleteRoomButton, 0, 5);
-            this.tableLayoutPanel2.Controls.Add(this.isOutOfService, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.reservationsHistoryButton, 0, 6);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -105,37 +103,21 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 84F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(212, 510);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // reservationsHistoryButton
-            // 
-            this.reservationsHistoryButton.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (100)))), ((int) (((byte) (100)))), ((int) (((byte) (149)))));
-            this.reservationsHistoryButton.FlatAppearance.BorderSize = 0;
-            this.reservationsHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.reservationsHistoryButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
-            this.reservationsHistoryButton.ForeColor = System.Drawing.Color.Gainsboro;
-            this.reservationsHistoryButton.Location = new System.Drawing.Point(3, 440);
-            this.reservationsHistoryButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
-            this.reservationsHistoryButton.Name = "reservationsHistoryButton";
-            this.reservationsHistoryButton.Size = new System.Drawing.Size(206, 44);
-            this.reservationsHistoryButton.TabIndex = 8;
-            this.reservationsHistoryButton.Text = "Reservations history";
-            this.reservationsHistoryButton.UseVisualStyleBackColor = false;
-            this.reservationsHistoryButton.Click += new System.EventHandler(this.reservationsHistoryButton_Click);
-            // 
             // priceLabel
             // 
-            this.priceLabel.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.priceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.priceLabel.AutoSize = true;
-            this.priceLabel.Font = new System.Drawing.Font("Calibri", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.priceLabel.Font = new System.Drawing.Font("Calibri", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.priceLabel.ForeColor = System.Drawing.Color.Gainsboro;
             this.priceLabel.Location = new System.Drawing.Point(2, 168);
             this.priceLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -147,12 +129,12 @@ namespace RoomReservationSystem.UserInterface
             // 
             // editRoomButton
             // 
-            this.editRoomButton.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (100)))), ((int) (((byte) (100)))), ((int) (((byte) (149)))));
+            this.editRoomButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
             this.editRoomButton.FlatAppearance.BorderSize = 0;
             this.editRoomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editRoomButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.editRoomButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.editRoomButton.ForeColor = System.Drawing.Color.Gainsboro;
-            this.editRoomButton.Location = new System.Drawing.Point(3, 311);
+            this.editRoomButton.Location = new System.Drawing.Point(3, 264);
             this.editRoomButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.editRoomButton.Name = "editRoomButton";
             this.editRoomButton.Size = new System.Drawing.Size(206, 39);
@@ -163,12 +145,12 @@ namespace RoomReservationSystem.UserInterface
             // 
             // deleteRoomButton
             // 
-            this.deleteRoomButton.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (100)))), ((int) (((byte) (100)))), ((int) (((byte) (149)))));
+            this.deleteRoomButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
             this.deleteRoomButton.FlatAppearance.BorderSize = 0;
             this.deleteRoomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteRoomButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.deleteRoomButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.deleteRoomButton.ForeColor = System.Drawing.Color.Gainsboro;
-            this.deleteRoomButton.Location = new System.Drawing.Point(3, 373);
+            this.deleteRoomButton.Location = new System.Drawing.Point(3, 332);
             this.deleteRoomButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.deleteRoomButton.Name = "deleteRoomButton";
             this.deleteRoomButton.Size = new System.Drawing.Size(206, 44);
@@ -176,19 +158,6 @@ namespace RoomReservationSystem.UserInterface
             this.deleteRoomButton.Text = "Delete room";
             this.deleteRoomButton.UseVisualStyleBackColor = false;
             this.deleteRoomButton.Click += new System.EventHandler(this.deleteRoomButton_Click);
-            // 
-            // isOutOfService
-            // 
-            this.isOutOfService.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.isOutOfService.AutoSize = true;
-            this.isOutOfService.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
-            this.isOutOfService.ForeColor = System.Drawing.Color.Gainsboro;
-            this.isOutOfService.Location = new System.Drawing.Point(3, 227);
-            this.isOutOfService.Name = "isOutOfService";
-            this.isOutOfService.Size = new System.Drawing.Size(206, 78);
-            this.isOutOfService.TabIndex = 6;
-            this.isOutOfService.Text = "Take it out of service";
-            this.isOutOfService.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel5
             // 
@@ -201,7 +170,7 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel5.Controls.Add(this.meals, 1, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.87671F));
@@ -211,9 +180,9 @@ namespace RoomReservationSystem.UserInterface
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.Color.Gainsboro;
             this.label1.Location = new System.Drawing.Point(3, 20);
             this.label1.Name = "label1";
@@ -223,9 +192,9 @@ namespace RoomReservationSystem.UserInterface
             // 
             // label
             // 
-            this.label.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label.AutoSize = true;
-            this.label.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.label.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label.ForeColor = System.Drawing.Color.Gainsboro;
             this.label.Location = new System.Drawing.Point(3, 101);
             this.label.Name = "label";
@@ -235,9 +204,9 @@ namespace RoomReservationSystem.UserInterface
             // 
             // standard
             // 
-            this.standard.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.standard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.standard.AutoSize = true;
-            this.standard.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.standard.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.standard.ForeColor = System.Drawing.Color.Gainsboro;
             this.standard.Location = new System.Drawing.Point(80, 20);
             this.standard.Name = "standard";
@@ -246,20 +215,38 @@ namespace RoomReservationSystem.UserInterface
             // 
             // meals
             // 
-            this.meals.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.meals.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.meals.AutoSize = true;
-            this.meals.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.meals.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.meals.ForeColor = System.Drawing.Color.Gainsboro;
             this.meals.Location = new System.Drawing.Point(80, 101);
             this.meals.Name = "meals";
             this.meals.Size = new System.Drawing.Size(0, 19);
             this.meals.TabIndex = 3;
             // 
+            // reservationsHistoryButton
+            // 
+            this.reservationsHistoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
+            this.reservationsHistoryButton.FlatAppearance.BorderSize = 0;
+            this.reservationsHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reservationsHistoryButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.reservationsHistoryButton.ForeColor = System.Drawing.Color.Gainsboro;
+            this.reservationsHistoryButton.Location = new System.Drawing.Point(3, 403);
+            this.reservationsHistoryButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
+            this.reservationsHistoryButton.Name = "reservationsHistoryButton";
+            this.reservationsHistoryButton.Size = new System.Drawing.Size(206, 44);
+            this.reservationsHistoryButton.TabIndex = 8;
+            this.reservationsHistoryButton.Text = "Reservations history";
+            this.reservationsHistoryButton.UseVisualStyleBackColor = false;
+            this.reservationsHistoryButton.Click += new System.EventHandler(this.reservationsHistoryButton_Click);
+            // 
             // roomNameLabel
             // 
-            this.roomNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.roomNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.roomNameLabel.AutoSize = true;
-            this.roomNameLabel.Font = new System.Drawing.Font("Calibri", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.roomNameLabel.Font = new System.Drawing.Font("Calibri", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.roomNameLabel.ForeColor = System.Drawing.Color.Gainsboro;
             this.roomNameLabel.Location = new System.Drawing.Point(288, 12);
             this.roomNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -271,7 +258,7 @@ namespace RoomReservationSystem.UserInterface
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (51)))), ((int) (((byte) (51)))), ((int) (((byte) (76)))));
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 631F));
             this.tableLayoutPanel3.Controls.Add(this.commentText, 0, 4);
@@ -282,7 +269,7 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel3.Controls.Add(this.label7, 0, 3);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(288, 77);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 7;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 131F));
@@ -297,10 +284,10 @@ namespace RoomReservationSystem.UserInterface
             // 
             // commentText
             // 
-            this.commentText.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (72)))), ((int) (((byte) (72)))), ((int) (((byte) (108)))));
+            this.commentText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(108)))));
             this.commentText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.commentText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.commentText.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.commentText.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.commentText.ForeColor = System.Drawing.Color.LightGray;
             this.commentText.Location = new System.Drawing.Point(75, 408);
             this.commentText.Margin = new System.Windows.Forms.Padding(75, 2, 75, 2);
@@ -323,7 +310,7 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
@@ -338,7 +325,7 @@ namespace RoomReservationSystem.UserInterface
             // 
             this.typeOfBed.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.typeOfBed.AutoSize = true;
-            this.typeOfBed.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.typeOfBed.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.typeOfBed.ForeColor = System.Drawing.Color.Gainsboro;
             this.typeOfBed.Location = new System.Drawing.Point(306, 51);
             this.typeOfBed.Margin = new System.Windows.Forms.Padding(2, 0, 15, 0);
@@ -350,7 +337,7 @@ namespace RoomReservationSystem.UserInterface
             // 
             this.maxNumGuests.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.maxNumGuests.AutoSize = true;
-            this.maxNumGuests.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.maxNumGuests.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.maxNumGuests.ForeColor = System.Drawing.Color.Gainsboro;
             this.maxNumGuests.Location = new System.Drawing.Point(306, 9);
             this.maxNumGuests.Margin = new System.Windows.Forms.Padding(2, 0, 15, 0);
@@ -362,7 +349,7 @@ namespace RoomReservationSystem.UserInterface
             // 
             this.squareMeters.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.squareMeters.AutoSize = true;
-            this.squareMeters.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.squareMeters.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.squareMeters.ForeColor = System.Drawing.Color.Gainsboro;
             this.squareMeters.Location = new System.Drawing.Point(306, 95);
             this.squareMeters.Margin = new System.Windows.Forms.Padding(2, 0, 15, 0);
@@ -374,7 +361,7 @@ namespace RoomReservationSystem.UserInterface
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.ForeColor = System.Drawing.Color.Gainsboro;
             this.label2.Location = new System.Drawing.Point(99, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 15, 0);
@@ -387,7 +374,7 @@ namespace RoomReservationSystem.UserInterface
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.Color.Gainsboro;
             this.label3.Location = new System.Drawing.Point(198, 51);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 15, 0);
@@ -400,7 +387,7 @@ namespace RoomReservationSystem.UserInterface
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label4.ForeColor = System.Drawing.Color.Gainsboro;
             this.label4.Location = new System.Drawing.Point(187, 95);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 15, 0);
@@ -411,10 +398,12 @@ namespace RoomReservationSystem.UserInterface
             // 
             // facilities
             // 
-            this.facilities.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.facilities.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (72)))), ((int) (((byte) (72)))), ((int) (((byte) (108)))));
+            this.facilities.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.facilities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(108)))));
             this.facilities.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.facilities.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.facilities.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.facilities.ForeColor = System.Drawing.Color.Gainsboro;
             this.facilities.FormattingEnabled = true;
             this.facilities.ItemHeight = 19;
@@ -426,11 +415,11 @@ namespace RoomReservationSystem.UserInterface
             // 
             // reservateButton
             // 
-            this.reservateButton.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (100)))), ((int) (((byte) (100)))), ((int) (((byte) (149)))));
+            this.reservateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(149)))));
             this.reservateButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reservateButton.FlatAppearance.BorderSize = 0;
             this.reservateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.reservateButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.reservateButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.reservateButton.ForeColor = System.Drawing.Color.Gainsboro;
             this.reservateButton.Location = new System.Drawing.Point(150, 458);
             this.reservateButton.Margin = new System.Windows.Forms.Padding(150, 2, 150, 2);
@@ -444,7 +433,7 @@ namespace RoomReservationSystem.UserInterface
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.ForeColor = System.Drawing.Color.Gainsboro;
             this.label5.Location = new System.Drawing.Point(150, 131);
             this.label5.Margin = new System.Windows.Forms.Padding(150, 0, 2, 0);
@@ -456,7 +445,7 @@ namespace RoomReservationSystem.UserInterface
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label7.ForeColor = System.Drawing.Color.Gainsboro;
             this.label7.Location = new System.Drawing.Point(75, 378);
             this.label7.Margin = new System.Windows.Forms.Padding(75, 0, 2, 0);
@@ -471,7 +460,7 @@ namespace RoomReservationSystem.UserInterface
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1238, 682);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormRoom";
             this.Text = "ROOM";
             this.Load += new System.EventHandler(this.FormRoom_Load);
@@ -486,6 +475,7 @@ namespace RoomReservationSystem.UserInterface
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -504,7 +494,6 @@ namespace RoomReservationSystem.UserInterface
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox commentText;
         private System.Windows.Forms.ListBox facilities;
-        private System.Windows.Forms.CheckBox isOutOfService;
         private System.Windows.Forms.Button reservateButton;
         private System.Windows.Forms.Label squareMeters;
         private System.Windows.Forms.Label label7;

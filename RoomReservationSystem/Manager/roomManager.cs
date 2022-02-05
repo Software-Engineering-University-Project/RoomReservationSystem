@@ -42,11 +42,11 @@ namespace RoomReservationSyster
 			}
 		}
 
-		public void Update(string roomNumber, double price, double squareMeterage, int maxGuest, string standard, string comment,
+		public void Update(string roomNumber, double price, double squareMeterage, int maxGuest, string standard, string comment, RoomState state,
 			List<BedType> beds, List<Meals> meals, List<RoomFacilities> facilities)
 		{
 			Dictionary<string, string> updateValues =
-				PrepareRoomUpdateData(roomNumber, price, squareMeterage, maxGuest, standard, comment);
+				PrepareRoomUpdateData(roomNumber, price, squareMeterage, maxGuest, standard, comment, state);
 			
 			IEnumerable<BedType> bedsToDelete = CurrentRoom.beds.Except(beds);
 
@@ -78,7 +78,7 @@ namespace RoomReservationSyster
 			}
 		}
 
-		public bool Insert(string roomNumber, double price, double squareMeterage, int maxGuest,
+		public bool Insert(string roomNumber, double price, double squareMeterage, int maxGuest, RoomState state,
 			List<BedType> beds, List<Meals> meals, List<RoomFacilities> facilities, string standard, string comment)
 		{
 			string provider = ConfigurationManager.AppSettings["provider"];
@@ -97,9 +97,7 @@ namespace RoomReservationSyster
 						validation.CommandType = System.Data.CommandType.StoredProcedure;
 						validation.Connection = connection;
 						validation.CommandText = "Check_Unique_Values_Room";
-
 						validation.Parameters.Add(new SqlParameter("@roomNumber", roomNumber));
-
 						validation.Parameters.Add(new SqlParameter("@ReturnValue", SqlDbType.Bit));
 						validation.Parameters["@ReturnValue"].Direction = ParameterDirection.Output;
 
@@ -119,7 +117,8 @@ namespace RoomReservationSyster
 								command.Parameters.Add(new SqlParameter("@RoomStandard", standard));
 								command.Parameters.Add(new SqlParameter("@RoomMaxGuestNumber", maxGuest));
 								command.Parameters.Add(new SqlParameter("@RoomNumber", roomNumber));
-								command.Parameters.Add(new SqlParameter("RoomComment", comment));
+								command.Parameters.Add(new SqlParameter("@RoomComment", comment));
+								command.Parameters.Add(new SqlParameter("@Status", state.ToString()));
 								command.Parameters.Add(new SqlParameter("@ReturnValue", SqlDbType.Int));
 								command.Parameters["@ReturnValue"].Direction = ParameterDirection.Output;
 								command.ExecuteNonQuery();
@@ -336,7 +335,7 @@ namespace RoomReservationSyster
 		}
 
 		private Dictionary<string, string> PrepareRoomUpdateData(string roomNumber, double price, double squareMeterage, int maxGuest,
-			string standard, string comment)
+			string standard, string comment, RoomState state)
 		{
 			Dictionary<string, string> updateValues = new Dictionary<string, string>();
 			if (CurrentRoom.roomNumber != roomNumber)
@@ -367,6 +366,11 @@ namespace RoomReservationSyster
 			if (CurrentRoom.comment != comment)
 			{
 				updateValues["RoomComment"] = comment;
+			}
+
+			if (CurrentRoom.roomState != state)
+			{
+				updateValues["Status"] = state.ToString();
 			}
 
 			return updateValues;
