@@ -24,7 +24,7 @@ namespace RoomReservationSystem.UserInterface
         private RoomManager _roomManager;
 
         private UserManager _userManager;
-        
+
         public FormRoom(RoomManager roomManager, UserManager userManager)
         {
             _userManager = userManager;
@@ -38,7 +38,7 @@ namespace RoomReservationSystem.UserInterface
 
             this.standard.Text = _roomManager.CurrentRoom.roomStandard.ToString();
 
-            foreach( var meal in _roomManager.CurrentRoom.mealsProvided)
+            foreach (var meal in _roomManager.CurrentRoom.mealsProvided)
             {
                 this.meals.Text += meal.ToString() + ",";
             }
@@ -52,7 +52,7 @@ namespace RoomReservationSystem.UserInterface
 
             this.commentText.Text = _roomManager.CurrentRoom.comment;
 
-            foreach(var bed in _roomManager.CurrentRoom.beds)
+            foreach (var bed in _roomManager.CurrentRoom.beds)
             {
                 this.typeOfBed.Text += bed.ToString() + ",";
             }
@@ -100,7 +100,7 @@ namespace RoomReservationSystem.UserInterface
         {
             SetComponentsVisibility(true, true, true, true, true, true, true);
         }
-        private void SetComponentsVisibility(bool reservate = false, bool comment = false, 
+        private void SetComponentsVisibility(bool reservate = false, bool comment = false,
             bool outOfService = false, bool delete = false, bool edit = false, bool editableValues = false, bool reservationHistory = false)
         {
             this.reservateButton.Visible = reservate;
@@ -113,7 +113,7 @@ namespace RoomReservationSystem.UserInterface
             this.reservationsHistoryButton.Visible = reservationHistory;
             this.reservationsHistoryButton.Enabled = reservationHistory;
         }
-        
+
         private void deleteRoomButton_Click(object sender, EventArgs e)
         {
             bool shouldDelete = ConfirmationPopup.ShowDialog("Do you confirm room deletion?");

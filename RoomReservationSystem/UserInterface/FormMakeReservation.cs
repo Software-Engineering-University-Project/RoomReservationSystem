@@ -24,6 +24,7 @@ namespace RoomReservationSystem.UserInterface
             InitializeComponent();
             _reservationManager = new ReservationManager();
             _userManager = new UserManager();
+            EnablePermissions();
         }
 
         public FormMakeReservation(UserManager userManager, int roomId)

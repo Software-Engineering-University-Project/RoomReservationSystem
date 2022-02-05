@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Users;
 
 namespace RoomReservationSystem.UserInterface
 {
@@ -26,6 +27,24 @@ namespace RoomReservationSystem.UserInterface
             if (_userManager.managedUser != null)
             {
                 initializeLabels();
+            }
+
+            EnablePermissions();
+        }
+
+        private void EnablePermissions()
+        {
+            if (_userManager.currUser is Client)
+            {
+                EnableClientPermissions();
+            }
+            else if (_userManager.currUser is Worker)
+            {
+                EnableWorkerPermissions();
+            }
+            else if (_userManager.currUser is Admin)
+            {
+                EnableAdminPermissions();
             }
         }
 
