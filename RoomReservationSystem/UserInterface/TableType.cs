@@ -10,6 +10,7 @@ namespace RoomReservationSystem.UserInterface
     {
         UserReservationsHistory,
         RoomHistory,
-        AllReservationsHistory
+        AllReservationsHistory,
+        AdminView
     }
 }

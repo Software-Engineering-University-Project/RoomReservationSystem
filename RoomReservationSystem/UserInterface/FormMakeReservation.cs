@@ -38,7 +38,6 @@ namespace RoomReservationSystem.UserInterface
 
         private void MakeReservation()
         {
-            
             Regex regex = new Regex(@"^[0-9]+$");
             DateTime reservationFrom = dateFrom.Value;
             DateTime reservationTO = dateTo.Value;
@@ -87,6 +86,7 @@ namespace RoomReservationSystem.UserInterface
                                         bool added = _reservationManager.add(room.price, Int32.Parse(userID), Int32.Parse(roomID), reservationFrom, reservationTO);
                                         if (added)
                                         {
+                                            InformationPopup.ShowDialog("Room has been successfully booked", "Successful booking");
                                             ClearForm();
                                         }
                                     }
